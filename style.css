@@ -1,10 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;700&display=swap');
 
+/* root reset */
+
 *{
     margin: 0;
     padding: 0;
     border: 0;
 }
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+ul{
+    padding: 0 !important;
+}
+
+
+/* Animations */
 
 @keyframes smoothFade {
     from{
@@ -20,6 +34,8 @@
     animation: smoothFade;
     animation-duration: 4s;
 }
+
+/* Nav Bar */
 
 header{
     position: fixed;
@@ -59,12 +75,15 @@ a{
     color: aliceblue !important; 
 }
 
+
+/* Intro Section */
+
 #intro{
     font-family: 'Montserrat', sans-serif; 
     color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 100vw;
     height: 110vh;
     justify-content: center;
     align-items: center;
@@ -76,10 +95,14 @@ a{
     animation: smoothFade;
     animation-duration: 4s;
     font-weight: bold;
+    text-shadow: 4px 4px black;
 }
 
+
+/* About Me Section */
+
 #aboutMe{
-    height: 90vh;
+    height: 120vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,9 +111,70 @@ a{
 .container{
     display: flex;
     flex-direction: column;
-    background-color: rgba(57, 118, 179, 0.459);
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 0;
+}
+
+.profilePic{
+    border: black solid 4px;
+    border-radius: 50%;
+    margin: 20px 0;
+}
+
+.selfProclaimContainer{
+    margin: 20px 0;
+    padding: 20px 30px;
+    background-color: rgb(201, 198, 198);
+    border: solid 2px black;
+    border-radius: 4px;
+}
+
+.selfProclaimList{
+    display: inline-flex;
+    list-style: none;
+    padding: 0;
+    margin: 30px 0;
+}
+
+.selfProclaimItem{
+    list-style: none;
+    margin: 0 20px;
+}
+
+li > i {
+    padding: 20px 0;
+    font-size: 60px;
 }
 
 
+/* Technologies Section */
+
+#technologies{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(201, 198, 198);
+}
+
+.techContainer{
+    text-align:center;
+    font-size: 1.2rem;
+    padding: 40px 0;
+}
+
+.cardContainer{
+    padding: 50px 100px;
+    display: flex;
+    flex-wrap: wrap;
+}
+  
+img{
+    flex: 1 1 20%;
+    margin: 20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
