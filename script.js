@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
 
     $(window).scroll(() => {
@@ -16,7 +16,4 @@ $(document).ready(function(){
 
 
 
-
-
-    
 });
