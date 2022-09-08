@@ -88,6 +88,9 @@ a {
     color: aliceblue !important;
 }
 
+.dropdown {
+    display: none;
+}
 
 /* Intro Section */
 
@@ -97,7 +100,7 @@ a {
     display: flex;
     flex-direction: column;
     width: 100vw;
-    height: 110vh;
+    height: 100vh;
     justify-content: center;
     align-items: center;
     background-image: url(./images/sakuratree.jpg);
@@ -113,10 +116,12 @@ h2 {
 }
 
 
+
 /* About Me Section */
 
 #aboutMe {
-    height: 120vh;
+    padding: 20% 0;
+    height: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -130,7 +135,7 @@ h2 {
     width: 100%;
     height: fit-content;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     padding: 0;
 }
 
@@ -142,7 +147,7 @@ h2 {
 
 .selfProclaimContainer {
     margin: 30px 0;
-    padding: 20px 30px;
+    padding: 5% 10%;
     background-color: rgb(201, 198, 198);
     border: solid 2px black;
     border-radius: 4px;
@@ -157,19 +162,19 @@ h2 {
 
 .selfProclaimItem {
     list-style: none;
-    margin: 0 20px;
+    margin: 0 20%;
 }
 
 li>i {
     padding: 20px 0;
-    font-size: 60px;
+    font-size: 4rem;
 }
 
 
 /* Technologies Section */
 
 #technologies {
-    height: 100vh;
+    height: fit-content;
     background-color: rgb(201, 198, 198);
 }
 
@@ -249,6 +254,11 @@ li>i {
     cursor: pointer;
 }
 
+
+/**/
+
+
+
 /* Projects Section */
 
 #projects {
@@ -262,24 +272,30 @@ li>i {
     flex-direction: column;
     justify-content: center;
     padding: 5%;
+    height: 150vh;
 }
 
 
 #projects>h3 {
-    font-size: 2rem;
-    font-weight: 400;
+    font-size: 1.5rem;
+    font-weight: 600;
     color: white;
     text-shadow: 3px 3px black;
     margin: 30px 0;
 }
 
 #carouselProjects {
-    height: fit-content;
+    height: max-content;
     align-self: center;
-    width: 35vw;
+    width: 50vw;
     font-size: 1rem;
     font-weight: 600;
     text-shadow: 2px 2px black;
+}
+
+.carousel {
+    width: 500px;
+    height: 500px;
 }
 
 .carousel-caption>h5 {
@@ -288,7 +304,11 @@ li>i {
 
 .carousel-button>.carousel-control-prev-icon,
 .carousel-control-next-icon {
-    filter: invert(100%);
+    height: 5vh;
+    width: 5vw;
+    background-color: black;
+    border-radius: 25%;
+    text-shadow: 4px 4px black;
 }
 
 .carousel-indicators li {
@@ -309,6 +329,22 @@ li>i {
     cursor: pointer;
 }
 
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-item {
+    height: 450px;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+}
+
+
 /* Contact Section */
 
 #contact {
@@ -316,9 +352,11 @@ li>i {
     padding: 5%;
     display: flex;
     justify-content: center;
+    height: fit-content;
 }
 
 .actionContent {
+    height: fit-content !important;
     margin: 10% 0;
     padding: 40px;
     display: flex;
@@ -332,28 +370,29 @@ li>i {
 }
 
 .actionText {
-    width: 50%;
-    text-align: center;
-}
-
-.actionText>p {
-    font-size: 1.3rem;
-}
-
-.actionContent>button {
-    padding: 0 10%;
-    color: black;
+    width: 60%;
+    text-align: left;
+    font-size: 1.2rem;
 }
 
 
+#messageButton {
+    padding: 0;
+    background-color: #128C7E;
+    height: fit-content;
+    align-self: center;
+    padding: 4%;
+    font-size: 2rem;
+}
 
 /* Footer */
 
-footer {
+#footerSection {
     width: 100vw;
     height: 100%;
-    background-color: rgb(0, 0, 0);
-
+    background-color: black;
+    margin: 0;
+    color: aliceblue;
 }
 
 .footerContent {
@@ -373,6 +412,177 @@ footer {
 
 #networkLinks>li {
     display: inline-block;
-    margin: 2px;
+    margin: 20px 5px;
     color: aliceblue;
+}
+
+.fa-linkedin,
+.fa-square-github {
+    padding: 0;
+}
+
+.fa-linkedin:hover {
+    color: #0e76a8;
+    cursor: pointer;
+}
+
+.fa-square-github:hover {
+    color: #6e5494;
+    cursor: pointer;
+}
+
+
+.carousel-item>img {
+    display: block;
+    max-width: 100%;
+    max-height: 500px;
+    justify-self: center;
+    border: 8px solid black;
+    border-radius: 25%;
+}
+
+@media screen and (max-width: 768px) {
+
+    /* Nav Bar Mobile */
+
+    /* hide buttons and adjust brand icon */
+
+    #navBarLinkList {
+        display: none;
+    }
+
+    #navBar {
+        justify-content: space-between;
+    }
+
+    .navbar-brand {
+        padding-left: 10%;
+    }
+
+    /* Drop Down Menu */
+
+    .dropdown {
+        display: initial;
+    }
+
+    .dropdown-menu {
+        width: 100vw;
+    }
+
+    #dropdownMenuButton {
+        color: aliceblue;
+        font-size: 1rem;
+        margin: 5px 30px;
+        align-self: center;
+    }
+
+    .dropdown-menu {
+        background-color: black;
+    }
+
+    .dropdown-item {
+        color: aliceblue;
+        text-align: center;
+    }
+
+    /* Intro Section Mobile */
+
+    #intro {
+        background-image: url(./images/river.jpg);
+        background-size: cover;
+        font-size: 1em;
+        text-align: center;
+    }
+
+    /* about Me Section */
+
+    .selfProclaimContainer {
+        padding: 10% 20%;
+    }
+
+    .selfProclaimList {
+        flex-direction: column;
+    }
+
+    .selfProclaimItem {
+        margin: 10% 0;
+    }
+
+    /* technologies Section */
+
+    .techContainer {
+        padding: 10%;
+    }
+
+    .cardContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cardContainer>img {
+        flex: 1;
+        align-self: center;
+        margin: 10% 0;
+    }
+
+    /* project section */
+
+    #projects {
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+        background-image: url(./images/laptop.jpg);
+        background-size: cover;
+        filter: sepia(40%);
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 20%;
+    }
+
+    #carouselProjects {
+        align-self: center;
+        width: 100vw;
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-shadow: 2px 2px black;
+    }
+
+    /* contact me section */
+
+    .actionContent {
+        text-align: center;
+        align-items: center;
+        margin: 10% 0;
+        padding: 10% 5%;
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        justify-content: center;
+        border: 1px groove black;
+        border-radius: 8px;
+        background-color: rgb(255, 255, 255);
+    }
+
+    #messageButton {
+        height: fit-content;
+        width: fit-content;
+        border-radius: 8px;
+        background-color: #128C7E;
+        font-size: 1.3rem;
+        padding: 8%;
+    }
+
+
+    .actionText {
+        width: 60%;
+        text-align: center;
+        font-size: 1.2rem;
+    }
+
+
+    .actionText>h3 {
+        margin-bottom: 15%;
+    }
+
 }

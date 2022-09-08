@@ -9,6 +9,7 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
+  <script src="./script.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
@@ -18,7 +19,6 @@
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
     crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/6b3a9e549b.js" crossorigin="anonymous"></script>
-  <script src="./script.js"></script>
   <link rel="stylesheet" href='./style.css'>
 </head>
 
@@ -36,6 +36,18 @@
           <li type="button" class="btn btn-primary"><a href="#"> Resume <i class="fa-solid fa-address-card"></i></a>
           </li>
         </ul>
+        <div class="dropdown">
+          <button class="btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#aboutMe">About Me</a>
+            <a class="dropdown-item" href="#technologies">Technologies</a>
+            <a class="dropdown-item" href="#projects">Projects</a>
+            <a class="dropdown-item" href="#contact">Contact</a>
+          </div>
+        </div>
       </nav>
     </header>
 
@@ -105,7 +117,8 @@
     </section>
 
     <section id="projects">
-      <h3> There is some projects that i developed<br> (More coming soon)</h3>
+      <h3> There is some projects that i developed</h3>
+      <h3>(More coming soon)</h3>
       <div id="carouselProjects" class="carousel slide carousel-fade" data-ride="carousel" data-interval="false"
         indicators="true">
         <ol class="carousel-indicators">
@@ -117,35 +130,35 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="./images/bootstrap.png" height="500" width="500" class="d-block w-100" alt="Pokemon Project">
+            <img src="./images/pokemonAppProject.png" class="d-block w-100" alt="Pokemon Project">
             <div class="carousel-caption d-none d-md-block">
               <h5>Pokemon Project</h5>
               <p>A project using React.js and consuming PokeAPI</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="./images/jquery.png" height="500" width="500" class="d-block w-100" alt="Landing Page">
+            <img src="./images/landingPageProject.png" class="d-block w-100" alt="Landing Page">
             <div class="carousel-caption d-none d-md-block">
               <h5>Landing Page</h5>
               <p>A project using Jquery and Bootstrap about a League of Legends character</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="./images/javascript.png" height="500" width="500" class="d-block w-100" alt="Jokenpo Game">
+            <img src="./images/jokenpoProject.png" class="d-block w-100" alt="Jokenpo Game">
             <div class="carousel-caption d-none d-md-block">
               <h5>Jokenpo Game</h5>
               <p>A game made with Html Css and Js</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="./images/javascript.png" height="500" width="500" class="d-block w-100" alt="Genius Game">
+            <img src="./images/geniusGame.png" class="d-block w-100" alt="Genius Game">
             <div class="carousel-caption d-none d-md-block">
               <h5>Genius Game</h5>
               <p>A popular and responsive genius game</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="./images/javascript.png" height="500" width="500" class="d-block w-100" alt="Drum Kit Project">
+            <img src="./images/drumKitProject.png" class="d-block w-100" alt="Drum Kit Project">
             <div class="carousel-caption d-none d-md-block">
               <h5>Drum Kit Project</h5>
               <p>Drum kit simulator to smash by web</p>
@@ -166,16 +179,16 @@
     <section id="contact">
       <div class="actionContent">
         <div class="actionText">
-          <h3>Do you like what you see?</h3>
+          <h3><strong>Do you like what you see?</strong></h3>
           <p>If you have a project idea or just want to know something feel free to contact me!!</p>
         </div>
-        <button class="btn btn-primary">
-          <a href="https://wa.me/12996503913" target="_blank">Message Me :)</a>
+        <button id="messageButton" class="btn btn-primary">
+          <a href="https://wa.me/12996503913" target="_blank">Message Me <i class="fa-brands fa-whatsapp"></i></a>
         </button>
       </div>
     </section>
 
-    <footer>
+    <footer id="footerSection">
       <div class="footerContent">
         <ul id="networkLinks">
           <li><i class="fa-brands fa-linkedin"><a href="https://www.linkedin.com/in/rdvid/" target="_blank"></a></i>
@@ -183,6 +196,7 @@
           <li><i class="fa-brands fa-square-github"><a href="https://github.com/rdvid" target=""></a></i></li>
         </ul>
       </div>
+
     </footer>
 
   </div>
