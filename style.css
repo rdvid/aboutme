@@ -42,10 +42,12 @@ ul {
     }
 }
 
+
 .showIn {
     animation: smoothFade;
     animation-duration: 2s;
 }
+
 
 /* Nav Bar */
 
@@ -65,8 +67,8 @@ header {
 }
 
 a {
-    color: aliceblue !important;
-    text-decoration: none !important;
+    color: aliceblue;
+    text-decoration: none;
 }
 
 
@@ -108,7 +110,7 @@ a {
 }
 
 #intro>h1,
-h2 {
+#intro>p {
     animation: smoothFade;
     animation-duration: 4s;
     font-weight: bold;
@@ -120,7 +122,7 @@ h2 {
 /* About Me Section */
 
 #aboutMe {
-    padding: 20% 0;
+    padding: 10% 0;
     height: fit-content;
     display: flex;
     justify-content: center;
@@ -136,7 +138,12 @@ h2 {
     height: fit-content;
     text-align: center;
     font-size: 1.3rem;
-    padding: 0;
+    padding: 10%;
+}
+
+#aboutMe>.container>p>a {
+    color: #0e76a8;
+    text-decoration: none;
 }
 
 .profilePic {
@@ -165,7 +172,7 @@ h2 {
     margin: 0 20%;
 }
 
-li>i {
+.selfProclaimItem>li>i {
     padding: 20px 0;
     font-size: 4rem;
 }
@@ -196,6 +203,14 @@ li>i {
     grid-template-rows: repeat(3, 1fr);
     grid-column-gap: 10px;
     grid-row-gap: 10px;
+}
+
+.cardContainer>.card {
+    height: fit-content;
+    width: fit-content;
+    background-color: rgb(201, 198, 198);
+    border: 0;
+    margin: 5%;
 }
 
 .img1 {
@@ -243,15 +258,27 @@ li>i {
     justify-self: center;
 }
 
-.cardContainer>img {
+.cardLabel {
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(255, 255, 255);
+    font-weight: 400;
+    font-size: 1.3rem;
+    text-shadow: 2px 2px black;
+    margin-top: 5%;
+    z-index: 998;
+}
+
+.cardContainer>.card>.img-fluid {
     filter: grayscale(100);
 }
 
-.cardContainer>img:hover {
+.cardContainer>.card>.img-fluid:hover {
     animation: smoothColor;
     animation-duration: 1s;
     filter: none;
     cursor: pointer;
+    transform: scale(1.5);
+    transition: 0.6s;
 }
 
 
@@ -272,16 +299,17 @@ li>i {
     flex-direction: column;
     justify-content: center;
     padding: 5%;
-    height: 150vh;
+    height: fit-content;
 }
 
 
-#projects>h3 {
+#projects>h2,
+#projects>p {
     font-size: 1.5rem;
     font-weight: 600;
     color: white;
     text-shadow: 3px 3px black;
-    margin: 30px 0;
+    margin: 20px 0;
 }
 
 #carouselProjects {
@@ -290,7 +318,6 @@ li>i {
     width: 50vw;
     font-size: 1rem;
     font-weight: 600;
-    text-shadow: 2px 2px black;
 }
 
 .carousel {
@@ -298,8 +325,12 @@ li>i {
     height: 500px;
 }
 
-.carousel-caption>h5 {
-    font-size: 2rem;
+.carousel-caption {
+    color: #ffffff;
+    font-size: 1.2rem;
+    text-shadow: 2px 2px black;
+    background-color: #00000062;
+    border-radius: 30%;
 }
 
 .carousel-button>.carousel-control-prev-icon,
@@ -332,6 +363,8 @@ li>i {
 .carousel-inner img {
     width: 100%;
     height: 100%;
+    border-radius: 25%;
+    border: 8px solid black;
 }
 
 .carousel-item {
@@ -377,12 +410,22 @@ li>i {
 
 
 #messageButton {
-    padding: 0;
     background-color: #128C7E;
+    color: black;
+    border: 2px solid black;
     height: fit-content;
     align-self: center;
     padding: 4%;
-    font-size: 2rem;
+    font-size: 1rem;
+}
+
+#messageButton>a {
+    color: white;
+}
+
+#messageButton>a:hover {
+    filter: invert(100);
+    font-weight: 600;
 }
 
 /* Footer */
@@ -493,9 +536,11 @@ li>i {
         background-size: cover;
         font-size: 1em;
         text-align: center;
+        border-bottom: 3px solid black;
     }
 
     /* about Me Section */
+
 
     .selfProclaimContainer {
         padding: 10% 20%;
@@ -512,7 +557,9 @@ li>i {
     /* technologies Section */
 
     .techContainer {
-        padding: 10%;
+        padding: 15% 5%;
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;
     }
 
     .cardContainer {
@@ -520,10 +567,10 @@ li>i {
         flex-direction: column;
     }
 
-    .cardContainer>img {
+    .cardContainer>.card {
         flex: 1;
         align-self: center;
-        margin: 10% 0;
+        margin: 5% 0;
     }
 
     /* project section */
@@ -543,8 +590,8 @@ li>i {
 
     #carouselProjects {
         align-self: center;
-        width: 100vw;
-        font-size: 1.5rem;
+        width: 80vw;
+        font-size: 1rem;
         font-weight: 600;
         text-shadow: 2px 2px black;
     }

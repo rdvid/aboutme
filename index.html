@@ -54,23 +54,24 @@
 
     <section id="intro">
       <h1>Hey you, I'm Rafael D.</h1>
-      <h2>Web Developer and Tech Student</h2>
+      <p>Web Developer and Tech Student</p>
     </section>
 
     <section id="aboutMe">
       <div class="container">
-        <h3> About Me</h3>
+        <h2> About Me</h2>
         <img src="./images/profilePic.jpeg" class="profilePic img-fluid" height="200" width="200">
         <p>
           Hello World, I'm Rafael David, a goal-oriented brazilian software developer <br>
           with a solid business management background. Currently i'm on my first <br>
-          year of bachelor's degree in information technology by Univesp
+          year of bachelor's degree in information technology by <a href="https://univesp.br/"
+            rel="noreferrer">Univesp</a>
           <br><br>
           When i'm not coding, i enjoy piano and reading.
         </p>
 
         <div class="selfProclaimContainer">
-          <h3>[TL;DR] Self Proclamations:</h3>
+          <h2>[TL;DR] Self Proclamations:</h2>
           <ul class="selfProclaimList">
             <li>
               <ul class="selfProclaimItem">
@@ -97,29 +98,53 @@
 
     <section id="technologies">
       <div class="techContainer">
-        <h3>Some technologies i've worked with: </h3>
+        <h2>Some technologies i've worked with: </h2>
         <div class="cardContainer">
-          <img class="img1 img-fluid" title='html' src="./images/html.png" alt="html icon" height="100" width="100">
-          <img class="img2 img-fluid" title='css' src="./images/css.png" alt="css icon" height="100" width="100">
-          <img class="img3 img-fluid" title='javascript' src="./images/javascript.png" alt="javascript icon"
-            height="100" width="100">
-          <img class="img4 img-fluid" title='bootstrap' src="./images/bootstrap.png" alt="bootstrap icon" height="100"
-            width="100">
-          <img class="img5 img-fluid" title='jquery' src="./images/jquery.png" alt="jquery icon" height="100"
-            width="100">
-          <img class="img6 img-fluid" title='reactjs' src="./images/react.png" alt="react icon" height="100"
-            width="100">
-          <img class="img7 img-fluid" title='python' src="./images/python.png" alt="python icon" height="100"
-            width="100">
-          <img class="img8 img-fluid" title='linux' src="./images/linux.png" alt="linux icon" height="100" width="100">
-          <img class="img9 img-fluid" title='git' src="./images/git.png" alt="git icon" height="100" width="100">
+          <div class="card img1">
+            <img class="img-fluid" title='html' src="./images/html.png" alt="html icon" height="100" width="100">
+            <span class="cardLabel">Html</span>
+          </div>
+          <div class="card img2">
+            <img class="img-fluid" title='css' src="./images/css.png" alt="css icon" height="100" width="100">
+            <span class="cardLabel">Css</span>
+          </div>
+          <div class="card img3">
+            <img class="img-fluid" title='javascript' src="./images/javascript.png" alt="javascript icon" height="100"
+              width="100">
+            <span class="cardLabel">Javascript</span>
+          </div>
+          <div class="card img4">
+            <img class="img-fluid" title='bootstrap' src="./images/bootstrap.png" alt="bootstrap icon" height="100"
+              width="100">
+            <span class="cardLabel">Bootstrap</span>
+          </div>
+          <div class="card img5">
+            <img class="img-fluid" title='jquery' src="./images/jquery.png" alt="jquery icon" height="100" width="100">
+            <span class="cardLabel">jQuery</span>
+          </div>
+          <div class="card img6">
+            <img class="img-fluid" title='reactjs' src="./images/react.png" alt="react icon" height="100" width="100">
+            <span class="cardLabel">ReactJS</span>
+          </div>
+          <div class="card img7">
+            <img class="img-fluid" title='python' src="./images/python.png" alt="python icon" height="100" width="100">
+            <span class="cardLabel">Python</span>
+          </div>
+          <div class="card img8">
+            <img class="img-fluid" title='linux' src="./images/linux.png" alt="linux icon" height="100" width="100">
+            <span class="cardLabel">Linux</span>
+          </div>
+          <div class="card img9">
+            <img class="img-fluid" title='git' src="./images/git.png" alt="git icon" height="100" width="100">
+            <span class="cardLabel">Git</span>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="projects">
-      <h3> There is some projects that i developed</h3>
-      <h3>(More coming soon)</h3>
+      <h2> There is some projects that i developed</h2>
+      <p>(More coming soon)</p>
       <div id="carouselProjects" class="carousel slide carousel-fade" data-ride="carousel" data-interval="false"
         indicators="true">
         <ol class="carousel-indicators">
@@ -131,37 +156,47 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="./images/pokemonAppProject.png" class="d-block w-100" alt="Pokemon Project">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Pokemon Project</h5>
+            <a href="https://github.com/rdvid/pokemonAPI" target="_blank">
+              <img src="./images/pokemonAppProject.png" class="d-block w-100" alt="Pokemon Project">
+            </a>
+            <div class="carousel-caption d-md-block">
+              <h3>Pokemon Project</h3>
               <p>A project using React.js and consuming PokeAPI</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="./images/landingPageProject.png" class="d-block w-100" alt="Landing Page">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Landing Page</h5>
+            <a href="https://rdvid.github.io/Landing-Page/" target="_blank">
+              <img src="./images/landingPageProject.png" class="d-block w-100" alt="Landing Page">
+            </a>
+            <div class="carousel-caption d-md-block">
+              <h3>Landing Page</h3>
               <p>A project using Jquery and Bootstrap about a League of Legends character</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="./images/jokenpoProject.png" class="d-block w-100" alt="Jokenpo Game">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Jokenpo Game</h5>
+            <a href="https://github.com/rdvid/Jokenpo" target="_blank">
+              <img src="./images/jokenpoProject.png" class="d-block w-100" alt="Jokenpo Game">
+            </a>
+            <div class="carousel-caption d-md-block">
+              <h3>Jokenpo Game</h3>
               <p>A game made with Html Css and Js</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="./images/geniusGame.png" class="d-block w-100" alt="Genius Game">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Genius Game</h5>
+            <a href="https://github.com/rdvid/Genius-Game" target="_blank">
+              <img src="./images/geniusGame.png" class="d-block w-100" alt="Genius Game">
+            </a>
+            <div class="carousel-caption d-md-block">
+              <h3>Genius Game</h3>
               <p>A popular and responsive genius game</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="./images/drumKitProject.png" class="d-block w-100" alt="Drum Kit Project">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Drum Kit Project</h5>
+            <a href="https://github.com/rdvid/DrumKit" target="_blank">
+              <img src="./images/drumKitProject.png" class="d-block w-100" alt="Drum Kit Project">
+            </a>
+            <div class="carousel-caption d-md-block">
+              <h3>Drum Kit Project</h3>
               <p>Drum kit simulator to smash by web</p>
             </div>
           </div>
@@ -180,7 +215,7 @@
     <section id="contact">
       <div class="actionContent">
         <div class="actionText">
-          <h3><strong>Do you like what you see?</strong></h3>
+          <h2>Do you like what you see?</h2>
           <p>If you have a project idea or just want to know something feel free to contact me!!</p>
         </div>
         <button id="messageButton" class="btn btn-primary">
