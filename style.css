@@ -326,11 +326,16 @@ a {
 }
 
 .carousel-caption {
-    color: #ffffff;
-    font-size: 1.2rem;
+    background-color: #00000060;
+    border-radius: 25%;
+}
+
+.carousel-caption>h3,
+.carousel-caption>p {
+    color: aliceblue;
+    text-align: center;
+    font-weight: 600;
     text-shadow: 2px 2px black;
-    background-color: #00000062;
-    border-radius: 30%;
 }
 
 .carousel-button>.carousel-control-prev-icon,
@@ -578,7 +583,7 @@ a {
     #projects {
         text-align: center;
         font-family: 'Montserrat', sans-serif;
-        background-image: url(./images/laptop.jpg);
+        background-image: url(./images/tech_abstract.jpg);
         background-size: cover;
         filter: sepia(40%);
         width: 100vw;
