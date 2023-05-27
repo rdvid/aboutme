@@ -24,7 +24,7 @@ ul {
 @keyframes smoothFade {
     from {
         opacity: 0;
-        transform: translateY(-40px);
+        transform: translateY(-41px);
     }
 
     to {
