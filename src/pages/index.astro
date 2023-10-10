@@ -1,17 +1,11 @@
 ---
-import Home from "./home.astro";
+import About from "./about.astro";
+import Home from "./home-2.astro";
+import BaseLayout from "../layouts/BaseLayout.astro"
 ---
 
-<html lang="en" data-theme="garden">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<script src="https://kit.fontawesome.com/6b3a9e549b.js" crossorigin="anonymous"></script>
-		<title><Rdvid/></title>
-	</head>
-	<body>
-		<Home/>
-	</body>
-</html>
+<BaseLayout>
+	<Home />
+	
+</BaseLayout>
+

@@ -1,0 +1,28 @@
+---
+import Header from "../components/header.astro"
+import Footer from "../components/footer.astro"
+import Sidebar from "../components/sidebar.astro"
+---
+
+<html lang="en" data-theme="lofi" class="h-full">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<script src="https://kit.fontawesome.com/6b3a9e549b.js" crossorigin="anonymous" defer></script>
+		<title>[ Rdvid ]</title>
+	</head>
+	<body class="h-full">
+        <Header />
+        <div class="flex flex-col lg:flex-row my-5 h-full">
+            <div class="divider lg:divider-horizontal"></div> 
+            <Sidebar />
+            <div class="divider lg:divider-horizontal"></div> 
+            <div class="w-full">
+                <slot />
+            </div>
+        </div>   
+        <Footer/ >
+	</body>
+</html>

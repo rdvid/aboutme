@@ -1,0 +1,40 @@
+---
+import { getLangFromUrl, useTranslations } from '../utils/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section>
+  <div class="hero bg-base-200 p-4">
+    <div class="hero-content flex-col lg:flex-row">
+      <img src="/code-hero-background.jpg" class="max-w-sm rounded-lg shadow-2xl" />
+      <div>
+        <p class="hidden">{t('home.title')}</p>
+        <h1 id="home-title" class="text-5xl font-bold text-center"></h1>
+        <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+        <button class="btn btn-primary" onclick="typeWriter()">Get Started</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  
+</style>
+
+<script defer>
+  
+  var i = 0;
+  var txt = `${document.getElementsByClassName("hidden")}`; /* The text */
+  var speed = 50; /* The speed/duration of the effect in milliseconds */
+
+  function typeWriter() {
+    alert(txt)
+    if (i < txt.length) {
+      document.getElementById("home-title").innerHTML += txt.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+</script>
