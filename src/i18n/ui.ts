@@ -1,6 +1,8 @@
 export const languages = {
     en: 'English',
     fr: 'Français',
+    br: 'Brazilian Portuguese',
+    es: 'Spanish'
 };
   
 export const defaultLang = 'en';
@@ -13,7 +15,8 @@ export const ui = {
         'nav.about': 'About',
         'nav.contact': 'Contact',
         'nav.projects': 'Projects',
-        'nav.technologies': 'Technologies'
+        'nav.technologies': 'Technologies',
+        'nav.downloadcv': 'Download CV'
     },
     fr: {
         'nav.home': 'Accueil',
