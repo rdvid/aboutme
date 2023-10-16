@@ -4,7 +4,7 @@ import Footer from "../components/footer.astro"
 import Sidebar from "../components/sidebar.astro"
 ---
 
-<html lang="en" data-theme="lofi" class="min-h-full max-lg:min-w-fit lg:h-full">
+<html lang="en" data-theme="lofi" class="w-screen h-fit min-w-full min-h-full">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -14,11 +14,11 @@ import Sidebar from "../components/sidebar.astro"
 		<title>< rdvid /></title>
 	</head>
 
-	<body class="min-h-full max-md:max-h-screen lg:h-full" onload="typeWriter()">
+	<body class="w-screen min-w-full h-screen min-h-full" onload="typeWriter()">
         <Header />
         <div class="flex flex-col lg:flex-row h-4/5 items-center">
             <Sidebar />
-            <div class="w-full pt-6 pr-6 pl-2 bg-base-100 h-full">
+            <div class="w-full pt-6 pr-6 pl-2 bg-base-100 h-full max-lg:p-2">
                 <slot />
             </div>
         </div>   

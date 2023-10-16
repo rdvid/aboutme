@@ -6,7 +6,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<div class="navbar bg-base-200 z-50 w-full">
+<div class="navbar bg-base-200 z-50 w-full space-x-4">
     <div class="navbar-start">
       <div class="dropdown">
         <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -42,6 +42,9 @@ const t = useTranslations(lang);
         <li><a>{t('nav.technologies')}</a></li>
         <li><a>{t('nav.contact')}</a></li>
       </ul>
+    </div>
+    <div class="navbar-center sm:hidden flex justify-center">
+      <a class="btn btn-ghost normal-case text-xl">< rdvid /></a>
     </div>
     <div class="navbar-end">
         <span><Swapbutton /></span>
