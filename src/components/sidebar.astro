@@ -1,4 +1,5 @@
 ---
+import Playlist from "./playlist.astro";
 
 ---
 
@@ -15,7 +16,7 @@
             <i class="fa-brands fa-instagram fa-xl"></i>
         </a>
       </li>
-      <li>
+      <li onclick="spotify_card.showModal()">
         <a class="px-4 pb-4 pt-5 hover:scale-125 hover:text-green-600">
             <i class="fa-brands fa-spotify fa-xl"></i>
         </a>
@@ -39,6 +40,15 @@
           </a>
         </li>
     </ul>
-  </div>     
+  </div> 
+
+  <dialog id="spotify_card" class="modal">
+    <div class="modal-box  max-w-fit">
+      <form method="dialog">
+        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+      </form>
+      <Playlist />
+    </div>
+  </dialog>
 </aside>
     

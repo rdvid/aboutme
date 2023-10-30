@@ -1,7 +1,6 @@
 import { ui, defaultLang } from '../i18n/ui';
 
 export function getLangFromUrl(url: URL) {
-  console.log(url)
   const [, lang] = url.pathname.split('/');
   if (lang in ui) return lang as keyof typeof ui;
   return defaultLang;
@@ -12,3 +11,4 @@ export function useTranslations(lang: keyof typeof ui) {
     return ui[lang][key] || ui[defaultLang][key];
   }
 }
+

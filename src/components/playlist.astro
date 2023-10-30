@@ -1,21 +1,40 @@
 ---
+import { Song } from '../interface/Song';
+import spotifyData from '../utils/songs.json'
+
+let songList = spotifyData.items.map(
+    (song) =>  new Song(
+        song.name,
+        song.album.images[0].url,
+        song.external_urls.spotify,
+        song.album.artists.map(artists => artists.name)
+    )
+);
 
 ---
 
-<article class="bg-base-100">
-    <div class="py-10">
-        <h2 class="text-center text-3xl mb-5 font-bold">Playlist do Artista</h2>
-        <div class="card m-10 bg-black drop-shadow-lg">
-            <ul class="flex flex-col">
-                <p class="px-8 py-3 text-end text-blue font-bold text-[#2e763a]">play on <i class="fa-brands fa-spotify" style="color: #2e763a;"></i></p>
-                <!-- insert microsservice logic here -->
-            </ul>
-        </div>
-    </div>
-</article>
-
-<style>
-</style>
-
-<script>
-</script>
+<div class="card m-10 bg-black drop-shadow-lg w-fit rounded-[16px] self-center">
+    <ul class="flex flex-col p-4">
+        <p class="px-8 py-3 text-end text-blue font-bold text-[#2e763a]">play on <i class="fa-brands fa-spotify" style="color: #2e763a;"></i></p>
+        {
+            songList.map((song) => 
+                <a href={song.url} target="_blank">
+                    <li class="flex p-8 py-0 text-primary-content hover:cursor-pointer">
+                        <div class="avatar">
+                            <div class="w-16 rounded">
+                                <img src={song.image} alt={song.name} />
+                            </div>
+                        </div>
+                        <div class="px-2 flex flex-col justify-center">
+                            <h4 class="font-bold">{song.name}</h4>
+                            <p>{song.artists.join(', ')}</p>
+                        </div>
+                    </li>
+                    <div class="flex flex-col w-full bg-black"> 
+                        <div class="divider m-2 py-2"></div> 
+                    </div>
+                </a> 
+            )
+        }
+    </ul>
+</div>

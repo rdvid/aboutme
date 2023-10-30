@@ -1,16 +1,23 @@
-export interface Song {
+export class Song {
 
-    name: string;
-    images: {
-        url: string;
+    name: string; 
+    image: string;
+    url: string;
+    artists: string[];
+
+    constructor(
+        name: string, 
+        image: string,
+        url: string,
+        artists: string[]
+    ) {
+        this.name = name
+        this.image = image
+        this.url = url
+        this.artists = artists
     }
-    artists : Artist[];
+
+ 
 
 }
 
-interface Artist {
-
-    name: string;
-    type: string;
-    
-}
