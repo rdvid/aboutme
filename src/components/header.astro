@@ -1,6 +1,7 @@
 ---
 import Swapbutton from "./swapbutton.astro";
 import { getLangFromUrl, useTranslations } from '../utils/utils';
+import { languages, ui } from "../i18n/ui";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -47,7 +48,23 @@ const t = useTranslations(lang);
       <a class="btn btn-ghost normal-case text-xl">< rdvid /></a>
     </div>
     <div class="navbar-end">
+        <div class="dropdown dropdown-hover">
+          <label tabindex={0} class="btn m-1"><a><span class=`fi fi-${ lang === 'en' ? 'us': lang }`></span></a></label>
+          <ul tabindex={0} class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+            {
+              Object.keys(languages).map((lang: keyof typeof ui) => (
+                <li><a href={`${Astro.url.pathname}/`}><span class={`fi fi-${lang === 'en' ? 'us' : lang}`}></span>{t(`nav.language.${lang}`)}</a></li>
+              ))
+            }
+            
+          </ul>
+        </div>
         <span><Swapbutton /></span>
         <a class="btn mr-2 max-lg:hidden"><i class="fa-solid fa-download fa-mg"></i>{t('nav.downloadcv')}</a>
     </div>
 </div>
+
+<script defer>
+
+
+</script>

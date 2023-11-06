@@ -1,3 +1,5 @@
+import type { UiLangs } from "../interface/Language";
+
 export const languages = {
     en: 'English',
     fr: 'Français',
@@ -7,37 +9,63 @@ export const languages = {
   
 export const defaultLang = 'en';
   
-export const ui = {
+export const showDefaultLang = false;
+
+export const ui: UiLangs = {
     en: {
-        'home.title': "I'm Rafael David",
-        'home.subtitle': 'Backend Software Developer',
         'nav.home': 'Home',
         'nav.about': 'About',
         'nav.contact': 'Contact',
         'nav.projects': 'Projects',
         'nav.technologies': 'Technologies',
-        'nav.downloadcv': 'Download CV'
+        'nav.downloadcv': 'Download CV',
+        'nav.language.en': 'English',
+        'nav.language.fr': 'French',
+        'nav.language.es': 'Spanish',
+        'nav.language.br': 'Brazilian Portuguese',
+        'home.title': "I'm Rafael David",
+        'home.subtitle': 'Backend Software Developer',
     },
     fr: {
-        'nav.home': 'Accueil',
-        'nav.about': 'À propos',
+        'nav.home': 'Home',
+        'nav.about': 'About',
+        'nav.contact': 'Contact',
+        'nav.projects': 'Projects',
+        'nav.technologies': 'Technologies',
+        'nav.downloadcv': 'Download CV',
+        'nav.language.en': 'English',
+        'nav.language.fr': 'French',
+        'nav.language.es': 'Spanish',
+        'nav.language.br': 'Brazilian Portuguese',
+        'home.title': "I'm Rafael David",
+        'home.subtitle': 'Backend Software Developer',
     },
     br: {
-        'home.title': "Me chamo Rafael David",
-        'home.subtitle': 'Desenvolvedor Backend',
         'nav.home': 'Home',
         'nav.about': 'Sobre',
         'nav.contact': 'Contato',
         'nav.projects': 'Projetos',
-        'nav.technologies': 'Tecnologias'
+        'nav.technologies': 'Tecnologias',
+        'nav.downloadcv': 'Download CV',
+        'nav.language.en': 'English',
+        'nav.language.fr': 'French',
+        'nav.language.es': 'Spanish',
+        'nav.language.br': 'Brazilian Portuguese',
+        'home.title': "Me chamo Rafael David",
+        'home.subtitle': 'Desenvolvedor Backend',
     },
     es: {
-        'home.title': "Me llamo Rafael David",
-        'home.subtitle': 'Desenvolvedor Backend',
         'nav.home': 'Principal',
         'nav.about': 'Sobre',
         'nav.contact': 'Contacto',
         'nav.projects': 'Projectos',
-        'nav.technologies': 'Tecnologias'
+        'nav.technologies': 'Tecnologias',
+        'nav.downloadcv': 'Download CV',
+        'nav.language.en': 'English',
+        'nav.language.fr': 'French',
+        'nav.language.es': 'Spanish',
+        'nav.language.br': 'Brazilian Portuguese',
+        'home.title': "Me llamo Rafael David",
+        'home.subtitle': 'Desenvolvedor Backend',
     }
 } as const;

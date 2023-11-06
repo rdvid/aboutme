@@ -2,12 +2,17 @@
 import Header from "../components/header.astro"
 import Footer from "../components/footer.astro"
 import Sidebar from "../components/sidebar.astro"
+import { getLangFromUrl } from "../utils/utils";
+
+const lang = getLangFromUrl(Astro.url);
+
 ---
 
-<html lang="en" data-theme="lofi" class="w-screen h-fit min-w-full min-h-full">
+<html lang={lang} data-theme="lofi" class="w-screen h-fit min-w-full min-h-full">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/css/flag-icons.min.css"/>
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<script src="https://kit.fontawesome.com/6b3a9e549b.js" crossorigin="anonymous" defer></script>
