@@ -8,26 +8,26 @@ const lang = getLangFromUrl(Astro.url);
 
 ---
 
-<html lang={lang} data-theme="lofi" class="w-screen h-fit min-w-full min-h-full">
+<html lang={lang == 'br' ? 'pt-br' : lang} data-theme="lofi" class="min-h-full h-screen max-w-screen w-full overflow-x-hidden">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/css/flag-icons.min.css"/>
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 		<meta name="generator" content={Astro.generator} />
 		<script src="https://kit.fontawesome.com/6b3a9e549b.js" crossorigin="anonymous" defer></script>
 		<title>< rdvid /></title>
 	</head>
 
-	<body class="w-screen min-w-full h-screen min-h-full" onload="typeWriter()">
+	<body class="min-w-screen max-lg:min-h-screen" onload="typeWriter()">
         <Header />
-        <div class="flex flex-col lg:flex-row h-4/5 items-center">
+        <div class="flex flex-col lg:flex-row h-4/5 items-center my-4 ">
             <Sidebar />
-            <div class="w-full pt-6 pr-6 pl-2 bg-base-100 h-full max-lg:p-2">
+            <div class="w-full pt-6 pr-6 pl-2 bg-base-200 h-screen max-lg:p-2">
                 <slot />
             </div>
         </div>   
-        <Footer/ >
+        <Footer />
 	</body>
     
 </html>

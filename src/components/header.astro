@@ -13,17 +13,17 @@ const t = useTranslations(lang);
         <label tabindex="0" class="btn btn-ghost lg:hidden">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
         </label>
-        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-          <li><a>{t('nav.about')}</a></li>
-          <li>
-            <a>{t('nav.projects')}</a>
-            <ul class="p-2">
-              <li><a>Submenu 1</a></li>
-              <li><a>Submenu 2</a></li>
-            </ul>
+        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 max-lg:w-screen justify-center">
+          <li><a class="max-sm:self-center">{t('nav.about')}</a></li>
+          <li class="max-sm:text-center">
+            <a class="max-sm:self-center">{t('nav.projects')}</a>
+            <!-- <ul class="p-2 max-sm:self-center">
+              <li><a class="max-sm:self-center">Submenu 1</a></li>
+              <li><a class="max-sm:self-center">Submenu 2</a></li>
+            </ul> -->
           </li>
-          <li><a>{t('nav.technologies')}</a></li>
-          <li><a>{t('nav.contact')}</a></li>
+          <li><a class="max-sm:self-center">{t('nav.technologies')}</a></li>
+          <li><a class="max-sm:self-center">{t('nav.contact')}</a></li>
         </ul>
       </div>
       <a class="max-lg:hidden btn btn-ghost normal-case text-xl ml-4">< rdvid /></a>
@@ -44,27 +44,21 @@ const t = useTranslations(lang);
         <li><a>{t('nav.contact')}</a></li>
       </ul>
     </div>
-    <div class="navbar-center sm:hidden flex justify-center">
-      <a class="btn btn-ghost normal-case text-xl">< rdvid /></a>
+    <div class="navbar-center flex justify-center">
+      <!-- <a class="btn btn-ghost normal-case text-xl">< rdvid /></a> -->
+      <div class="dropdown dropdown-hover dropdown-center">
+        <label tabindex={0} class="btn m-1"><a><span class=`fi fi-${ lang === 'en' ? 'us': lang }`></span></a></label>
+        <ul tabindex={0} class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+          {
+            Object.keys(languages).map((language: keyof typeof ui) => (
+              <li><a href={`${Astro.url.pathname.replace(lang, language)}`}><span class={`fi fi-${language === 'en' ? 'us' : language}`}></span>{t(`nav.language.${language}`)}</a></li>
+            ))
+          }
+        </ul>
+      </div>
     </div>
     <div class="navbar-end">
-        <div class="dropdown dropdown-hover">
-          <label tabindex={0} class="btn m-1"><a><span class=`fi fi-${ lang === 'en' ? 'us': lang }`></span></a></label>
-          <ul tabindex={0} class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-            {
-              Object.keys(languages).map((lang: keyof typeof ui) => (
-                <li><a href={`${Astro.url.pathname}/`}><span class={`fi fi-${lang === 'en' ? 'us' : lang}`}></span>{t(`nav.language.${lang}`)}</a></li>
-              ))
-            }
-            
-          </ul>
-        </div>
-        <span><Swapbutton /></span>
+        <span class="max-lg:mr-2"><Swapbutton /></span>
         <a class="btn mr-2 max-lg:hidden"><i class="fa-solid fa-download fa-mg"></i>{t('nav.downloadcv')}</a>
     </div>
 </div>
-
-<script defer>
-
-
-</script>

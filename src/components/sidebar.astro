@@ -5,50 +5,93 @@ import Playlist from "./playlist.astro";
 
 <aside class="max-lg:hidden">
   <div class="p-2 max-h-screen">
-    <ul class="menu rounded-box bg-transparent">
-      <li>
-        <a class=" px-4 pb-4 pt-5 hover:scale-125">
+    <ul class="menu rounded-box bg-transparent space-y-4">
+      <li class="dropdown dropdown-right dropdown-end dropdown-hover">
+        <a class=" px-4 pb-4 pt-5 hover:scale-125" tabindex="0">
             <i class="fa-brands fa-github fa-xl"></i>
         </a>
+        <div tabindex="0" class="dropdown-content z-[1] card card-compact w-fit p-2 ml-2 shadow bg-primary text-primary-content">
+            <div class="card-body">
+              <h3 class="card-title">Card title!</h3>
+              <p>you can use any element as a dropdown.</p>
+              <p>https://open.spotify.com/user/rafael_dvid</p>
+            </div>
+        </div>
       </li>
-      <li>
-        <a class="px-4 pb-4 pt-5 hover:scale-125 hover:text-rose-600 ">
+      <li class="dropdown dropdown-right dropdown-end dropdown-hover">
+        <a class="px-4 pb-4 pt-5 hover:scale-125 hover:text-rose-600" tabindex="0">
             <i class="fa-brands fa-instagram fa-xl"></i>
         </a>
+          <div tabindex="0" class="dropdown-content z-[1] card card-compact w-fit p-2 ml-2 shadow bg-primary text-primary-content">
+            <div class="card-body">
+              <h3 class="card-title">Card title!</h3>
+              <p>you can use any element as a dropdown.</p>
+              <p>https://open.spotify.com/user/rafael_dvid</p>
+            </div>
+          </div>
       </li>
-      <li onclick="spotify_card.showModal()">
-        <a class="px-4 pb-4 pt-5 hover:scale-125 hover:text-green-600">
+      <li class="dropdown dropdown-right dropdown-end dropdown-hover">
+        <a class="px-4 pb-4 pt-5 hover:scale-125 hover:text-green-600" tabindex="0">
             <i class="fa-brands fa-spotify fa-xl"></i>
         </a>
+          <div tabindex="0" class="dropdown-content z-[1] card card-compact w-fit p-2 ml-2 shadow bg-primary text-primary-content">
+            <div class="card-body">
+              <h3 class="card-title">Card title!</h3>
+              <p>you can use any element as a dropdown.</p>
+              <p>https://open.spotify.com/user/rafael_dvid</p>
+            </div>
+          </div>
       </li>
     </ul>
     <div class="divider md:divider-vertical"></div>
-    <ul class="menu bg-base-200 rounded-box bg-transparent">
-        <li>
-          <a class=" px-4 pb-4 pt-5 hover:scale-125">
+    <ul class="menu  space-y-4 rounded-box bg-transparent">
+        <li class="dropdown dropdown-right dropdown-end dropdown-hover">
+          <a class="px-4 pb-4 pt-5 hover:scale-125" tabindex="0">
               <i class="fa-brands fa-github fa-xl"></i>
           </a>
+          <div tabindex="0" class="dropdown-content z-[1] card card-compact w-fit p-2 ml-2 shadow bg-primary text-primary-content">
+            <div class="card-body">
+              <h3 class="card-title">Card title!</h3>
+              <p>you can use any element as a dropdown.</p>
+              <p>https://open.spotify.com/user/rafael_dvid</p>
+            </div>
+          </div>
         </li>
-        <li>
-          <a class="px-4 pb-4 pt-5 hover:scale-125 hover:text-rose-600 ">
+        <li class="dropdown dropdown-right dropdown-end dropdown-hover">
+          <a class="px-4 pb-4 pt-5 hover:scale-125 hover:text-rose-600" tabindex="0">
               <i class="fa-brands fa-instagram fa-xl"></i>
           </a>
+          <div tabindex="0" class="dropdown-content z-[1] card card-compact w-fit p-2 ml-2 shadow bg-primary text-primary-content">
+            <div class="card-body">
+              <h3 class="card-title">Card title!</h3>
+              <p>you can use any element as a dropdown.</p>
+              <p>https://open.spotify.com/user/rafael_dvid</p>
+            </div>
+          </div>
         </li>
-        <li>
-          <a class="px-4 pb-4 pt-5 hover:scale-125 hover:text-sky-600">
+        <li class="dropdown dropdown-right dropdown-end dropdown-hover">
+          <a class="px-4 pb-4 pt-5 hover:scale-125 hover:text-sky-600" tabindex="0">
               <i class="fa-brands fa-linkedin-in fa-xl"></i>
           </a>
+          <div tabindex="0" class="dropdown-content z-[1] card card-compact w-fit p-2 ml-2 shadow bg-primary text-primary-content">
+            <div class="card-body">
+              <h3 class="card-title">Card title!</h3>
+              <p>you can use any element as a dropdown.</p>
+              <p>https://open.spotify.com/user/rafael_dvid</p>
+            </div>
+          </div>
         </li>
     </ul>
   </div> 
 
-  <dialog id="spotify_card" class="modal">
+  <!-- <dialog id="spotify_card" class="modal">
     <div class="modal-box  max-w-fit">
       <form method="dialog">
         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
       </form>
       <Playlist />
     </div>
-  </dialog>
+  </dialog> -->
+  
 </aside>
     
