@@ -11,6 +11,7 @@ interface langFields {
     'nav.language.br': string;
     'home.title': string;
     'home.subtitle': string;
+    'home.second-subtitle': string;
 }
 
 export interface UiLangs {

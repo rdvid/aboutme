@@ -7,13 +7,13 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<nav class="navbar bg-base-200 z-50 w-full space-x-4 ">
+<nav class="navbar bg-base-200 z-50 w-full space-x-4 max-sm:border-b-2 max-sm:border-black font-medium">
     <div class="navbar-start">
       <div class="dropdown">
         <label tabindex="0" class="btn btn-ghost lg:hidden">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
         </label>
-        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 max-lg:w-screen justify-center">
+        <ul tabindex="0" class="menu menu-sm dropdown-content mt-5 z-[1] p-2 shadow bg-base-100 rounded-box w-52 max-lg:w-screen justify-center">
           <li><a class="max-sm:self-center">{t('nav.about')}</a></li>
           <li class="max-sm:text-center">
             <a class="max-sm:self-center">{t('nav.projects')}</a>
@@ -59,6 +59,6 @@ const t = useTranslations(lang);
     </div>
     <div class="navbar-end">
         <span class="max-lg:mr-2"><Swapbutton /></span>
-        <a class="btn mr-2 max-lg:hidden"><i class="fa-solid fa-download fa-mg"></i>{t('nav.downloadcv')}</a>
+        <a class="btn mr-2 max-lg:hidden bg-base-300 border-2 border-black rounded-full"><i class="fa-solid fa-download fa-mg"></i>{t('nav.downloadcv')}</a>
     </div>
 </nav>
