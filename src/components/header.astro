@@ -7,7 +7,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<div class="navbar bg-base-200 z-50 w-full space-x-4">
+<nav class="navbar bg-base-200 z-50 w-full space-x-4 ">
     <div class="navbar-start">
       <div class="dropdown">
         <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -61,4 +61,4 @@ const t = useTranslations(lang);
         <span class="max-lg:mr-2"><Swapbutton /></span>
         <a class="btn mr-2 max-lg:hidden"><i class="fa-solid fa-download fa-mg"></i>{t('nav.downloadcv')}</a>
     </div>
-</div>
+</nav>

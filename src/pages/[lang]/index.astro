@@ -17,19 +17,22 @@ const t = useTranslations(lang);
 ---
 
 <BaseLayout>
-  <article class="p-2">
-    <div class="hero bg-base-200">
-      <div class="hero-content flex-col lg:flex-row">
-        <img src="/code-hero-background.jpg" class="w-fit sm:max-w-sm rounded-lg shadow-2xl" />
-        <div>
+  <article class="h-full">
+    <div class="hero sm:px-8">
+      <div class="hero-content flex-col max-lg:py-8 lg:flex-row lg:align-top self-center">
+        <img src="https://avatars.githubusercontent.com/u/60834135" class="w-8/12 lg:w-3/12 rounded-full shadow-2xl" alt="my profile picture"/>
+        <div class="flex flex-col justify-center w-6/12 max-lg:w-full max-lg:p-2">
           <p id="placeholder" class="hidden">{t('home.title')}</p>
-          <h1 id="home-title" class="text-5xl font-bold text-center"></h1>
-          <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-          <button class="btn btn-primary"> Get Started</button>
+          <h1 id="home-title" class="text-4xl font-bold text-center max-lg:text-3xl"></h1>
+          <span class="flex flex-row justify-center py-6 w-fit">
+            <p class="text-justify w-8/12 max-lg:w-full">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+          </span>
+          <button class="w-3/12 btn btn-primary self-center max-lg:w-6/12"> Get Started</button>
         </div>
       </div>
     </div>
   </article>
+  
 </BaseLayout>
 
 <style>
