@@ -20,12 +20,12 @@ const t = useTranslations(lang);
   <article class="flex flex-col h-full max-lg:h-screen justify-center">
     <div class="hero">
       <div class="hero-content flex-col w-full max-lg:py-8 lg:flex-row lg:align-center">
-        <img src="https://avatars.githubusercontent.com/u/60834135" class="w-3/12 max-w-4/12 max-lg:w-8/12 rounded-full shadow-2xl border-2 border-black	" alt="my profile picture"/>
+        <img src="https://avatars.githubusercontent.com/u/60834135" class="w-3/12 max-w-4/12 max-lg:w-8/12 rounded-full shadow-2xl border-2 border-black shadow-gray-600" alt="my profile picture"/>
         <div class="flex flex-col justify-center w-6/12 max-lg:w-full text-center max-lg:p-4r">
           <p id="placeholder" class="hidden">{t('home.title')}</p>
           <h1 id="home-title" class="text-4xl font-bold text-center max-lg:text-3xl"></h1>
           <div class="flex flex-row justify-center py-6">
-            <ul class="text-lg font-light">
+            <ul class="text-lg font-light text-start">
               <li><i class="fa-solid fa-computer fa-md pr-4 pt-2 bg-base-100"></i>{t('home.subtitle')}</li>
               <li><i class="fa-solid fa-music fa-lg pr-4 pt-2 bg-base-100"></i>{t('home.second-subtitle')}</li>
             </ul>

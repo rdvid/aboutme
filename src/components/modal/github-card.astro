@@ -1,0 +1,23 @@
+---
+
+---
+
+<li class="tooltip tooltip-right" data-tip="My Github">
+    <a class="p-4 hover:scale-125" onclick="githubModal.showModal()">
+        <i class="fa-brands fa-github fa-lg self-center color-[#333]"></i>
+    </a>
+</li>
+
+<!-- Card #1 Github -->
+<dialog id="githubModal" class="modal modal-middle justify-center h-full">
+  <div class="modal-box bg-[#f5f5f5] border-2 border-black">
+    <h3 class="font-bold text-lg">Hello!</h3>
+    <p class="py-4">Press ESC key or click the button below to close</p>
+    <div class="modal-action">
+      <form method="dialog">
+      <!-- if there is a button in form, it will close the modal -->
+        <button class="btn bg-[#333]">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>

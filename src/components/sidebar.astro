@@ -1,86 +1,32 @@
 ---
+import { getLangFromUrl, useTranslations } from "../utils/utils";
 import Playlist from "./playlist.astro";
+
+import GithubCard from "./modal/github-card.astro";
+import DiscordCard from "./modal/discord-card.astro";
+import SpotifyCard from "./modal/spotify-card.astro";
+import GmailCard from "./modal/gmail-card.astro";
+import StackoverflowCard from "./modal/stackoverflow-card.astro";
+import LinkedinCard from "./modal/linkedin-card.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 ---
 
 <aside class="max-lg:hidden bg-base-200 h-full">
   <div class="h-full flex flex-col justify-center p-2 align-center">
-    <ul class="menu rounded-box bg-transparent space-y-4">
-      <li class="dropdown dropdown-right dropdown-end dropdown-hover">
-        <a class=" px-4 pb-4 pt-5 hover:scale-125" tabindex="0">
-            <i class="fa-brands fa-github fa-xl"></i>
-        </a>
-        <div tabindex="0" class="dropdown-content z-[1] card card-compact w-fit p-2 ml-2 shadow bg-primary text-primary-content">
-            <div class="card-body">
-              <h3 class="card-title">Card title!</h3>
-              <p>you can use any element as a dropdown.</p>
-              <p>https://open.spotify.com/user/rafael_dvid</p>
-            </div>
-        </div>
-      </li>
-      <li class="dropdown dropdown-right dropdown-end dropdown-hover">
-        <a class="px-4 pb-4 pt-5 hover:scale-125 hover:text-rose-600" tabindex="0">
-            <i class="fa-brands fa-instagram fa-xl"></i>
-        </a>
-          <div tabindex="0" class="dropdown-content z-[1] card card-compact w-fit p-2 ml-2 shadow bg-primary text-primary-content">
-            <div class="card-body">
-              <h3 class="card-title">Card title!</h3>
-              <p>you can use any element as a dropdown.</p>
-              <p>https://open.spotify.com/user/rafael_dvid</p>
-            </div>
-          </div>
-      </li>
-      <li class="dropdown dropdown-right dropdown-end dropdown-hover">
-        <a class="px-4 pb-4 pt-5 hover:scale-125 hover:text-green-600" tabindex="0">
-            <i class="fa-brands fa-spotify fa-xl"></i>
-        </a>
-          <div tabindex="0" class="dropdown-content z-[1] card card-compact w-fit p-2 ml-2 shadow bg-primary text-primary-content">
-            <div class="card-body">
-              <h3 class="card-title">Card title!</h3>
-              <p>you can use any element as a dropdown.</p>
-              <p>https://open.spotify.com/user/rafael_dvid</p>
-            </div>
-          </div>
-      </li>
+    <ul class="menu rounded-box bg-transparent space-y-3">
+      <GithubCard />
+      <StackoverflowCard />
+      <LinkedinCard>
+      
     </ul>
     <div class="divider md:divider-vertical"></div>
     <ul class="menu  space-y-4 rounded-box bg-transparent">
-        <li class="dropdown dropdown-right dropdown-end dropdown-hover">
-          <a class="px-4 pb-4 pt-5 hover:scale-125" tabindex="0">
-              <i class="fa-brands fa-github fa-xl"></i>
-          </a>
-          <div tabindex="0" class="dropdown-content z-[1] card card-compact w-fit p-2 ml-2 shadow bg-primary text-primary-content">
-            <div class="card-body">
-              <h3 class="card-title">Card title!</h3>
-              <p>you can use any element as a dropdown.</p>
-              <p>https://open.spotify.com/user/rafael_dvid</p>
-            </div>
-          </div>
-        </li>
-        <li class="dropdown dropdown-right dropdown-end dropdown-hover">
-          <a class="px-4 pb-4 pt-5 hover:scale-125 hover:text-rose-600" tabindex="0">
-              <i class="fa-brands fa-instagram fa-xl"></i>
-          </a>
-          <div tabindex="0" class="dropdown-content z-[1] card card-compact w-fit p-2 ml-2 shadow bg-primary text-primary-content">
-            <div class="card-body">
-              <h3 class="card-title">Card title!</h3>
-              <p>you can use any element as a dropdown.</p>
-              <p>https://open.spotify.com/user/rafael_dvid</p>
-            </div>
-          </div>
-        </li>
-        <li class="dropdown dropdown-right dropdown-end dropdown-hover">
-          <a class="px-4 pb-4 pt-5 hover:scale-125 hover:text-sky-600" tabindex="0">
-              <i class="fa-brands fa-linkedin-in fa-xl"></i>
-          </a>
-          <div tabindex="0" class="dropdown-content z-[1] card card-compact w-fit p-2 ml-2 shadow bg-primary text-primary-content">
-            <div class="card-body">
-              <h3 class="card-title">Card title!</h3>
-              <p>you can use any element as a dropdown.</p>
-              <p>https://open.spotify.com/user/rafael_dvid</p>
-            </div>
-          </div>
-        </li>
+      <DiscordCard />
+      <SpotifyCard />
+      <GmailCard />
     </ul>
   </div> 
 

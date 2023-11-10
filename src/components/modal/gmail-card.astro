@@ -1,0 +1,23 @@
+---
+
+---
+
+<li class="tooltip tooltip-right" data-tip="My Gmail">
+    <a class="p-4 hover:scale-125" onclick="gmailModal.showModal()">
+      <i class="fa-solid fa-envelope fa-lg"></i>    
+    </a>
+</li>
+
+<!-- Card #1 Github -->
+<dialog id="gmailModal" class="modal modal-middle justify-center h-full">
+  <div class="modal-box bg-[#D44638] border-2 border-black">
+    <h3 class="font-bold text-lg">Hello!</h3>
+    <p class="py-4">Press ESC key or click the button below to close</p>
+    <div class="modal-action">
+      <form method="dialog">
+      <!-- if there is a button in form, it will close the modal -->
+        <button class="btn bg-[#C6C6C6] text-white">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
