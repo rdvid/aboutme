@@ -1,4 +1,5 @@
 ---
+import Playlist from "../playlist.astro";
 
 ---
 
@@ -8,15 +9,14 @@
     </a>
 </li>
 
-<!-- Card #1 Github -->
+<!-- Card #5 Spotify -->
 <dialog id="spotifyModal" class="modal modal-middle justify-center h-full">
-  <div class="modal-box bg-[#1db954] border-2 border-black">
-    <h3 class="font-bold text-lg">Hello!</h3>
-    <p class="py-4">Press ESC key or click the button below to close</p>
-    <div class="modal-action">
+  <div class="modal-box border-2 border-black bg-black w-fit">
+    <Playlist />
+    <div class="modal-action justify-center">
       <form method="dialog">
       <!-- if there is a button in form, it will close the modal -->
-        <button class="btn">Close</button>
+        <button class="btn bg-base-300 rounded-full bg-base-200 text-[#2e763a] font-extrabold	">Close</button>
       </form>
     </div>
   </div>
