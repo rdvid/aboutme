@@ -11,13 +11,12 @@ import Playlist from "../playlist.astro";
 
 <!-- Card #5 Spotify -->
 <dialog id="spotifyModal" class="modal modal-middle justify-center h-full">
-  <div class="modal-box border-2 border-black bg-black w-fit">
-    <Playlist />
-    <div class="modal-action justify-center">
+  <div class="modal-box border-2 border-black bg-black w-fit h-fit">
+    <div class="modal-action justify-end mr-4">
       <form method="dialog">
-      <!-- if there is a button in form, it will close the modal -->
-        <button class="btn bg-base-300 rounded-full bg-base-200 text-[#2e763a] font-extrabold	">Close</button>
+        <button class="btn-outline bg-transparent rounded-full text-red-700 hover:text-red-700 focus:outline-none font-extrabold absolute"><i class="fa-solid fa-xmark fa-xl"></i></button>
       </form>
     </div>
+    <Playlist />
   </div>
 </dialog>

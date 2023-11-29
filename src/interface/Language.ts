@@ -1,4 +1,4 @@
-interface langFields {
+export interface langFields {
     'nav.home': string;
     'nav.about': string;
     'nav.contact': string;

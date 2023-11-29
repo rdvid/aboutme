@@ -31,7 +31,7 @@ const t = useTranslations(lang);
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
         <li><a>{t('nav.about')}</a></li>
-        <li tabindex="0">
+        <!-- <li tabindex="0">
           <details>
             <summary>{t('nav.projects')}</summary>
             <ul class="p-2 z-50">
@@ -39,16 +39,16 @@ const t = useTranslations(lang);
               <li><a>Submenu 2</a></li>
             </ul>
           </details>
-        </li>
+        </li> -->
         <li><a>{t('nav.technologies')}</a></li>
-        <li><a>{t('nav.contact')}</a></li>
+        <li><a>{t('nav.projects')}</a></li>
       </ul>
     </div>
     <div class="navbar-center flex justify-center">
       <!-- <a class="btn btn-ghost normal-case text-xl">< rdvid /></a> -->
-      <div class="dropdown dropdown-hover dropdown-center">
-        <label tabindex={0} class="btn m-1"><a><span class=`fi fi-${ lang === 'en' ? 'us': lang }`></span></a></label>
-        <ul tabindex={0} class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+      <div class="dropdown dropdown-hover dropdown-center bg-transparent">
+        <label tabindex={0} class="btn p-1 bg-transparent"><a><span class=`fi fi-${ lang === 'en' ? 'us': lang }`></span></a></label>
+        <ul tabindex={0} class="dropdown-content z-[1] menu p-2 shadow bg-transparent rounded-box w-52">
           {
             Object.keys(languages).map((language: keyof typeof ui) => (
               <li><a href={`${Astro.url.pathname.replace(lang, language)}`}><span class={`fi fi-${language === 'en' ? 'us' : language}`}></span>{t(`nav.language.${language}`)}</a></li>

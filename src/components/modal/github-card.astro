@@ -1,23 +1,43 @@
 ---
 
+
 ---
 
 <li class="tooltip tooltip-right" data-tip="My Github">
     <a class="p-4 hover:scale-125" onclick="githubModal.showModal()">
-        <i class="fa-brands fa-github fa-lg self-center color-[#333]"></i>
+        <i class="fa-brands fa-github fa-lg color-[#333]"></i>
     </a>
 </li>
 
 <!-- Card #1 Github -->
 <dialog id="githubModal" class="modal modal-middle justify-center h-full">
-  <div class="modal-box bg-[#f5f5f5] border-2 border-black">
-    <h3 class="font-bold text-lg">Hello!</h3>
-    <p class="py-4">Press ESC key or click the button below to close</p>
-    <div class="modal-action">
-      <form method="dialog">
-      <!-- if there is a button in form, it will close the modal -->
-        <button class="btn bg-[#333]">Close</button>
-      </form>
+  <div class="modal-box bg-black border-2 border-black">
+    <div class="card bg-black text-slate-100">
+      <div class="modal-action justify-end mr-4 bg-transparent">
+        <form method="dialog">
+          <button class="btn-outline bg-transparent rounded-full text-red-700 hover:text-red-700 hover:bg-transparent focus:outline-none font-extrabold absolute"><i class="fa-solid fa-xmark fa-xl"></i></button>
+        </form>
+      </div>
+      <figure class="px-10">
+        <img src="https://avatars.githubusercontent.com/u/60834135" class="w-6/12 max-w-4/12 rounded-full border-2 border-black" alt="my profile picture"/>
+      </figure>
+      <div class="card-body items-center text-center">
+
+        <div class="stats shadow w-80 bg-transparent ">
+  
+          <div class="stat place-items-center">
+            <div class="stat-title text-gray-100	">Repository</div>
+            <div class="stat-value text-gray-100	">77</div>
+            <div class="stat-desc text-gray-100	">From January 1st to February 1st</div>
+          </div>
+          
+        </div>
+
+        <p class="italic pb-4">"If a dog chews shoes whose shoes does he choose?"</p>
+        <div class="card-actions bg-base-300 border-1 rounded-full">
+          <a href="https://github.com/rdvid" target="_blank" class="text-primary font-bold p-2">Follow me on Github</a>
+        </div>
+      </div>
     </div>
   </div>
 </dialog>

@@ -17,14 +17,14 @@ let songList = spotifyData.items.map(
     
 </div> -->
 
-<div class="flex flex-col p-4">
-    <p class="px-8 py-3 text-end text-blue font-bold text-[#2e763a]">play on <i class="fa-brands fa-spotify" style="color: #2e763a;"></i></p>
+<div class="flex flex-col ">
+    <p class="px-8 py-1 text-end text-blue font-bold text-[#2e763a]">play on <i class="fa-brands fa-spotify" style="color: #2e763a;"></i></p>
     {
         songList.map((song) => 
             <a href={song.url} target="_blank" class="focus:outline-none">
                 <div class="flex flex-row p-8 py-0 text-primary-content hover:cursor-pointer w-fit">
                     <div class="avatar">
-                        <div class="w-16 rounded">
+                        <div class="w-12 rounded">
                             <img src={song.image} alt={song.name} />
                         </div>
                     </div>
