@@ -14,14 +14,16 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 ---
 <BaseLayout>
-  <article>
-    <div class="grid grid-cols-2">
-      <div class="row">
-        <h2>test</h2>
+  <article class="flex flex-col h-full max-lg:h-screen">
+    <div class="grid grid-col lg:grid-cols-2 p-4">
+      <div class="row p-1">
+        <h2 class="text-center py-2">test</h2>
+        <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt excepturi assumenda cupiditate accusantium eveniet nesciunt laudantium repellat veniam totam beatae voluptatibus minima, facilis, sequi magni consequatur nostrum commodi ratione reiciendis?</p>
       </div>
       
-      <div class="row">
-        <h1>test</h1>
+      <div class="row p-1">
+        <h2 class="text-center py-2">test</h2>
+        <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime molestias eos ducimus fugit quibusdam! Sint nesciunt quam ipsum quo tenetur deleniti obcaecati, in excepturi eius, ad voluptatem magnam, omnis quasi.</p>
       </div>
     </div>
   </article>
