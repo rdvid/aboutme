@@ -12,6 +12,12 @@ export function useTranslations(lang: string) {
   }
 }
 
+export var darkTheme: boolean = false;
+
+export function switchTheme(){
+  darkTheme = !darkTheme
+}
+
 // export function switchLanguageOfUrl(url: string, lang: string){
 //   let currentlyLang = url.
 //   const newUrl = url.replace()

@@ -1,6 +1,6 @@
 ---
-import Playlist from '../../components/playlist.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations } from '../../utils/utils';
 
 export function getStaticPaths() {
   return [
@@ -11,18 +11,19 @@ export function getStaticPaths() {
   ];
 }
 
-const { lang } = Astro.params;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 <BaseLayout>
   <article class="flex flex-col h-full max-lg:h-screen">
     <div class="grid grid-col lg:grid-cols-2 p-4">
-      <div class="row p-1">
+      <div class="row px-4">
         <h2 class="text-center py-2">test</h2>
-        <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt excepturi assumenda cupiditate accusantium eveniet nesciunt laudantium repellat veniam totam beatae voluptatibus minima, facilis, sequi magni consequatur nostrum commodi ratione reiciendis?</p>
+        <p class="text-justify">{t('about.intro')}</p>
       </div>
       
-      <div class="row p-1">
-        <h2 class="text-center py-2">test</h2>
+      <div class="row px-4">
+        <!-- <h2 class="text-center py-2">test</h2> -->
         <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime molestias eos ducimus fugit quibusdam! Sint nesciunt quam ipsum quo tenetur deleniti obcaecati, in excepturi eius, ad voluptatem magnam, omnis quasi.</p>
       </div>
     </div>

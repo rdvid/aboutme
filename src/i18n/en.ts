@@ -14,4 +14,5 @@ export const enLang: langFields = {
     'home.title': "I'm Rafael David",
     'home.subtitle': 'Software Developer',
     'home.second-subtitle': 'Piano Enthusiast',
+    'about.intro': 'Unleashing the power of code while harmonizing melodies on the piano keys.'
 } as const;

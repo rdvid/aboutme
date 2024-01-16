@@ -2,13 +2,13 @@
 import Header from "../components/header.astro"
 import Footer from "../components/footer.astro"
 import Sidebar from "../components/sidebar.astro"
-import { getLangFromUrl } from "../utils/utils";
+import { darkTheme, getLangFromUrl } from "../utils/utils";
 
 const lang = getLangFromUrl(Astro.url);
 
 ---
 
-<html lang={lang == 'br' ? 'pt-br' : lang} data-theme="lofi" class="min-h-full relative overflow-x-hidden">
+<html lang={lang == 'br' ? 'pt-br' : lang} data-theme={darkTheme ? 'business' : 'lofi'} class="min-h-full relative overflow-x-hidden">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />

@@ -12,11 +12,12 @@ export interface langFields {
     'home.title': string;
     'home.subtitle': string;
     'home.second-subtitle': string;
+    'about.intro': string;
 }
 
 export interface UiLangs {
-    en: langFields,
-    fr: langFields,
-    br: langFields,
-    es: langFields
+    en: any,
+    fr: any,
+    br: any,
+    es: any
 }

@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations } from '../../utils/utils';
+
 export function getStaticPaths() {
   return [
     {params: {lang: 'en'}},
@@ -8,6 +10,9 @@ export function getStaticPaths() {
     {params: {lang: 'es'}},
   ];
 }
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 ---
 

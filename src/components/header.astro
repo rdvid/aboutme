@@ -40,8 +40,8 @@ const t = useTranslations(lang);
             </ul>
           </details>
         </li> -->
-        <li><a>{t('nav.technologies')}</a></li>
-        <li><a>{t('nav.projects')}</a></li>
+        <li><a href=`${Astro.url.origin}/${lang}/technologies/`>{t('nav.technologies')}</a></li>
+        <li><a href=`${Astro.url.origin}/${lang}/projects/`>{t('nav.projects')}</a></li>
       </ul>
     </div>
     <div class="navbar-center flex justify-center">
