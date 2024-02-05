@@ -1,6 +1,5 @@
 ---
 import { getLangFromUrl, useTranslations } from "../utils/utils";
-import Playlist from "./playlist.astro";
 
 import GithubCard from "./modal/github-card.astro";
 import DiscordCard from "./modal/discord-card.astro";
@@ -14,30 +13,21 @@ const t = useTranslations(lang);
 
 ---
 
-<aside class="max-lg:hidden bg-base-200 h-full">
-  <div class="h-full flex flex-col justify-center p-2 align-center">
+<aside class="sticky bg-transparent max-lg:hidden">
+  <div class="flex flex-col justify-center h-full align-center p-1">
     <ul class="menu rounded-box bg-transparent space-y-3">
       <GithubCard />
       <StackoverflowCard />
       <LinkedinCard>
       
     </ul>
-    <div class="divider md:divider-vertical"></div>
-    <ul class="menu  space-y-4 rounded-box bg-transparent">
+    <div class="divider divider-vertical"></div>
+    <ul class="menu rounded-box bg-transparent space-y-3 ">
       <DiscordCard />
       <SpotifyCard />
       <GmailCard />
     </ul>
   </div> 
 
-  <!-- <dialog id="spotify_card" class="modal">
-    <div class="modal-box  max-w-fit">
-      <form method="dialog">
-        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-      </form>
-      <Playlist />
-    </div>
-  </dialog> -->
-  
 </aside>
     

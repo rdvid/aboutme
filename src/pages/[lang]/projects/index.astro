@@ -1,6 +1,6 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getLangFromUrl, useTranslations } from '../../utils/utils';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations } from '../../../utils/utils';
 
 export function getStaticPaths() {
   return [
@@ -11,17 +11,15 @@ export function getStaticPaths() {
   ];
 }
 
-
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 ---
 
 <BaseLayout>
-  <article class="flex flex-col h-full max-lg:h-screen" >
-      <div class="grid">
-        
-      </div>
+  <article>
+    
+
   </article>
 </BaseLayout>
 
