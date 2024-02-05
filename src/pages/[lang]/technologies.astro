@@ -1,6 +1,19 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getLangFromUrl, useTranslations } from '../../utils/utils';
+import NodeCard from '../../components/card/node-card.astro';
+import NestCard from '../../components/card/nest-card.astro';
+import ExpressCard from '../../components/card/express-card.astro';
+import ReactCard from '../../components/card/react-card.astro';
+import AngularCard from '../../components/card/angular-card.astro';
+import JestCard from '../../components/card/jest-card.astro';
+
+import PostgresCard from '../../components/card/postgres-card.astro';
+import DjangoCard from '../../components/card/django-card.astro';
+import PythonCard from '../../components/card/python-card.astro';
+import LinuxCard from '../../components/card/linux-card.astro';
+import GitCard from '../../components/card/git-card.astro';
+import DockerCard from '../../components/card/docker-card.astro';
 
 export function getStaticPaths() {
   return [
@@ -19,8 +32,48 @@ const t = useTranslations(lang);
 
 <BaseLayout>
   <article class="flex flex-col h-full max-lg:h-screen" >
-      <div class="grid">
+      <div class="grid grid-cols-6">
         
+        <div class="grid">
+          <NodeCard />
+        </div>
+        <div class="grid">
+          <NestCard />
+        </div>
+        <div class="grid">
+          <ExpressCard />
+        </div>
+        <div class="grid">
+          <AngularCard />
+        </div>
+        <div class="grid">
+          <ReactCard />
+        </div>
+        <div class="grid">
+          <JestCard />
+        </div>
+
+      </div>
+
+      <div class="grid grid-cols-6 pt-4">
+        <div class="grid">
+          <PostgresCard />
+        </div>
+        <div class="grid">
+          <DjangoCard />
+        </div>
+        <div class="grid">
+          <PythonCard />
+        </div>
+        <div class="grid">
+          <GitCard />
+        </div>
+        <div class="grid">
+          <DockerCard />
+        </div>
+        <div class="grid">
+          <LinuxCard />
+        </div>
       </div>
   </article>
 </BaseLayout>
