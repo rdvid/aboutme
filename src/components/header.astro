@@ -26,20 +26,11 @@ const t = useTranslations(lang);
           <li><a class="max-sm:self-center">{t('nav.contact')}</a></li>
         </ul>
       </div>
-      <a href=`${Astro.url.origin}/${lang}/` class="max-lg:hidden btn btn-ghost normal-case text-xl ml-4">< rdvid /></a>
+      <a href=`${Astro.url.origin}/${lang}/` class="btn btn-ghost normal-case text-xl ml-4 max-lg:hidden">< rdvid /></a>
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
         <li><a href=`${Astro.url.origin}/${lang}/about/`>{t('nav.about')}</a></li>
-        <!-- <li tabindex="0">
-          <details>
-            <summary>{t('nav.projects')}</summary>
-            <ul class="p-2 z-50">
-              <li><a>Submenu 1</a></li>
-              <li><a>Submenu 2</a></li>
-            </ul>
-          </details>
-        </li> -->
         <li><a href=`${Astro.url.origin}/${lang}/technologies/`>{t('nav.technologies')}</a></li>
         <li><a href=`${Astro.url.origin}/${lang}/projects/`>{t('nav.projects')}</a></li>
       </ul>
@@ -47,7 +38,7 @@ const t = useTranslations(lang);
     <div class="navbar-center flex justify-center">
       <!-- <a class="btn btn-ghost normal-case text-xl">< rdvid /></a> -->
       <div class="dropdown dropdown-hover dropdown-center">
-        <label tabindex={0} class="btn p-1"><a><span class=`fi fi-${ lang === 'en' ? 'us': lang }`></span></a></label>
+        <label tabindex={0} class="btn border-0 bg-transparent p-1"><a><span class=`fi fi-${ lang === 'en' ? 'us': lang }`></span></a></label>
         <ul tabindex={0} class="dropdown-content z-[1] menu p-2 shadow rounded-box w-52 bg-base-100">
           {
             Object.keys(languages).map((language: keyof typeof ui) => (
