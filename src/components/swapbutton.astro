@@ -12,12 +12,17 @@
 </label>
 
 <script defer>
+   
     function changeTheme(){
+
         const theme = document.querySelector('html').getAttribute('data-theme')
         if(theme === 'lofi'){
             document.querySelector('html').setAttribute('data-theme', 'business')
+            localStorage.setItem("theme", "business");
         }else{
-            document.querySelector('html').setAttribute('data-theme', 'lofi')
+            document.querySelector('html').setAttribute('data-theme', 'lofi');
+            localStorage.setItem("theme", "lofi");
         }
+        
     };
 </script>
