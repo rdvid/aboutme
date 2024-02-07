@@ -1,6 +1,7 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getLangFromUrl, useTranslations } from '../../utils/utils';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import NodeCard from '../../components/card/node-card.astro';
 import NestCard from '../../components/card/nest-card.astro';
 import ExpressCard from '../../components/card/express-card.astro';
@@ -24,7 +25,6 @@ export function getStaticPaths() {
   ];
 }
 
-
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -33,48 +33,55 @@ const t = useTranslations(lang);
 <BaseLayout>
   <article class="flex flex-col h-full max-lg:h-screen" >
       <div class="grid grid-cols-6">
-        
-        <div class="grid">
+
+        <section class="grid">
           <NodeCard />
-        </div>
-        <div class="grid">
+        </section>
+        <section class="grid">
           <NestCard />
-        </div>
-        <div class="grid">
+        </section>
+        <section class="grid">
           <ExpressCard />
-        </div>
-        <div class="grid">
+        </section>
+        <section class="grid">
           <AngularCard />
-        </div>
-        <div class="grid">
+        </section>
+        <section class="grid">
           <ReactCard />
-        </div>
-        <div class="grid">
+        </section>
+        <section class="grid">
           <JestCard />
-        </div>
+        </section>
 
       </div>
 
       <div class="grid grid-cols-6 pt-4">
-        <div class="grid">
+
+        <section class="grid">
           <PostgresCard />
-        </div>
-        <div class="grid">
+        </section>
+        <section class="grid">
           <DjangoCard />
-        </div>
-        <div class="grid">
+        </section>
+        <section class="grid">
           <PythonCard />
-        </div>
-        <div class="grid">
+        </section>
+        <section class="grid">
           <GitCard />
-        </div>
-        <div class="grid">
+        </section>
+        <section class="grid">
           <DockerCard />
-        </div>
-        <div class="grid">
+        </section>
+        <section class="grid">
           <LinuxCard />
-        </div>
+        </section>
+
       </div>
   </article>
 </BaseLayout>
 
+<style>
+
+  
+
+</style>
