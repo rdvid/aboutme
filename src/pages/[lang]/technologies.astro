@@ -27,55 +27,32 @@ export function getStaticPaths() {
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-
+const cards = [
+  NodeCard,
+  NestCard,
+  ExpressCard,
+  AngularCard,
+  ReactCard,
+  JestCard,
+  PostgresCard,
+  DjangoCard,
+  PythonCard,
+  LinuxCard,
+  GitCard,
+  DockerCard
+];
 ---
 
 <BaseLayout>
-  <article class="flex flex-col h-full max-lg:h-screen" >
-      <div class="grid grid-cols-6">
-
-        <section class="grid">
-          <NodeCard />
-        </section>
-        <section class="grid">
-          <NestCard />
-        </section>
-        <section class="grid">
-          <ExpressCard />
-        </section>
-        <section class="grid">
-          <AngularCard />
-        </section>
-        <section class="grid">
-          <ReactCard />
-        </section>
-        <section class="grid">
-          <JestCard />
-        </section>
-
-      </div>
-
-      <div class="grid grid-cols-6 pt-4">
-
-        <section class="grid">
-          <PostgresCard />
-        </section>
-        <section class="grid">
-          <DjangoCard />
-        </section>
-        <section class="grid">
-          <PythonCard />
-        </section>
-        <section class="grid">
-          <GitCard />
-        </section>
-        <section class="grid">
-          <DockerCard />
-        </section>
-        <section class="grid">
-          <LinuxCard />
-        </section>
-
-      </div>
+  <article class="flex flex-col h-full" >
+    <div class="grid grid-cols-1 min-[450px]:grid-cols-2 min-[625px]:grid-cols-3 min-[875px]:grid-cols-4 min-[1000px]:grid-cols-5 xl:grid-cols-6">
+      {
+        cards.map((Card)=>(
+          <section class="grid m-1">
+            <Card />
+          </section>
+        ))
+      }
+    </div>
   </article>
 </BaseLayout>

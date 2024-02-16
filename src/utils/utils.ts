@@ -18,7 +18,3 @@ export function switchTheme(){
   darkTheme = !darkTheme
 }
 
-// export function switchLanguageOfUrl(url: string, lang: string){
-//   let currentlyLang = url.
-//   const newUrl = url.replace()
-// }

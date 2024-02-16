@@ -12,9 +12,17 @@ export interface langFields {
     'home.title': string;
     'home.subtitle': string;
     'home.second-subtitle': string;
+    'about.intro.title': string;
     'about.intro': string;
+    'about.nowdays.title': string;
+    'about.nowdays': string;
+    'about.keypoints.title': string;
+    'about.keypoints': string;
+    'about.hobbies.title': string;
+    'about.hobbies': string;
 }
 
+// update for langFields in prod
 export interface UiLangs {
     en: any,
     fr: any,

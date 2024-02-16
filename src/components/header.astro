@@ -14,11 +14,9 @@ const t = useTranslations(lang);
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
         </label>
         <ul tabindex="0" class="menu menu-sm min-w-screen dropdown-content z-[1] p-2 shadow bg-base-200 rounded-box w-52 max-lg:w-screen justify-center">
-          <li><a class="max-sm:self-center">{t('nav.about')}</a></li>
-          <li class="max-sm:text-center">
-            <a class="max-sm:self-center">{t('nav.projects')}</a>
-          </li>
-          <li><a class="max-sm:self-center">{t('nav.technologies')}</a></li>
+          <li><a href=`${Astro.url.origin}/${lang}/about` class="max-sm:self-center">{t('nav.about')}</a></li>
+          <li><a href=`${Astro.url.origin}/${lang}/technologies` class="max-sm:self-center">{t('nav.technologies')}</a></li>
+          <li><a class="max-sm:self-center">{t('nav.projects')}</a></li>
           <li><a class="max-sm:self-center">{t('nav.contact')}</a></li>
         </ul>
       </div>
@@ -44,8 +42,11 @@ const t = useTranslations(lang);
       </div>
     </div>
     <div class="navbar-end">
-        <span class="max-lg:mr-2"><Swapbutton /></span>
-        <a class="btn mr-2 max-lg:hidden bg-base-300 border-2 border-black rounded-full"><i class="fa-solid fa-download fa-mg"></i>{t('nav.downloadcv')}</a>
+        <Swapbutton class:list={'max-lg:mr-2'} />
+        <a href={lang == 'br' ? '/br-resume-022024.pdf' : '/en-resume-022024.pdf'} target="_blank" class="btn mr-2 max-lg:hidden bg-base-300 border-2 border-black rounded-full">
+          <i class="fa-solid fa-download fa-mg"></i>
+          {t('nav.downloadcv')}
+        </a>
     </div>
 </nav>
 
