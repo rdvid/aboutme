@@ -6,7 +6,7 @@
 
 ![Astro](https://img.shields.io/badge/Astro-000000?style=for-the-badge&logo=astro&logoColor=red)
 ![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![Javascript](https://img.shields.io/badge/Javascript-007ACC?style=for-the-badge&logo=javascript&logoColor=white)
+![Javascript](https://img.shields.io/badge/Javascript-000000?style=for-the-badge&logo=javascript&logoColor=yellow)
 ![Tailwind](https://img.shields.io/badge/Tailwindcss-007ACC?style=for-the-badge&logo=tailwindcss&logoColor=white)
 ![Daisyui](https://img.shields.io/badge/Daisyui-38B2AC?style=for-the-badge&logo=daisyui&logoColor=white)
 ![Github](https://img.shields.io/badge/Github-000000?style=for-the-badge&logo=github&logoColor=white)
