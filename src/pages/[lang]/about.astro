@@ -13,51 +13,38 @@ export function getStaticPaths() {
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
 ---
-<BaseLayout>
+<BaseLayout title={t('nav.about')}>
+  
   <article class="flex flex-col h-full">
     <div class="grid grid-col lg:grid-cols-4 p-2">
 
       <section class="row p-4">
-        <h2 class="text-center py-2 font-bold">Who am I</h2>
+        <h2 class="text-center py-2 font-bold">{t('about.intro.title')}</h2>
         <p class="text-justify">
-          Hello! I'm Rafael David, a brazil-based passionate and results-driven Web Developer with a knack 
-          for Backend solutions. With an academical background in business management, I bring creativity, dedication, and 
-          high level of commitment to the table. Whether it's tackling challenging projects 
-          or collaborating with dynamic (and multicultural/international) teams, I thrive in environments that value innovation, responsability 
-          and a commitment to excellence.
+          {t('about.intro')}
         </p>
       </section> 
 
       <section class="row p-4">
-        <h2 class="text-center py-2 font-bold">What im doing</h2>
+        <h2 class="text-center py-2 font-bold">{t('about.nowdays.title')}</h2>
         <p class="text-justify">
-          Nowdays i'm working with Cubos Academy as a Backend Instructor providing insights and 
-          guidance for freshmans and new developers, performing pair programming and taught concepts
-          of web development with javascript throught NodeJS ecossystem using ExpressJS building RestAPI 
-          and ReactJS for front-end development.
+          {t('about.nowdays')}
         </p>
       </section>
 
       <section class="row p-4">
-        <h2 class="text-center py-2 font-bold">Key Strengths</h2>
+        <h2 class="text-center py-2 font-bold">{t('about.keypoints.title')}</h2>
         <p class="text-justify">
-          What sets me apart is my dedication to continuous learning and adaptability. 
-          In a rapidly evolving software development market, I've kept my finger on the pulse of emerging trends and technologies, 
-          staying ahead of the curve. I'm not just about technical skills; my ability to communicate effectively 
-          and collaborate seamlessly has been instrumental in fostering positive working relationships with colleagues, 
-          stakeholders, and clients alike.
+          {t('about.keypoints')}
         </p>
       </section>
 
       <section class="row p-4">
-        <h2 class="text-center py-2 font-bold">Personal Interests and Hobbies:</h2>
+        <h2 class="text-center py-2 font-bold">{t('about.hobbies.title')}</h2>
         <p class="text-justify">
-          Away from the professional realm, I am an avid reader and classical piano student. Whether I'm immersed in 
-          philosophy, exploring the pages of old russian writters, or capturing nuances of human emotions through 
-          piano chords, I find joy in the sectionerse tapestry of life's experiences. 
-          This side passions not only rejuvenates my creative spirit but also fuels my ability to approach challenges with a fresh 
-          perspective. 
+          {t('about.hobbies')}
         </p>
       </div>
 
