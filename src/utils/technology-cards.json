@@ -1,0 +1,64 @@
+{
+    "technologyCards": [
+        {
+            "name": "angular",
+            "bgHexColor":"c3002f",
+            "iconHexColor": "1B1212"
+        },
+        {
+            "name": "django",
+            "bgHexColor":"092E20",
+            "iconHexColor": "C2C2C2"
+        },
+        {
+            "name": "docker",
+            "bgHexColor":"61DAFB",
+            "iconHexColor": "000"
+        },
+        {
+            "name": "express",
+            "bgHexColor":"353935",
+            "iconHexColor": "C2C2C2"
+        },
+        {
+            "name": "git",
+            "bgHexColor":"F05032",
+            "iconHexColor": "000"
+        },
+        {
+            "name": "jest",
+            "bgHexColor":"C21325",
+            "iconHexColor": "000"
+        },
+        {
+            "name": "linux",
+            "bgHexColor":"C2C2C2",
+            "iconHexColor": "000"
+        },
+        {
+            "name": "nest",
+            "bgHexColor":"E0234E",
+            "iconHexColor": "000"
+        },
+        {
+            "name": "node",
+            "bgHexColor":"339933",
+            "iconHexColor": "000"
+        },
+        {
+            "name": "postgres",
+            "bgHexColor":"4169E1",
+            "iconHexColor": "000"
+        },
+        {
+            "name": "python",
+            "bgHexColor":"C2C2C2",
+            "iconHexColor": "000"
+        },
+        {
+            "name": "react",
+            "bgHexColor":"61DAFB",
+            "iconHexColor": "000"
+        }
+    ]
+}
