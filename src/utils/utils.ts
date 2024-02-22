@@ -12,9 +12,3 @@ export function useTranslations(lang: string) {
   }
 }
 
-export var darkTheme: boolean = false;
-
-export function switchTheme(){
-  darkTheme = !darkTheme
-}
-
