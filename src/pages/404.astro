@@ -1,0 +1,41 @@
+---
+import {Icon} from 'astro-icon/components'
+//TODO: fix for mobile version
+export function getStaticPaths() {
+  return [
+    {params: {lang: 'en'}},
+    {params: {lang: 'br'}},
+    {params: {lang: 'fr'}},
+    {params: {lang: 'es'}},
+  ];
+}
+---
+<div class="flex flex-col bg-gray-100 h-screen justify-center align-center">
+  <center class="m-auto">
+    <div class="tracking-widest mt-2">
+        <Icon name="blacksmith" size={300}/>
+        <span class="text-gray-500 text-6xl block">4  0  4</span>
+        <span class="text-gray-500">Hanging there, brother. Still working upon it!</span>
+      </div>
+      <center class="mt-6">
+        <a href="#" class="text-gray-500 font-mono text-xl bg-gray-200 p-3 rounded-md hover:shadow-md">Go back </a>
+      </center>
+  </center>
+  
+</div>
+
+<style>
+  
+    .emoji-404{
+    
+      position: relative;
+      animation: mymove 2.5s infinite;
+    }
+    
+    @keyframes mymove {
+      33%   {top: 0px;}
+      66%  {top: 20px;}
+      100%  {top: 0px}
+    }
+</style>
+        
