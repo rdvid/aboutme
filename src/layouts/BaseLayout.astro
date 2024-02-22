@@ -33,12 +33,18 @@ const lang = getLangFromUrl(Astro.url);
 </html>
 
 <style is:global>
-	[data-theme="business"] div > div > h2 {
+	/* [data-theme="business"] div > div > h2 {
 		color: black;
+	} */
+	
+	body::-webkit-scrollbar {
+		display: none;
 	}
+
 </style>
 
 <script is:inline>
+	// switch theme function
 	const theme = (() => {
 	  if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
 		return localStorage.getItem("theme");
@@ -47,4 +53,5 @@ const lang = getLangFromUrl(Astro.url);
   
 	window.localStorage.setItem("theme", theme);
 	document.querySelector('html').setAttribute('data-theme', theme);
+
 </script>
