@@ -2,6 +2,7 @@
 import Swapbutton from "./swapbutton.astro";
 import { getLangFromUrl, useTranslations } from '../utils/utils';
 import { languages, ui } from "../i18n/ui";
+import {Icon} from 'astro-icon/components'
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -44,7 +45,9 @@ const t = useTranslations(lang);
     <div class="navbar-end">
         <Swapbutton class:list={'max-lg:mr-2'} />
         <a href={lang == 'br' ? '/br-resume-022024.pdf' : '/en-resume-022024.pdf'} target="_blank" class="btn mr-2 max-lg:hidden bg-base-300 border-2 border-black rounded-full">
-          <i class="fa-solid fa-download fa-mg"></i>
+          <!-- <i class="fa-solid fa-download fa-mg"></i> -->
+          <Icon name={'fa:download'}/>
+
           {t('nav.downloadcv')}
         </a>
     </div>

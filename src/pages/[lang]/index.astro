@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getLangFromUrl, useTranslations } from '../../utils/utils';
-
+import { Image } from 'astro:assets';
 export function getStaticPaths() {
   return [
     {params: {lang: 'en'}},
@@ -21,6 +21,7 @@ const t = useTranslations(lang);
       <div class="hero-content flex-col w-full max-lg:py-8 lg:flex-row lg:align-center">
         <img src="https://f005.backblazeb2.com/file/debbuggers/picofme (1).png" 
              class="w-3/12 max-w-4/12 max-lg:w-8/12 rounded-xl shadow-2xl border-2 border-black shadow-gray-600" 
+             aria-placeholder="Rafael picture"
              alt="my profile picture"/>
         <div class="flex flex-col justify-center w-6/12 max-lg:w-full text-center max-lg:p-4r">
           <p id="placeholder" class="hidden">{t('home.title')}</p>
@@ -54,8 +55,5 @@ const t = useTranslations(lang);
   }
 
   typeWriter();
-
-  // fade in
-  // transition-opacity ease-in duration-700 opacity-0 hover:opacity-100
 
 </script>
