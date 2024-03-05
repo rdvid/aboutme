@@ -23,7 +23,7 @@ const t = useTranslations(lang);
     <div class="grid grid-cols-1 min-[450px]:grid-cols-2 min-[625px]:grid-cols-3 min-[875px]:grid-cols-4 min-[1000px]:grid-cols-5 xl:grid-cols-6">
       {
         technologyCards.map((card: TechnologyCard)=>(
-          <section class="grid my-4">
+          <section class="grid my-4 justify-center">
             <TechCard 
                 name={card.name}
                 bgHexColor={card.bgHexColor}

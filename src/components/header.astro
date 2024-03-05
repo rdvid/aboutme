@@ -8,7 +8,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<nav class="navbar w-full space-x-4 font-medium fixed bg-base-200 lg:absolute lg:bg-transparent">
+<nav class="navbar w-full space-x-4 font-medium fixed bg-base-200 fixed z-90 lg:absolute lg:bg-transparent">
     
     <div class="navbar-start">
       
@@ -89,7 +89,7 @@ const t = useTranslations(lang);
 
 
     <div class="navbar-end">
-        <Swapbutton class:list={'max-lg:mr-2'} />
+        <Swapbutton class:list={'mr-8'} />
         <a href={lang == 'br' ? '/br-resume-022024.pdf' : '/en-resume-022024.pdf'} target="_blank" class="btn mr-2 max-lg:hidden bg-transparent border-none">
           <Icon name={'fa:download'} size={20}/>
           {t('nav.downloadcv')}
