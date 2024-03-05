@@ -5,7 +5,7 @@ import GithubCard from "./modal/github-card.astro";
 import DiscordCard from "./modal/discord-card.astro";
 import SpotifyCard from "./modal/spotify-card.astro";
 import GmailCard from "./modal/gmail-card.astro";
-import StackoverflowCard from "./modal/stackoverflow-card.astro";
+import SteamCard from "./modal/steam-card.astro";
 import LinkedinCard from "./modal/linkedin-card.astro";
 
 const lang = getLangFromUrl(Astro.url);
@@ -13,18 +13,18 @@ const t = useTranslations(lang);
 
 ---
 
-<aside class="sticky bg-transparent max-lg:hidden">
+<aside class="h-screen fixed bg-transparent max-lg:hidden">
   <div class="flex flex-col justify-center h-full align-center p-1">
     <ul class="menu rounded-box bg-transparent space-y-3">
       <GithubCard />
-      <StackoverflowCard />
+      <SteamCard />
       <LinkedinCard>
     </ul>
     <div class="divider divider-vertical"></div>
-    <ul class="menu rounded-box bg-transparent space-y-3 ">
+    <ul class="menu rounded-box bg-transparent space-y-3">
       <DiscordCard />
-      <SpotifyCard />
       <GmailCard />
+      <SpotifyCard />
     </ul>
   </div> 
 </aside>

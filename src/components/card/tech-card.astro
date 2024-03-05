@@ -12,12 +12,16 @@ const {
     bgHexColor,
     iconHexColor
 } = Astro.props;
+
+const title = name[0].toUpperCase() + name.substring(1);
+const textColor = title === 'Django' || title === 'Express' ? 'C2C2C2' : '000';
+
 ---
 
 <div class='max-w-sm rounded-xl overflow-hidden shadow-lg w-fit cursor-pointer' 
     style={`background-color:#${bgHexColor}`}>
         <div class="w-16 m-16">
             <Icon name={name} height={64} width={64} color={'#'+iconHexColor}/>
-            <h2 class="pt-5 text-center font-bold">{name[0].toUpperCase() + name.substring(1)}</h2>
+            <h2 class="pt-5 text-center font-bold" style={`color: #${textColor}`}>{title}</h2>
         </div>    
 </div>

@@ -8,7 +8,7 @@ const lang = getLangFromUrl(Astro.url);
 
 ---
 
-<html lang={lang == 'br' ? 'pt-br' : lang} data-theme='lofi' class="min-h-full relative overflow-x-hidden">
+<html lang={lang == 'br' ? 'pt-br' : lang} data-theme='lofi'>
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/logo.svg" />
@@ -19,11 +19,11 @@ const lang = getLangFromUrl(Astro.url);
 		<title>{Astro.props.title}</title>
 	</head>
 
-	<body class="flex flex-col h-fit lg:h-screen">
+	<body>
         <Header />
-        <div class="flex flex-col h-full bg-base-100 lg:flex-row">
+        <div class="flex flex-col h-full min-h-screen lg:flex-row">
 			<Sidebar />
-            <div class="w-full bg-base-100 p-4">
+            <div class="w-full bg-base-100 p-4 mt-20 lg:ml-20">
                 <slot />
             </div>
         </div>   
@@ -33,12 +33,13 @@ const lang = getLangFromUrl(Astro.url);
 </html>
 
 <style is:global>
-	/* [data-theme="business"] div > div > h2 {
-		color: black;
-	} */
 	
 	body::-webkit-scrollbar {
 		display: none;
+	}
+
+	div > h2 {
+		color: black;
 	}
 
 </style>
