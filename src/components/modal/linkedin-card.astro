@@ -1,24 +1,37 @@
 ---
 import { Icon } from "astro-icon/components"
-
+import { Image } from "astro:assets"
 ---
-
-<li class="tooltip tooltip-right" data-tip="My Linkedin">
-    <a class="p-4 hover:scale-125" onclick="linkedinModal.showModal()">
-      <Icon name={'fa-brands:linkedin'} size={24}/>
-    </a>
-</li>
-
-<!-- Card #3 Linkedin -->
-<dialog id="linkedinModal" class="modal modal-middle justify-center h-full">
-  <div class="modal-box bg-[#0e76a8] border-2 border-black">
-    <h3 class="font-bold text-lg">Hello!</h3>
-    <p class="py-4">Press ESC key or click the button below to close</p>
-    <div class="modal-action">
-      <form method="dialog">
-      <!-- if there is a button in form, it will close the modal -->
-        <button class="btn">Close</button>
-      </form>
+<label for="linkedin-modal">
+  <li class="tooltip tooltip-right" data-tip="My Linkedin">  
+    <a class="p-4 hover:scale-125">
+        <Icon name={'fa-brands:linkedin'} size={24}/>
+      </a>    
+    </li>
+</label>
+    
+<input type="checkbox" id="linkedin-modal" class="modal-toggle" />
+<div class="modal" role="dialog">
+  <div class="modal-box bg-[#004182] border-2 border-black">
+    <div class="card bg-[#004182] text-slate-100 p-2">
+      <div class="flex flex-row justify-center">
+        <Image src="https://i.stack.imgur.com/dbj7j.jpg?s=256&g=1" 
+              height={300} width={300}
+              class="w-4/12 max-w-4/12 rounded-full border-4 border-black" 
+              alt="my profile picture"/>
+        <div class="flex flex-col px-4 justify-center text-center">
+          <h1 class="font-bold text-2xl">Rafael David</h1>
+          <h3 class="font-thin italic">Desenvolvedor Backend Node.js | Typescript | Python | Django | PostgreSQL</h3>
+        </div>
+      </div>
+      <div class="card-body items-end text-center">
+        <div class="card-actions border-1 rounded-full p-2">
+          <a href="https://linkedin.com/in/rdvid" target="_blank" class="font-bold btn bg-base-100 border-0 rounded-xl">Profile</a>
+        </div>
+      </div>
     </div>
   </div>
-</dialog>
+  <label class="modal-backdrop" for="linkedin-modal">Close</label>
+</div>
+
+

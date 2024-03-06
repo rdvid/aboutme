@@ -1,47 +1,42 @@
 ---
 import { Icon } from "astro-icon/components"
-
+import { Image } from "astro:assets"
 ---
 
-<li class="tooltip tooltip-right" data-tip="My Github">
-    <a class="p-4 hover:scale-125" onclick="githubModal.showModal()">
-        <Icon name={'fa-brands:github'} size={24}/>
-    </a>
-</li>
-
-<!-- Card #1 Github -->
-<dialog id="githubModal" class="modal modal-middle justify-center h-full">
-  <div class="modal-box bg-black border-2 border-black">
-    <div class="card bg-black text-slate-100">
-      <div class="modal-action justify-end mr-4 bg-transparent">
-        <form method="dialog">
-          <button class="btn-outline bg-transparent rounded-full text-red-700 hover:text-red-700 hover:bg-transparent focus:outline-none font-extrabold absolute">
-            <i class="fa-solid fa-xmark fa-xl"></i>
-          </button>
-        </form>
-      </div>
-      <figure class="px-10">
-        <img src="https://avatars.githubusercontent.com/u/60834135" 
-              class="w-6/12 max-w-4/12 rounded-full border-2 border-black" 
+<label for="github-modal">
+  <li class="tooltip tooltip-right" data-tip="My Github">  
+    <a class="p-4 hover:scale-125">
+      <Icon name={'fa-brands:github'} size={24}/>
+    </a>    
+  </li>
+</label>
+        
+<input type="checkbox" id="github-modal" class="modal-toggle" />
+<div class="modal" role="dialog">
+  <div class="modal-box bg-black">
+    <div class="card bg-black text-slate-100 p-4">
+      <div class="flex flex-row justify-center">
+        <Image src="https://avatars.githubusercontent.com/u/60834135" 
+              height={300} width={300}
+              class="w-4/12 max-w-4/12 rounded-full border-2 border-black" 
               alt="my profile picture"/>
-      </figure>
-      <div class="card-body items-center text-center">
-
-        <div class="stats shadow w-80 bg-transparent ">
-  
-          <div class="stat place-items-center">
-            <div class="stat-title text-gray-100	">Repository</div>
-            <div class="stat-value text-gray-100	">77</div>
-            <div class="stat-desc text-gray-100	">From January 1st to February 1st</div>
-          </div>
-          
+        <div class="flex flex-col px-4 justify-center text-center">
+          <h1 class="font-bold">Rafael David</h1>
+          <p class="font-thin italic">Backend Developer</p>
         </div>
-
-        <p class="italic pb-4">"If a dog chews shoes whose shoes does he choose?"</p>
-        <div class="card-actions bg-base-300 border-1 rounded-full">
-          <a href="https://github.com/rdvid" target="_blank" class="text-primary font-bold p-2">Follow me on Github</a>
+      </div>
+      <div class="card-body items-center text-center">
+        <div class="flex flex-row w-fit">
+          <Image height={250} width={250} decoding="async" loading="lazy" 
+              src="https://github-readme-stats-inky-three-35.vercel.app/api/top-langs/?username=rdvid&layout=compact&theme=dark&hide=html,css,shell" alt="github stats"/>
+        </div>
+        <p class="italic py-3">"Suffering is pain without purpose"</p>
+        <div class="card-actions border-1 rounded-full">
+          <a href="https://github.com/rdvid?tab=repositories" target="_blank" class="font-bold p-2 bg-violet-200 border-0 rounded-xl text-black">Projects</a>
+          <a href="https://github.com/rdvid" target="_blank" class="font-bold p-2 bg-blue-200 border-0 rounded-xl text-black">Profile</a>
         </div>
       </div>
     </div>
   </div>
-</dialog>
+  <label class="modal-backdrop" for="github-modal">Close</label>
+</div>

@@ -3,20 +3,18 @@ import { Icon } from "astro-icon/components";
 import Playlist from "../playlist.astro";
 ---
 
-<li class="tooltip tooltip-right" data-tip="What im listening">
-    <a class="p-4 hover:scale-125" onclick="spotifyModal.showModal()">
-      <Icon name={'fa-brands:spotify'} size={24} />
-    </a>
-</li>
-
-<!-- Card #5 Spotify -->
-<dialog id="spotifyModal" class="modal modal-middle justify-center h-full">
-  <div class="modal-box border-black bg-black w-fit h-fit">
-    <div class="modal-action">
-      <form method="dialog">
-        <button class="btn-outline bg-transparent rounded-full text-red-700 hover:text-red-700 focus:outline-none font-extrabold absolute"><i class="fa-solid fa-xmark fa-xl"></i></button>
-      </form>
-    </div>
+<label for="spotify-modal">
+  <li class="tooltip tooltip-right" data-tip="My Top 5 Spotify list">  
+    <a class="p-4 hover:scale-125">
+      <Icon name={'fa-brands:spotify'} size={24}/>
+    </a>    
+  </li>
+</label>
+        
+<input type="checkbox" id="spotify-modal" class="modal-toggle" />
+<div class="modal" role="dialog">
+  <div class="modal-box bg-black">
     <Playlist />
   </div>
-</dialog>
+  <label class="modal-backdrop" for="spotify-modal">Close</label>
+</div>

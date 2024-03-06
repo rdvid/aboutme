@@ -1,28 +1,50 @@
 ---
 import { Icon } from "astro-icon/components"
+import { Image } from "astro:assets"
+////https://i.stack.imgur.com/dbj7j.jpg?s=256&g=1
 ---
 
-<li class="tooltip tooltip-right" data-tip="My Discord">
-    <a class="p-4 hover:scale-125" onclick="discordModal.showModal()">
+<label for="discord-modal">
+  <li class="tooltip tooltip-right" data-tip="My Discord">  
+    <a class="p-4 hover:scale-125">
       <Icon name={'fa-brands:discord'} size={24}/>
-    </a>
-</li>
-
-<!-- Card #4 Discord -->
-<dialog id="discordModal" class="modal modal-middle justify-center h-full">
-
-
-  <div class="modal-box bg-[#7289da] border-2 border-black">
-    <div class="modal-action justify-end mr-4">
-      <form method="dialog">
-        <button class="btn-outline bg-transparent rounded-full text-red-700 hover:text-red-700 focus:outline-none font-extrabold absolute"><i class="fa-solid fa-xmark fa-xl"></i></button>
-      </form>
+    </a>    
+  </li>
+</label>
+   
+<input type="checkbox" id="discord-modal" class="modal-toggle" />
+<div class="modal" role="dialog">
+  <div class="modal-box bg-[#7289da]">
+    <div class="card bg-[#7289da] text-slate-100 p-4">
+      <div class="flex flex-row justify-center">
+        <Image src="https://avatars.githubusercontent.com/u/60834135" 
+              height={250} width={250}
+              class="w-4/12 max-w-4/12 rounded-full border-2 border-black" 
+              alt="my profile picture"/>
+        <div class="flex flex-col px-4 justify-center text-center">
+          <h1 class="font-bold">Rafael David</h1>
+          <p class="font-thin italic">He/Him</p>
+        </div>
+      </div>
+      <div class="card-body items-center text-center">
+        <div class="flex flex-row w-fit">
+          <ul>
+              <li>23y || Sjc</li>
+              <li>Backend Developer</li>
+          </ul>
+          <div class="divider divider-horizontal"></div>
+          <ul>
+            <li>Piano Enthusiast</li>
+            <li>Casual Reader</li>
+          </ul>
+        </div>
+        <div class="card-actions border-1 rounded-full mt-4">
+          <a href="https://discordapp.com/users/417809001372188672" target="_blank" class="font-bold text-black p-2 bg-blue-200 border-0 rounded-xl">Profile</a>
+        </div>
+      </div>
     </div>
-
-    <h3 class="font-bold text-lg">Hello!</h3>
-    <p class="py-4">Press ESC key or click the button below to close</p>
-
   </div>
+  <label class="modal-backdrop" for="discord-modal">Close</label>
+</div>
 
 
-</dialog>
