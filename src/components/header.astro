@@ -21,16 +21,16 @@ const t = useTranslations(lang);
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
           </label>
         </div> 
-        <div class="drawer-side z-90">
+        <div class="drawer-side">
           <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
-          <ul class="menu p-4 w-60 min-h-full bg-base-200 text-base-content">
+          <ul class="menu p-4 w-60 min-h-full bg-base-200 text-base-content z-90">
             
             <h2 class="text-center py-4">Menu</h2>
             
             <li><a href=`${Astro.url.origin}/${lang}/about`>{t('nav.about')}</a></li>
             <li><a href=`${Astro.url.origin}/${lang}/technologies`>{t('nav.technologies')}</a></li>
-            <li><a>{t('nav.projects')}</a></li>
-            <li><a>{t('nav.contact')}</a></li>
+            <li><a href=`${Astro.url.origin}/${lang}/projects`>{t('nav.projects')}</a></li>
+            <li><a href=`${Astro.url.origin}/${lang}/contact`>{t('nav.contact')}</a></li>
 
             <div class="divider"></div>
 
@@ -53,7 +53,6 @@ const t = useTranslations(lang);
       </div>
 
     </div>
-
 
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
@@ -86,7 +85,6 @@ const t = useTranslations(lang);
         </ul>
       </div>
     </div>
-
 
     <div class="navbar-end">
         <Swapbutton class:list={'mr-8'} />
