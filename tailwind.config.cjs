@@ -10,7 +10,7 @@ module.exports = {
 			"business",
 			"lofi", 
 			"retro", 
-			"cyberpunk",
-		]
+		],
+		darkMode: "lofi",
 	}
 }

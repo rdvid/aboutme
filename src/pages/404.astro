@@ -1,5 +1,6 @@
 ---
 import {Icon} from 'astro-icon/components'
+import { getLangFromUrl, useTranslations } from '../utils/utils';
 //TODO: fix for mobile version
 export function getStaticPaths() {
   return [
@@ -9,16 +10,19 @@ export function getStaticPaths() {
     {params: {lang: 'es'}},
   ];
 }
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 <div class="flex flex-col bg-gray-100 h-screen justify-center align-center">
   <center class="m-auto">
     <div class="tracking-widest mt-2">
-        <Icon name="blacksmith" size={300}/>
-        <span class="text-gray-500 text-6xl block">4  0  4</span>
-        <span class="text-gray-500">Hanging there, brother. Still working upon it!</span>
+        <Icon name="blacksmith" class="text-[700px] lg:text-[400px]"/>
+        <span class="text-gray-500 text-9xl lg:text-6xl block my-4">4  0  4</span>
+        <span class="text-gray-500 text-6xl lg:text-2xl">Hanging there, brother. Still working upon it!</span>
       </div>
-      <center class="mt-6">
-        <a href="#" class="text-gray-500 font-mono text-xl bg-gray-200 p-3 rounded-md hover:shadow-md">Go back </a>
+      <center class="mt-10 lg:mt-6">
+        <a href=`${Astro.url.origin}/${lang}/about` class="text-gray-500 font-mono text-4xl lg:text-2xl bg-gray-200 p-3 rounded-md hover:shadow-md">Go back </a>
       </center>
   </center>
   

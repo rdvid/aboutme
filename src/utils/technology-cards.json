@@ -59,6 +59,36 @@
             "name": "react",
             "bgHexColor":"61DAFB",
             "iconHexColor": "000"
+        },
+        {
+            "name": "redis",
+            "bgHexColor":"c3002f",
+            "iconHexColor": "FF0"
+        },
+        {
+            "name": "typescript",
+            "bgHexColor":"1C4F82",
+            "iconHexColor": "000"
+        },
+        {
+            "name": "flask",
+            "bgHexColor":"C2C2C2",
+            "iconHexColor": "000"
+        },
+        {
+            "name": "tailwind",
+            "bgHexColor":"06B6D4",
+            "iconHexColor": "000"
+        },
+        {
+            "name": "ionic",
+            "bgHexColor":"3880FF",
+            "iconHexColor": "000"
+        },
+        {
+            "name": "playwright",
+            "bgHexColor":"2EAD33",
+            "iconHexColor": "000"
         }
     ]
 }

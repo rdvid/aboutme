@@ -14,5 +14,13 @@ export const frLang: langFields = {
     'home.title': "Je suis Rafael David",
     'home.subtitle': 'Développeur de logiciels',
     'home.second-subtitle': 'Étudiant en piano',
-    'about.intro': 'Unleashing the power of code while harmonizing melodies on the piano keys. A software developer with a passion for classical Russian philosophy. Join me on this intellectual journey through technology and timeless wisdom.'
+    // TODO: french translate
+    'about.intro.title': '',
+    'about.intro': ``,
+    'about.nowdays.title': '',
+    'about.nowdays': ``,
+    'about.keypoints.title': '',
+    'about.keypoints': ``,
+    'about.hobbies.title': '',
+    'about.hobbies': ``
 } as const;

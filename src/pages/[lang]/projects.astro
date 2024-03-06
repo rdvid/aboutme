@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getLangFromUrl, useTranslations } from '../../utils/utils';
+import ProjectCard from '../../components/card/project-card.astro';
+import { projects } from '../../utils/projects.json';
 
 export function getStaticPaths() {
   return [
@@ -18,8 +20,16 @@ const t = useTranslations(lang);
 
 <BaseLayout>
   <article>
-    
-
+    <div class="grid grid-cols-1 min-[768px]:grid-cols-2">
+      {
+        projects.map((project) => (
+          <div class="grid grid-row m-2">
+            <ProjectCard project={project}/>
+          </div>        
+        ))
+      }
+    </div>
+    <div class="divider">more coming soon</div>
   </article>
 </BaseLayout>
 
