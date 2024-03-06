@@ -1,30 +1,74 @@
 ---
+import { Image } from "astro:assets";
+import { technologyCards } from "../../../src/utils/technology-cards.json";
+import { Icon } from "astro-icon/components";
+
+type Props = {
+    project: {
+        imageUrl: string;
+        title: string;
+        description: string;
+        badges: string[];
+        repositoryUrl: string;
+        underDevelopment: boolean;
+        docUrl?: string;
+        liveDemoUrl?: string;
+    }
+} 
+
+const {
+    imageUrl, title, 
+    description, badges, 
+    repositoryUrl, underDevelopment, 
+    docUrl, liveDemoUrl
+} = Astro.props.project;
+
+let tags = badges.map((badge) => {
+    return { 
+        name: badge, 
+        card: technologyCards.find((card) => { 
+            if (card.name == badge) return card.bgHexColor
+        })
+    }
+})
+
 ---
 
-<div class="card card-side bg-base-200 shadow-xl">
+<div class="flex flex-col bg-base-300 shadow-xl rounded-lg lg:flex-row p-8">
 
-    <figure>
-        <img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie" />
-    </figure>
-    <div class="card-body">
-        <div class="card-header justify-end">
-            <p>test</p>
+    <Image src={imageUrl} 
+        loading="lazy" alt={`${title} project image`} height={300} width={250} 
+        class="self-center rounded-xl shadow-xl m-2 skeleton"/>
+    
+    <div class="flex flex-col justify-center text-center ">
+        <div class="flex justify-end pr-4">
+            { 
+                underDevelopment 
+                ? <span class="bg-red-200 rounded-xl px-1 text-red-600 font-semibold flex"><Icon name={"fa:wrench"} class="self-center"/> <span class="px-1">In Development</span></span> 
+                : <span class="bg-transparent rounded-xl px-1 text-yellow-600 font-semibold flex"><Icon name={"fa:star"} class="self-center"/> <span class="px-1">On Going</span></span>          
+            }
         </div>
-        <h2 class="card-title">New movie is released!</h2>
-        <p>Click the button to watch on Jetflix app.</p>
-        <div>
-            <div class="badge badge-neutral">neutral</div>
-            <div class="badge badge-primary">primary</div>
-            <div class="badge badge-secondary">secondary</div>
-            <div class="badge badge-accent">accent</div>
-            <div class="badge badge-ghost">ghost</div>
-            <div class="badge">default</div>
+        <h3 class="font-bold text-3xl my-2">{title}</h3>
+        <p>{description}</p>
+        <div class="my-3">
+            {
+                tags.map(({name, card}) => (
+                    <span class="badge badge-neutral text-base-200 p-3 m-1 rounded-xl font-semibold" style={`background-color: #${card?card.bgHexColor:"353935"};`}>
+                        {name}
+                    </span>
+                ))
+            }
         </div>
-        <div class="card-actions justify-end">
-            <button class="btn btn-primary">Repository</button>
-            <button class="btn btn-primary">Docs</button>
-            <button class="btn btn-primary">Live Demo</button>
+        <div class="justify-center my-3 space-x-2 lg:justify-end">
+            <a class="btn btn-primary btn-outline" href={repositoryUrl} target="_blank">Repository</a>
+            {
+                liveDemoUrl 
+                    ? <a class="btn btn-primary btn-outline" href={docUrl} target="_blank">Docs</a>
+                      <a class="btn btn-primary" href={liveDemoUrl} target="_blank">Live Demo</a>
+                    : <a class="btn btn-primary" href={docUrl} target="_blank">Docs</a>
+            }
         </div>
     </div>
   
 </div>
+
