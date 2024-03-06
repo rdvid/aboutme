@@ -46,5 +46,7 @@ export const brLang: langFields = {
         variadas experiências com o fio da vida. Essas paixões secundárias não apenas estimulam o meu 
         espírito criativo, mas também alimentam a minha capacidade de abordar desafios sob uma nova perspectiva.
     `,
+    'drawer.menu.label': 'Menu',
+    'drawer.language.label': 'Idiomas'
 
 } as const;

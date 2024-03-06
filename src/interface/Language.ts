@@ -26,10 +26,9 @@ export interface langFields {
     [key: string]: string;
 }
 
-// TODO: update for langFields in prod
 export interface UiLangs {
     en: langFields,
-    fr: any,
+    fr: langFields,
     br: langFields,
-    es: any
+    es: langFields
 }

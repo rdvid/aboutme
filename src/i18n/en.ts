@@ -45,4 +45,6 @@ export const enLang: langFields = {
         This side passions not only rejuvenates my creative spirit but also fuels my ability to approach 
         challenges with a fresh perspective.
     `,
+    'drawer.menu.label': 'Section',
+    'drawer.language.label': 'Language'
 } as const;

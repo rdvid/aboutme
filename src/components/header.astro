@@ -3,6 +3,7 @@ import Swapbutton from "./swapbutton.astro";
 import { getLangFromUrl, useTranslations } from '../utils/utils';
 import { languages, ui } from "../i18n/ui";
 import { Icon } from 'astro-icon/components'
+import Drawer from "./drawer.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -14,44 +15,7 @@ const t = useTranslations(lang);
       
       <a href=`${Astro.url.origin}/${lang}/` class="btn btn-ghost normal-case text-xl ml-4 max-lg:hidden">< rdvid /></a>
       
-      <div class="drawer">
-        <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-        <div class="drawer-content">
-          <label for="my-drawer" class="btn btn-ghost drawer-button lg:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-          </label>
-        </div> 
-        <div class="drawer-side">
-          <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
-          <ul class="menu p-4 w-60 min-h-full bg-base-200 text-base-content z-90">
-            
-            <h2 class="text-center py-4">Menu</h2>
-            
-            <li><a href=`${Astro.url.origin}/${lang}/about`>{t('nav.about')}</a></li>
-            <li><a href=`${Astro.url.origin}/${lang}/technologies`>{t('nav.technologies')}</a></li>
-            <li><a href=`${Astro.url.origin}/${lang}/projects`>{t('nav.projects')}</a></li>
-            <li><a href=`${Astro.url.origin}/${lang}/contact`>{t('nav.contact')}</a></li>
-
-            <div class="divider"></div>
-
-            <h2 class="text-center py-4">Idiomas</h2>
-            {
-              Object.keys(languages).map((language: keyof typeof ui) => (
-                <li>
-                  <a href={`${Astro.url.pathname.replace(lang, language)}`}>
-                    <span class={`fi fi-${language === 'en' ? 'us' : language}`}></span>
-                    {t(`nav.language.${language}`)}
-                  </a>
-                </li>
-              ))
-            }
-            
-          </ul>
-
-
-        </div>
-      </div>
-
+      <Drawer />
     </div>
 
     <div class="navbar-center hidden lg:flex">

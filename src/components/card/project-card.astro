@@ -37,9 +37,9 @@ let tags = badges.map((badge) => {
 <div class="flex flex-col bg-base-300 shadow-xl rounded-lg lg:flex-row p-8">
 
     <Image src={imageUrl} 
-        loading="lazy" alt={`${title} project image`} height={300} width={250} 
-        class="self-center rounded-xl shadow-xl m-2 skeleton"/>
-    
+        loading="lazy" height={300} width={250}
+        class="self-center rounded-xl shadow-xl m-2 skeleton" alt={`${title} project image`}/>
+
     <div class="flex flex-col justify-center text-center ">
         <div class="flex justify-end pr-4">
             { 

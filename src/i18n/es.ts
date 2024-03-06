@@ -47,5 +47,7 @@ export const esLang: langFields  = {
         los acordes del piano, encuentro alegría al tejer experiencias variadas con el hilo de la vida. 
         Estas pasiones secundarias no sólo estimulan mi espíritu creativo, sino que también alimentan 
         mi capacidad para abordar los desafíos desde una nueva perspectiva.
-    `
+    `,
+    'drawer.menu.label': 'Sección',
+    'drawer.language.label': 'Idioma',
 } as const;
