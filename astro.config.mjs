@@ -4,7 +4,7 @@ import { defaultLang } from './src/i18n/ui';
 import icon from "astro-icon";
 
 export default defineConfig({
-  site: 'https://rdvid.tech',
+  site: 'https://rdvid.com.br',
   redirects:{
     '/': `/${defaultLang}`
   },
