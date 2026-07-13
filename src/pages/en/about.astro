@@ -1,0 +1,8 @@
+---
+import BaseRedirect from '../../components/BaseRedirect.astro';
+import { pathFor } from '../../i18n/utils';
+
+const to = pathFor('en', '/about');
+---
+
+<BaseRedirect to={to} fromLabel="/aboutme/en/about/" />

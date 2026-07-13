@@ -1,0 +1,13 @@
+---
+import BaseRedirect from '../../../components/BaseRedirect.astro';
+import { pathFor } from '../../../i18n/utils';
+
+export function getStaticPaths() {
+  return [{ params: { slug: 'welcome' } }, { params: { slug: 'teaching-backend' } }];
+}
+
+const slug = Astro.params.slug as string;
+const to = pathFor('en', `/blog/${slug}`);
+---
+
+<BaseRedirect to={to} fromLabel={`/aboutme/en/blog/${slug}/`} />

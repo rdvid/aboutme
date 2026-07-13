@@ -1,0 +1,26 @@
+---
+/**
+ * Shared HTML redirect that keeps the /aboutme base (Astro config redirects drop it).
+ */
+interface Props {
+  to: string;
+  fromLabel: string;
+}
+
+const { to, fromLabel } = Astro.props;
+const absolute = new URL(to, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0;url=${to}`} />
+    <link rel="canonical" href={absolute} />
+    <meta name="robots" content="noindex" />
+    <title>Redirecting…</title>
+  </head>
+  <body>
+    <a href={to}>Redirecting from {fromLabel} to {to}</a>
+  </body>
+</html>

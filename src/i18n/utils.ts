@@ -12,6 +12,7 @@ function baseSegment(): string {
 
 function withBase(path: string): string {
   const base = baseUrl().replace(/\/$/, '');
+  if (!path || path === '/') return `${base}/`;
   const normalized = path.startsWith('/') ? path : `/${path}`;
   return `${base}${normalized}`;
 }
@@ -20,12 +21,17 @@ export function isLang(value: string): value is Lang {
   return value in languages;
 }
 
-export function getLangFromUrl(url: URL): Lang {
-  const segments = url.pathname.split('/').filter(Boolean);
+/** Path segments after the project base (`aboutme`). */
+export function pathSegments(pathname: string): string[] {
+  const segments = pathname.split('/').filter(Boolean);
   const base = baseSegment();
-  const start = base && segments[0] === base ? 1 : 0;
-  const maybeLang = segments[start];
-  if (maybeLang && isLang(maybeLang)) return maybeLang;
+  if (base && segments[0] === base) return segments.slice(1);
+  return segments;
+}
+
+export function getLangFromUrl(url: URL): Lang {
+  const [maybeLang] = pathSegments(url.pathname);
+  if (maybeLang && isLang(maybeLang) && maybeLang !== defaultLang) return maybeLang;
   return defaultLang;
 }
 
@@ -35,36 +41,36 @@ export function useTranslations(lang: Lang) {
   };
 }
 
-export function langStaticPaths() {
-  return (Object.keys(languages) as Lang[]).map((lang) => ({
-    params: { lang },
-  }));
-}
-
-/** Build a localized path, e.g. pathFor('en', '/blog') => '/aboutme/en/blog' */
+/**
+ * Localized path (respects `base: /aboutme`).
+ * English (default): `/aboutme/blog`
+ * Portuguese: `/aboutme/br/blog`
+ */
 export function pathFor(lang: Lang, path = ''): string {
   const normalized = path === '/' ? '' : path.replace(/\/$/, '');
-  const suffix = normalized.startsWith('/') ? normalized : normalized ? `/${normalized}` : '';
+  const suffix = normalized.startsWith('/')
+    ? normalized
+    : normalized
+      ? `/${normalized}`
+      : '';
+
+  if (lang === defaultLang) {
+    return withBase(suffix || '/');
+  }
+
   return withBase(`/${lang}${suffix}`);
 }
 
 /** Swap language while keeping the rest of the path. */
 export function switchLangPath(pathname: string, next: Lang): string {
-  const segments = pathname.split('/').filter(Boolean);
-  const base = baseSegment();
-  const langIndex = base && segments[0] === base ? 1 : 0;
+  const segments = pathSegments(pathname);
 
-  if (segments.length <= langIndex) {
-    return withBase(`/${next}`);
+  if (segments[0] && isLang(segments[0])) {
+    segments.shift();
   }
 
-  if (isLang(segments[langIndex])) {
-    segments[langIndex] = next;
-  } else {
-    segments.splice(langIndex, 0, next);
-  }
-
-  return `/${segments.join('/')}`;
+  const rest = segments.length ? `/${segments.join('/')}` : '';
+  return pathFor(next, rest);
 }
 
 export function formatDate(date: Date, lang: Lang): string {

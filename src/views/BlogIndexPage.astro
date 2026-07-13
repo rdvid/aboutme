@@ -1,20 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import type { Lang } from '../../../i18n/ui';
-import {
-  formatDate,
-  langStaticPaths,
-  pathFor,
-  postSlug,
-  useTranslations,
-} from '../../../i18n/utils';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { Lang } from '../i18n/ui';
+import { formatDate, pathFor, postSlug, useTranslations } from '../i18n/utils';
 
-export function getStaticPaths() {
-  return langStaticPaths();
+interface Props {
+  lang: Lang;
 }
 
-const lang = Astro.params.lang as Lang;
+const { lang } = Astro.props;
 const t = useTranslations(lang);
 
 const posts = (
