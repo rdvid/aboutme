@@ -1,11 +1,17 @@
 import { defaultLang, languages, ui, type Lang, type UiKey } from './ui';
 
+/** Always `/aboutme/`-style, with a trailing slash. */
+function baseUrl(): string {
+  const base = import.meta.env.BASE_URL || '/';
+  return base.endsWith('/') ? base : `${base}/`;
+}
+
 function baseSegment(): string {
-  return import.meta.env.BASE_URL.replace(/^\/|\/$/g, '');
+  return baseUrl().replace(/^\/|\/$/g, '');
 }
 
 function withBase(path: string): string {
-  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+  const base = baseUrl().replace(/\/$/, '');
   const normalized = path.startsWith('/') ? path : `/${path}`;
   return `${base}${normalized}`;
 }
@@ -75,5 +81,5 @@ export function postSlug(id: string): string {
 }
 
 export function assetPath(file: string): string {
-  return `${import.meta.env.BASE_URL}${file.replace(/^\//, '')}`;
+  return `${baseUrl()}${file.replace(/^\//, '')}`;
 }
