@@ -1,58 +1,49 @@
 ---
-import Header from "../components/header.astro"
-import Footer from "../components/footer.astro"
-import Sidebar from "../components/sidebar.astro"
-import { getLangFromUrl } from "../utils/utils";
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { htmlLang, type Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+import { site } from '../data/site';
 
-const lang = getLangFromUrl(Astro.url);
+interface Props {
+  lang: Lang;
+  title?: string;
+  description?: string;
+}
 
+const { lang, title, description } = Astro.props;
+const t = useTranslations(lang);
+const pageDescription = description ?? t('site.description');
+const pageTitle = title ? `${title} · ${site.title}` : site.title;
 ---
 
-<html lang={lang == 'br' ? 'pt-br' : lang} data-theme='lofi'>
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/logo.svg" />
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/css/flag-icons.min.css"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-		<meta name="generator" content={Astro.generator} />
-		<script src="https://kit.fontawesome.com/6b3a9e549b.js" crossorigin="anonymous" defer></script>
-		<title>{Astro.props.title}</title>
-	</head>
-
-	<body>
-        <Header />
-        <div class="flex flex-col h-full min-h-screen lg:flex-row">
-			<Sidebar />
-            <div class="w-full bg-base-100 p-4 mt-20 lg:ml-20">
-                <slot />
-            </div>
-        </div>   
-		<Footer />
-	</body>
-    
+<!doctype html>
+<html lang={htmlLang[lang]} data-theme="lofi">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={pageDescription} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{pageTitle}</title>
+  </head>
+  <body class="flex min-h-screen flex-col bg-base-100 font-sans text-base-content antialiased">
+    <Header lang={lang} />
+    <main class="mx-auto w-full max-w-5xl flex-1 px-4 py-10 sm:px-6 lg:px-8">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
 </html>
 
-<style is:global>
-	
-	body::-webkit-scrollbar {
-		display: none;
-	}
-
-	div > h2 {
-		color: black;
-	}
-
-</style>
-
 <script is:inline>
-	// switch theme function
-	const theme = (() => {
-	  if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-		return localStorage.getItem("theme");
-	  }
-	})();
-  
-	window.localStorage.setItem("theme", theme);
-	document.querySelector('html').setAttribute('data-theme', theme);
-
+  const theme = localStorage.getItem('theme') || 'lofi';
+  document.documentElement.setAttribute('data-theme', theme);
 </script>

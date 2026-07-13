@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import type { Lang } from '../../../i18n/ui';
+import {
+  formatDate,
+  langStaticPaths,
+  pathFor,
+  postSlug,
+  useTranslations,
+} from '../../../i18n/utils';
+
+export function getStaticPaths() {
+  return langStaticPaths();
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+
+const posts = (
+  await getCollection('blog', ({ data }) => !data.draft && data.lang === lang)
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout lang={lang} title={t('blog.title')} description={t('blog.description')}>
+  <section>
+    <h1 class="font-display text-4xl font-bold tracking-tight sm:text-5xl">{t('blog.title')}</h1>
+    <p class="mt-4 max-w-2xl text-lg text-base-content/70">{t('blog.lead')}</p>
+
+    <ul class="mt-12 space-y-8">
+      {
+        posts.map((post) => {
+          const href = pathFor(lang, `/blog/${postSlug(post.id)}`);
+          return (
+            <li class="border-b border-base-300 pb-8 last:border-b-0">
+              <p class="mb-2 text-sm text-base-content/60">
+                <time datetime={post.data.pubDate.toISOString()}>
+                  {formatDate(post.data.pubDate, lang)}
+                </time>
+              </p>
+              <h2 class="font-display text-2xl font-semibold">
+                <a class="hover:opacity-70" href={href}>
+                  {post.data.title}
+                </a>
+              </h2>
+              <p class="mt-2 text-base-content/75">{post.data.description}</p>
+              <a class="link link-hover mt-3 inline-block text-sm" href={href}>
+                {t('blog.read')}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </section>
+</BaseLayout>

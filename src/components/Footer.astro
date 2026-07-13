@@ -1,0 +1,32 @@
+---
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+import { site } from '../data/site';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-base-300">
+  <div class="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-8 text-sm text-base-content/70 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+    <p>© {year} {site.author}</p>
+    <ul class="flex gap-4">
+      <li>
+        <a class="hover:opacity-70" href={site.social.github} target="_blank" rel="noopener">GitHub</a>
+      </li>
+      <li>
+        <a class="hover:opacity-70" href={site.social.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+      </li>
+      <li>
+        <a class="hover:opacity-70" href={site.resume[lang]} target="_blank" rel="noopener">
+          {t('nav.resume')}
+        </a>
+      </li>
+    </ul>
+  </div>
+</footer>

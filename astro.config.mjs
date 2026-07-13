@@ -1,20 +1,11 @@
 import { defineConfig } from 'astro/config';
-import tailwind from "@astrojs/tailwind";
+import tailwind from '@astrojs/tailwind';
 import { defaultLang } from './src/i18n/ui';
-import icon from "astro-icon";
 
 export default defineConfig({
   site: 'https://rdvid.com.br',
-  redirects:{
-    '/': `/${defaultLang}`
+  integrations: [tailwind()],
+  redirects: {
+    '/': `/${defaultLang}`,
   },
-  integrations: [
-    tailwind(), 
-    icon({
-      include: {
-        fa: ["*"], 
-        faBrands: ["*"] 
-      },
-    })
-  ]
 });

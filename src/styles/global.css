@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.prose {
+  max-width: 65ch;
+}
+
+.prose h2 {
+  @apply mt-10 mb-4 text-2xl font-bold;
+}
+
+.prose h3 {
+  @apply mt-8 mb-3 text-xl font-semibold;
+}
+
+.prose p {
+  @apply mb-4 leading-relaxed;
+}
+
+.prose a {
+  @apply underline underline-offset-2;
+}
+
+.prose ul {
+  @apply mb-4 list-disc pl-6;
+}
+
+.prose ol {
+  @apply mb-4 list-decimal pl-6;
+}
+
+.prose code {
+  @apply rounded bg-base-200 px-1.5 py-0.5 text-sm;
+}
+
+.prose pre {
+  @apply mb-4 overflow-x-auto rounded-lg bg-base-300 p-4;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-primary pl-4 italic opacity-80;
+}

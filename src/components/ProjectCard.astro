@@ -1,0 +1,65 @@
+---
+import type { Project } from '../data/projects';
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  project: Project;
+  lang: Lang;
+}
+
+const { project, lang } = Astro.props;
+const t = useTranslations(lang);
+const { title, description, imageUrl, badges, repositoryUrl, underDevelopment, docUrl, liveDemoUrl } =
+  project;
+---
+
+<article class="flex flex-col gap-5 border-b border-base-300 py-8 last:border-b-0 sm:flex-row sm:gap-8">
+  <img
+    src={imageUrl}
+    alt={`${title} preview`}
+    width="240"
+    height="180"
+    loading="lazy"
+    class="h-40 w-full rounded-lg object-cover sm:h-36 sm:w-56 sm:shrink-0"
+  />
+  <div class="flex flex-1 flex-col">
+    <div class="mb-2 flex flex-wrap items-center gap-3">
+      <h2 class="font-display text-2xl font-semibold">{title}</h2>
+      {
+        underDevelopment ? (
+          <span class="badge badge-warning badge-outline">{t('projects.status.dev')}</span>
+        ) : (
+          <span class="badge badge-success badge-outline">{t('projects.status.ready')}</span>
+        )
+      }
+    </div>
+    <p class="mb-4 text-base-content/75">{description[lang]}</p>
+    <ul class="mb-5 flex flex-wrap gap-2">
+      {
+        badges.map((badge) => (
+          <li class="badge badge-neutral badge-sm">{badge}</li>
+        ))
+      }
+    </ul>
+    <div class="mt-auto flex flex-wrap gap-2">
+      <a class="btn btn-sm btn-outline" href={repositoryUrl} target="_blank" rel="noopener">
+        {t('projects.repo')}
+      </a>
+      {
+        docUrl && (
+          <a class="btn btn-sm btn-ghost" href={docUrl} target="_blank" rel="noopener">
+            {t('projects.docs')}
+          </a>
+        )
+      }
+      {
+        liveDemoUrl && (
+          <a class="btn btn-sm btn-primary" href={liveDemoUrl} target="_blank" rel="noopener">
+            {t('projects.demo')}
+          </a>
+        )
+      }
+    </div>
+  </div>
+</article>

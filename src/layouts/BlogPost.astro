@@ -1,0 +1,53 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { Lang } from '../i18n/ui';
+import { formatDate, pathFor, useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  tags?: string[];
+}
+
+const { lang, title, description, pubDate, updatedDate, tags = [] } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<BaseLayout lang={lang} title={title} description={description}>
+  <article class="mx-auto max-w-3xl">
+    <header class="mb-10 border-b border-base-300 pb-8">
+      <p class="mb-3 text-sm uppercase tracking-wide text-base-content/60">
+        <time datetime={pubDate.toISOString()}>{formatDate(pubDate, lang)}</time>
+        {
+          updatedDate && (
+            <>
+              {' '}
+              · {t('blog.updated')}{' '}
+              <time datetime={updatedDate.toISOString()}>{formatDate(updatedDate, lang)}</time>
+            </>
+          )
+        }
+      </p>
+      <h1 class="font-display text-4xl font-bold tracking-tight sm:text-5xl">{title}</h1>
+      <p class="mt-4 text-lg text-base-content/70">{description}</p>
+      {
+        tags.length > 0 && (
+          <ul class="mt-6 flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <li class="badge badge-outline">{tag}</li>
+            ))}
+          </ul>
+        )
+      }
+    </header>
+    <div class="prose">
+      <slot />
+    </div>
+    <p class="mt-12">
+      <a href={pathFor(lang, '/blog')} class="link link-hover">{t('blog.back')}</a>
+    </p>
+  </article>
+</BaseLayout>

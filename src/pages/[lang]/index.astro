@@ -1,81 +1,40 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getLangFromUrl, useTranslations } from '../../utils/utils';
-import { Image } from 'astro:assets';
-import { Icon } from 'astro-icon/components';
+import { site } from '../../data/site';
+import type { Lang } from '../../i18n/ui';
+import { langStaticPaths, pathFor, useTranslations } from '../../i18n/utils';
 
 export function getStaticPaths() {
-  return [
-    {params: {lang: 'en'}},
-    {params: {lang: 'br'}},
-    {params: {lang: 'fr'}},
-    {params: {lang: 'es'}},
-  ];
+  return langStaticPaths();
 }
 
-const lang = getLangFromUrl(Astro.url);
+const lang = Astro.params.lang as Lang;
 const t = useTranslations(lang);
 ---
 
-<BaseLayout title="</rdvid>">
-  <article class="flex flex-col h-screen lg:h-full lg:justify-around">
-    
-    <section>
-      <div class="flex flex-col-reverse w-full justify-center lg:flex-row lg:align-center">
-        <div class="flex flex-col justify-center w-6/12 max-lg:w-full text-center max-lg:p-4r">
-          <p id="placeholder" class="hidden">{t('home.title')}</p>
-          <h1 id="home-title" class="text-4xl font-bold text-center max-lg:text-3xl">‎ </h1>
-          <div class="flex flex-row justify-center my-6">
-            <ul class="text-lg font-light">
-              <li class="flex flex-row">
-                <span class="p-1">
-                  <Icon name={'fa:laptop'} class='align-center'/>
-                </span>
-                <span>
-                  {t('home.subtitle')}
-                </span>
-              </li>
-              <li class="flex flex-row justify-center">
-                <span class="p-1">
-                  <Icon name={'fa:music'} />
-                </span>
-                <span>
-                  {t('home.second-subtitle')}
-                </span>
-              </li>
-            </ul>
-          </div>
-          <a class="btn btn-primary rounded-full self-center max-lg:w-6/12" 
-              href=`${Astro.url.origin}/${lang}/about`>About me</a>
-        </div>
-        <Image loading='lazy' src="https://f005.backblazeb2.com/file/debbuggers/picofme (1).png"
-                height={300} width={300} 
-                class="w-9/12 lg:w-3/12 self-center my-8 rounded-xl shadow-2xl border-3 border-black shadow-gray-600" 
-                aria-label="Rafael picture" alt="my profile picture" />
+<BaseLayout lang={lang}>
+  <section class="grid items-center gap-10 py-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:py-16">
+    <div>
+      <p class="mb-3 font-display text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+        {site.title}
+      </p>
+      <h1 class="font-display text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+        {t('home.headline')}
+      </h1>
+      <p class="mt-5 max-w-xl text-lg leading-relaxed text-base-content/75">
+        {t('home.lead')}
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a class="btn btn-primary" href={pathFor(lang, '/about')}>{t('home.cta.about')}</a>
+        <a class="btn btn-outline" href={pathFor(lang, '/blog')}>{t('home.cta.blog')}</a>
       </div>
-    </section>
-    
-  </article>
+    </div>
+    <img
+      src="https://f005.backblazeb2.com/file/debbuggers/picofme%20(1).png"
+      alt={t('home.portraitAlt')}
+      width="420"
+      height="420"
+      class="mx-auto w-full max-w-sm rounded-2xl object-cover shadow-xl lg:max-w-md"
+    />
+  </section>
 </BaseLayout>
-
-<script>
-  var i = 0;
-  var txt = `${document.getElementById("placeholder").innerText}`; /* The text */
-  var speed = 150; /* The speed/duration of the effect in milliseconds */
-
-  function typeWriter() {
-    if (i < txt.length) {
-      document.getElementById("home-title").innerHTML += txt.charAt(i);
-      i++;
-      setTimeout(typeWriter, speed);
-    }
-  }
-
-  typeWriter();
-
-</script>
-
-<style>
-  
-</style>
-
