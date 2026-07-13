@@ -2,15 +2,15 @@ export const site = {
   name: 'rdvid',
   title: '</rdvid>',
   author: 'Rafael David',
-  url: 'https://rdvid.com.br',
+  url: 'https://rdvid.github.io/aboutme',
   email: 'mailto:rafael@rdvid.com.br',
   social: {
     github: 'https://github.com/rdvid',
     linkedin: 'https://www.linkedin.com/in/rafaeldavid/',
   },
   resume: {
-    en: '/en-resume-022024.pdf',
-    br: '/br-resume-022024.pdf',
+    en: 'en-resume-022024.pdf',
+    br: 'br-resume-022024.pdf',
   },
 } as const;
 

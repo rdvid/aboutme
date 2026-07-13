@@ -17,7 +17,7 @@
 <p align="center"><italic>"Let's start"</italic></p>
 
 <p align="center">
-  <a href="https://rdvid.com.br"><strong>rdvid.com.br</strong></a> · personal site + blog · part of the portifoly
+  <a href="https://rdvid.github.io/aboutme"><strong>rdvid.github.io/aboutme</strong></a> · personal site + blog · part of the portifoly
 </p>
 
 ## 💡 About
@@ -26,7 +26,7 @@ This repository **is** the portifoly surface: a personal website and Markdown bl
 
 It started as a learning playground for Astro SSG. The current version (v2) keeps that spirit but treats the site itself as a product: clearer architecture, bilingual UX where it matters (`en` + `br`), and a publish flow that fits GitHub Pages without ceremony.
 
-Live domain: [rdvid.com.br](https://rdvid.com.br) (custom domain via `public/CNAME`).
+Live on GitHub Pages: [rdvid.github.io/aboutme](https://rdvid.github.io/aboutme) (`base: /aboutme`).
 
 ### Technologies used
 - **Astro 5** — static output, file-based routing, content collections
@@ -120,7 +120,7 @@ For **new blog posts**, prefer a focused PR that only adds/updates files under `
 <table align="center">
   <tr>
     <td align="center">
-      <a href="https://rdvid.com.br">
+      <a href="https://rdvid.github.io/aboutme">
         <img src="https://avatars.githubusercontent.com/u/60834135" alt="Foto de Rafael David" width=115><br>
         <sub>
           <b>Rafael David</b>

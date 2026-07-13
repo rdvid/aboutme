@@ -1,7 +1,7 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
 import { languages, type Lang } from '../i18n/ui';
-import { pathFor, switchLangPath, useTranslations } from '../i18n/utils';
+import { assetPath, pathFor, switchLangPath, useTranslations } from '../i18n/utils';
 import { navKeys, site } from '../data/site';
 
 interface Props {
@@ -11,6 +11,7 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const otherLang = lang === 'en' ? 'br' : 'en';
+const resumeHref = assetPath(site.resume[lang]);
 ---
 
 <header class="sticky top-0 z-50 border-b border-base-300/80 bg-base-100/90 backdrop-blur">
@@ -42,7 +43,7 @@ const otherLang = lang === 'en' ? 'br' : 'en';
       </a>
       <ThemeToggle />
       <a
-        href={site.resume[lang]}
+        href={resumeHref}
         target="_blank"
         rel="noopener"
         class="btn btn-sm btn-ghost hidden sm:inline-flex"
@@ -64,7 +65,7 @@ const otherLang = lang === 'en' ? 'br' : 'en';
             ))
           }
           <li>
-            <a href={site.resume[lang]} target="_blank" rel="noopener">{t('nav.resume')}</a>
+            <a href={resumeHref} target="_blank" rel="noopener">{t('nav.resume')}</a>
           </li>
           <li>
             <a href={switchLangPath(Astro.url.pathname, otherLang)}>

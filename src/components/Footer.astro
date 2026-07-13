@@ -1,6 +1,6 @@
 ---
 import type { Lang } from '../i18n/ui';
-import { useTranslations } from '../i18n/utils';
+import { assetPath, useTranslations } from '../i18n/utils';
 import { site } from '../data/site';
 
 interface Props {
@@ -10,6 +10,7 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const year = new Date().getFullYear();
+const resumeHref = assetPath(site.resume[lang]);
 ---
 
 <footer class="border-t border-base-300">
@@ -23,7 +24,7 @@ const year = new Date().getFullYear();
         <a class="hover:opacity-70" href={site.social.linkedin} target="_blank" rel="noopener">LinkedIn</a>
       </li>
       <li>
-        <a class="hover:opacity-70" href={site.resume[lang]} target="_blank" rel="noopener">
+        <a class="hover:opacity-70" href={resumeHref} target="_blank" rel="noopener">
           {t('nav.resume')}
         </a>
       </li>

@@ -3,7 +3,8 @@ import tailwind from '@astrojs/tailwind';
 import { defaultLang } from './src/i18n/ui';
 
 export default defineConfig({
-  site: 'https://rdvid.com.br',
+  site: 'https://rdvid.github.io',
+  base: '/aboutme',
   integrations: [tailwind()],
   redirects: {
     '/': `/${defaultLang}`,
