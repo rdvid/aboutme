@@ -8,6 +8,6 @@ import tailwind from '@astrojs/tailwind';
  */
 export default defineConfig({
   site: 'https://me.rdvid.online',
-  base: '/aboutme',
+  base: '/',
   integrations: [tailwind()],
 });
