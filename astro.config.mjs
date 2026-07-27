@@ -7,7 +7,7 @@ import tailwind from '@astrojs/tailwind';
  * Host-root URLs (rdvid.github.io/, /en/) need root-redirects/ as a user site.
  */
 export default defineConfig({
-  site: 'https://rdvid.github.io',
+  site: 'https://me.rdvid.online',
   base: '/aboutme',
   integrations: [tailwind()],
 });
