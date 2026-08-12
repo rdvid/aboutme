@@ -1,8 +1,8 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { site } from '../data/site';
-import type { Lang } from '../i18n/ui';
-import { pathFor, useTranslations } from '../i18n/utils';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+import type { Lang } from "../i18n/ui";
+import { pathFor, useTranslations } from "../i18n/utils";
 
 interface Props {
   lang: Lang;
@@ -13,25 +13,35 @@ const t = useTranslations(lang);
 ---
 
 <BaseLayout lang={lang}>
-  <section class="grid items-center gap-10 py-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:py-16">
+  <section
+    class="grid items-center gap-10 py-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:py-16"
+  >
     <div>
-      <p class="mb-3 font-display text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+      <p
+        class="mb-3 font-display text-sm font-semibold uppercase tracking-[0.2em] text-primary"
+      >
         {site.title}
       </p>
-      <h1 class="font-display text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-        {t('home.headline')}
+      <h1
+        class="font-display text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
+      >
+        {t("home.headline")}
       </h1>
       <p class="mt-5 max-w-xl text-lg leading-relaxed text-base-content/75">
-        {t('home.lead')}
+        {t("home.lead")}
       </p>
       <div class="mt-8 flex flex-wrap gap-3">
-        <a class="btn btn-primary" href={pathFor(lang, '/about')}>{t('home.cta.about')}</a>
-        <a class="btn btn-outline" href={pathFor(lang, '/blog')}>{t('home.cta.blog')}</a>
+        <a class="btn btn-primary" href={pathFor(lang, "/about")}
+          >{t("home.cta.about")}</a
+        >
+        <a class="btn btn-outline" href={pathFor(lang, "/blog")}
+          >{t("home.cta.blog")}</a
+        >
       </div>
     </div>
     <img
-      src="https://f005.backblazeb2.com/file/debbuggers/picofme%20(1).png"
-      alt={t('home.portraitAlt')}
+      src="https://avatars.githubusercontent.com/u/60834135"
+      alt={t("home.portraitAlt")}
       width="420"
       height="420"
       class="mx-auto w-full max-w-sm rounded-2xl object-cover shadow-xl lg:max-w-md"
