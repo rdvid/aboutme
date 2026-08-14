@@ -11,4 +11,7 @@ export default defineConfig({
     host: true,
     port: 4321,
   },
+  server: {
+    allowedHosts: ['blog.homelab'],
+  },
 });
