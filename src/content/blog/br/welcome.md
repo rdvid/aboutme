@@ -2,7 +2,10 @@
 title: Bem-vindo ao novo site
 description: Uma configuração simples em Astro para um site pessoal e blog no GitHub Pages.
 pubDate: 2026-07-13
-tags: [astro, meta]
+draft: false
+tags:
+  - astro
+  - meta
 lang: br
 ---
 
