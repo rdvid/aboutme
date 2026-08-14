@@ -1,0 +1,15 @@
+.git
+.github
+.astro
+.vscode
+dist
+node_modules
+decap-oauth-worker
+npm-debug.log*
+.env
+.env.*
+*.md
+.DS_Store
+Dockerfile
+docker-compose.yml
+.dockerignore
