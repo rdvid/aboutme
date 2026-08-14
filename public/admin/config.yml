@@ -4,7 +4,6 @@ backend:
   name: github
   repo: rdvid/aboutme
   branch: v2
-  base_url: https://me-auth.rdvid.online
 
 site_url: https://me.rdvid.online
 display_url: https://me.rdvid.online
