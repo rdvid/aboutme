@@ -1,6 +1,5 @@
 import { defaultLang, languages, ui, type Lang, type UiKey } from './ui';
 
-/** Always `/aboutme/`-style, with a trailing slash. */
 function baseUrl(): string {
   const base = import.meta.env.BASE_URL || '/';
   return base.endsWith('/') ? base : `${base}/`;
@@ -12,7 +11,7 @@ function baseSegment(): string {
 
 function withBase(path: string): string {
   const base = baseUrl().replace(/\/$/, '');
-  if (!path || path === '/') return `${base}/`;
+  if (!path || path === '/') return base ? `${base}/` : '/';
   const normalized = path.startsWith('/') ? path : `/${path}`;
   return `${base}${normalized}`;
 }
@@ -21,7 +20,7 @@ export function isLang(value: string): value is Lang {
   return value in languages;
 }
 
-/** Path segments after the project base (`aboutme`). */
+/** Path segments after an optional project base path. */
 export function pathSegments(pathname: string): string[] {
   const segments = pathname.split('/').filter(Boolean);
   const base = baseSegment();
@@ -42,9 +41,9 @@ export function useTranslations(lang: Lang) {
 }
 
 /**
- * Localized path (respects `base: /aboutme`).
- * English (default): `/aboutme/blog`
- * Portuguese: `/aboutme/br/blog`
+ * Localized path.
+ * English (default): `/about`, `/blog`
+ * Portuguese: `/br/about`, `/br/blog`
  */
 export function pathFor(lang: Lang, path = ''): string {
   const normalized = path === '/' ? '' : path.replace(/\/$/, '');

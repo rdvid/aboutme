@@ -2,7 +2,10 @@
 title: Ensinando backend com Node.js
 description: Notas de mentoria com novos desenvolvedores sobre APIs Express e hábitos práticos de backend.
 pubDate: 2026-06-01
-tags: [nodejs, teaching]
+draft: false
+tags:
+  - nodejs
+  - teaching
 lang: br
 ---
 

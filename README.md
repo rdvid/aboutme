@@ -26,14 +26,7 @@ This repository **is** the portifoly surface: a personal website and Markdown bl
 
 It started as a learning playground for Astro SSG. The current version (v2) keeps that spirit but treats the site itself as a product: clearer architecture, bilingual UX where it matters (`en` + `br`), and a publish flow that fits GitHub Pages without ceremony.
 
-Live on GitHub Pages: [rdvid.github.io/aboutme](https://rdvid.github.io/aboutme/) (`base: /aboutme`).
-
-| URL | Behavior |
-|-----|----------|
-| `…/aboutme/` | English home |
-| `…/aboutme/br/` | Portuguese home |
-| `…/aboutme/en/…` | Redirects to the same path without `/en` |
-| `rdvid.github.io/` and `…/en/` | Need the user-site kit in `root-redirects/` (project Pages cannot serve the host root) |
+Live on GitHub Pages: [rdvid.github.io/aboutme](https://rdvid.github.io/aboutme) (`base: /aboutme`).
 
 ### Technologies used
 - **Astro 5** — static output, file-based routing, content collections

@@ -1,0 +1,41 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+backend:
+  name: github
+  repo: rdvid/aboutme
+  branch: v2
+  base_url: https://me-auth.rdvid.online
+
+site_url: https://me.rdvid.online
+display_url: https://me.rdvid.online
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+output:
+  omit_empty_optional_fields: true
+
+i18n:
+  structure: multiple_folders
+  locales: [en, br]
+  default_locale: en
+
+collections:
+  - name: blog
+    label: Blog
+    label_singular: Post
+    folder: src/content/blog
+    create: true
+    extension: md
+    format: frontmatter
+    slug: '{{slug}}'
+    i18n: true
+    fields:
+      - { name: title, label: Title, widget: string, i18n: true }
+      - { name: description, label: Description, widget: text, i18n: true }
+      - { name: pubDate, label: Published, widget: datetime, type: date, i18n: true }
+      - { name: updatedDate, label: Updated, widget: datetime, type: date, required: false, i18n: true }
+      - { name: draft, label: Draft, widget: boolean, default: false, i18n: true }
+      - { name: tags, label: Tags, widget: list, default: [], i18n: true }
+      - { name: lang, label: Language, widget: hidden, default: '{{locale}}', i18n: true }
+      - { name: body, label: Content, widget: richtext, i18n: true }
