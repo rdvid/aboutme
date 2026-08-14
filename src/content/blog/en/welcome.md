@@ -2,7 +2,10 @@
 title: Welcome to the new site
 description: A simpler Astro setup for a personal site and blog on GitHub Pages.
 pubDate: 2026-07-13
-tags: [astro, meta]
+draft: false
+tags:
+  - astro
+  - meta
 lang: en
 ---
 
