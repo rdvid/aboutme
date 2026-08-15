@@ -9,6 +9,8 @@ tags:
 lang: en
 ---
 
+![Image of a Sorcerer with Red Fox](https://cdn.rdvid.online/images/_24395a01-bdfc-4c4a-8d97-69e15cf91eae.jpg "Sorcerer with Firefox")
+
 At Cubos Academy I spend a lot of time helping people go from “I can write JavaScript” to “I can ship a small API.”
 
 A few habits that help early on:
