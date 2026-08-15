@@ -1,5 +1,5 @@
 ---
-title: Teaching backend with Node.js
+title: Teaching backend with Node.js (das)
 description: Notes from mentoring new developers on Express APIs and practical backend habits.
 pubDate: 2026-06-01
 draft: false
