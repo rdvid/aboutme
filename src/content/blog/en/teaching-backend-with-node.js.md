@@ -1,5 +1,5 @@
 ---
-title: Teaching backend with Node.js
+title: Teaching backend with Node.js (das)
 description: Notes from mentoring new developers on Express APIs and practical backend habits.
 pubDate: 2026-06-01
 draft: false
@@ -8,6 +8,8 @@ tags:
   - teaching
 lang: en
 ---
+
+![Image of A Sorcerer with a Fox](https://cdn.rdvid.online/images/_24395a01-bdfc-4c4a-8d97-69e15cf91eae.jpg "A Sorcerer with a Fox")
 
 At Cubos Academy I spend a lot of time helping people go from “I can write JavaScript” to “I can ship a small API.”
 
