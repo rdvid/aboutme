@@ -10,9 +10,10 @@ interface Props {
   lang: Lang;
   title?: string;
   description?: string;
+  mainClass?: string;
 }
 
-const { lang, title, description } = Astro.props;
+const { lang, title, description, mainClass = 'max-w-5xl' } = Astro.props;
 const t = useTranslations(lang);
 const pageDescription = description ?? t('site.description');
 const pageTitle = title ? `${title} · ${site.title}` : site.title;
@@ -36,7 +37,7 @@ const pageTitle = title ? `${title} · ${site.title}` : site.title;
   </head>
   <body class="flex min-h-screen flex-col bg-base-100 font-sans text-base-content antialiased">
     <Header lang={lang} />
-    <main class="mx-auto w-full max-w-5xl flex-1 px-4 py-10 sm:px-6 lg:px-8">
+    <main class:list={['mx-auto w-full flex-1 px-4 py-10 sm:px-6 lg:px-8', mainClass]}>
       <slot />
     </main>
     <Footer lang={lang} />

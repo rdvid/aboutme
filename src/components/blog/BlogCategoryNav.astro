@@ -1,0 +1,49 @@
+---
+interface Props {
+  categories: string[];
+  counts: Record<string, number>;
+  allLabel: string;
+}
+
+const { categories, counts, allLabel } = Astro.props;
+---
+
+<div class="border-y border-base-300 bg-base-100/70 py-4 backdrop-blur-md lg:rounded-box lg:border lg:p-4 lg:shadow-sm">
+  <p class="mb-3 px-1 font-display text-[11px] font-semibold uppercase tracking-[0.18em] text-base-content/60">
+    <slot name="label" />
+  </p>
+  <nav
+    id="blog-category-nav"
+    aria-label="Blog categories"
+    class="flex gap-2 overflow-x-auto pb-2 lg:flex-col lg:gap-1 lg:overflow-visible lg:pb-0"
+  >
+    {
+      categories.map((item, index) => {
+        const isActive = index === 0;
+        const count = counts[item] ?? 0;
+        return (
+          <button
+            type="button"
+            data-category={item}
+            aria-pressed={isActive ? 'true' : 'false'}
+            class:list={[
+              'btn h-10 shrink-0 justify-between rounded-selector px-4 lg:w-full',
+              isActive ? 'btn-neutral' : 'btn-ghost',
+            ]}
+          >
+            <span>{item}</span>
+            <span
+              class:list={[
+                'ml-3 text-xs',
+                isActive ? 'text-neutral-content/70' : 'text-base-content/60',
+              ]}
+            >
+              {count}
+            </span>
+          </button>
+        );
+      })
+    }
+  </nav>
+  <slot name="footer" />
+</div>

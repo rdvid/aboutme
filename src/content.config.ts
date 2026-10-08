@@ -1,5 +1,5 @@
 import { defineCollection } from 'astro:content';
-import { z } from 'astro/zod'
+import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 
 const blog = defineCollection({
@@ -12,6 +12,10 @@ const blog = defineCollection({
     draft: z.boolean().default(false),
     tags: z.array(z.string()).default([]),
     lang: z.enum(['en', 'br']),
+    category: z.string().optional(),
+    heroImage: z.string().optional(),
+    readTimeMinutes: z.number().optional(),
+    reads: z.number().optional(),
   }),
 });
 

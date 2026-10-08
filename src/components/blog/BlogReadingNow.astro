@@ -1,0 +1,24 @@
+---
+import type { Lang } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+{
+  import.meta.env.DEV && (
+    <div class="mt-4 hidden border-t border-base-300 pt-4 lg:block">
+      <p class="mb-2 font-display text-[11px] font-semibold uppercase tracking-[0.18em] text-base-content/60">
+        {t('blog.readingNow')}
+      </p>
+      <p class="font-display text-sm font-medium leading-snug">{t('blog.readingNowTitle')}</p>
+      <progress class="progress progress-neutral mt-3 h-1 w-full" value={64} max={100} aria-label="64 percent read" />
+      <p class="mt-2 text-xs text-base-content/60">{t('blog.readingNowProgress')}</p>
+    </div>
+  )
+}

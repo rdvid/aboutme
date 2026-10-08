@@ -1,8 +1,13 @@
 ---
-import { getCollection } from 'astro:content';
+import { getBlogPosts, postCategory, collectCategories, categoryCount, estimateReadTimeMinutes, formatReadTime, formatShortDate, formatDate } from '../lib/blog';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogIndexLayout from '../components/blog/BlogIndexLayout.astro';
+import BlogCategoryNav from '../components/blog/BlogCategoryNav.astro';
+import BlogReadingNow from '../components/blog/BlogReadingNow.astro';
+import BlogFeaturedCard from '../components/blog/BlogFeaturedCard.astro';
+import BlogRecentList from '../components/blog/BlogRecentList.astro';
 import type { Lang } from '../i18n/ui';
-import { formatDate, pathFor, postSlug, useTranslations } from '../i18n/utils';
+import { pathFor, postSlug, useTranslations } from '../i18n/utils';
 
 interface Props {
   lang: Lang;
@@ -10,41 +15,226 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const allLabel = t('blog.allNotes');
 
-const posts = (
-  await getCollection('blog', ({ data }) => !data.draft && data.lang === lang)
-).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const posts = await getBlogPosts(lang);
+
+const viewPosts = posts.map((post) => ({
+  id: postSlug(post.id),
+  href: pathFor(lang, `/blog/${postSlug(post.id)}`),
+  category: postCategory(post),
+  title: post.data.title,
+  description: post.data.description,
+  dateShort: formatShortDate(post.data.pubDate, lang),
+  dateIso: post.data.pubDate.toISOString(),
+  dateLong: formatDate(post.data.pubDate, lang),
+  readTimeMinutes: estimateReadTimeMinutes(post.body, post.data.readTimeMinutes),
+  reads: post.data.reads,
+  draft: post.data.draft,
+  heroImage: post.data.heroImage,
+}));
+
+const categories = collectCategories(posts, allLabel);
+const counts = Object.fromEntries(
+  categories.map((category) => [category, categoryCount(posts, category, allLabel)]),
+);
+
+const featured = viewPosts[0];
+const recent = viewPosts.slice(1).map((post) => ({
+  ...post,
+  readTime: formatReadTime(post.readTimeMinutes, t('blog.minRead')),
+}));
+
+const postsJson = JSON.stringify(viewPosts);
+const labelsJson = JSON.stringify({
+  allLabel,
+  recentNotes: t('blog.recentNotes'),
+  notesCountSuffix: t('blog.notesCount'),
+  featured: t('blog.featured'),
+  readNote: t('blog.readNote'),
+  minRead: t('blog.minRead'),
+  reads: t('blog.reads'),
+  emptyCategory: t('blog.emptyCategory'),
+  draft: t('blog.draft'),
+  showReads: import.meta.env.DEV,
+  showDraft: import.meta.env.DEV,
+});
 ---
 
-<BaseLayout lang={lang} title={t('blog.title')} description={t('blog.description')}>
-  <section>
-    <h1 class="font-display text-4xl font-bold tracking-tight sm:text-5xl">{t('blog.title')}</h1>
-    <p class="mt-4 max-w-2xl text-lg text-base-content/70">{t('blog.lead')}</p>
+<BaseLayout
+  lang={lang}
+  title={t('blog.title')}
+  description={t('blog.description')}
+  mainClass="max-w-[82rem]"
+>
+  <BlogIndexLayout title={t('blog.title')} lead={t('blog.lead')}>
+    <aside slot="aside" class="min-w-0 lg:sticky lg:top-24 lg:self-start">
+      <BlogCategoryNav categories={categories} counts={counts} allLabel={allLabel}>
+        <span slot="label">{t('blog.categories')}</span>
+        <BlogReadingNow slot="footer" lang={lang} />
+      </BlogCategoryNav>
+    </aside>
 
-    <ul class="mt-12 space-y-8">
+    <div slot="main" class="min-w-0">
       {
-        posts.map((post) => {
-          const href = pathFor(lang, `/blog/${postSlug(post.id)}`);
-          return (
-            <li class="border-b border-base-300 pb-8 last:border-b-0">
-              <p class="mb-2 text-sm text-base-content/60">
-                <time datetime={post.data.pubDate.toISOString()}>
-                  {formatDate(post.data.pubDate, lang)}
-                </time>
-              </p>
-              <h2 class="font-display text-2xl font-semibold">
-                <a class="hover:opacity-70" href={href}>
-                  {post.data.title}
-                </a>
-              </h2>
-              <p class="mt-2 text-base-content/75">{post.data.description}</p>
-              <a class="link link-hover mt-3 inline-block text-sm" href={href}>
-                {t('blog.read')}
-              </a>
-            </li>
-          );
-        })
+        featured && (
+          <BlogFeaturedCard
+            lang={lang}
+            href={featured.href}
+            category={featured.category}
+            title={featured.title}
+            description={featured.description}
+            dateLong={featured.dateLong}
+            dateIso={featured.dateIso}
+            readTime={formatReadTime(featured.readTimeMinutes, t('blog.minRead'))}
+            heroImage={featured.heroImage}
+            draft={featured.draft}
+          />
+        )
       }
-    </ul>
-  </section>
+
+      <BlogRecentList
+        lang={lang}
+        posts={recent}
+        sectionTitle={t('blog.recentNotes')}
+        notesCount={viewPosts.length}
+        emptyMessage={t('blog.emptyCategory')}
+      />
+    </div>
+  </BlogIndexLayout>
 </BaseLayout>
+
+<script define:vars={{ postsJson, labelsJson }}>
+  const posts = JSON.parse(postsJson);
+  const labels = JSON.parse(labelsJson);
+
+  const nav = document.getElementById('blog-category-nav');
+  const featuredEl = document.getElementById('blog-featured');
+  const featuredTitle = document.getElementById('blog-featured-title');
+  const featuredDescription = document.getElementById('blog-featured-description');
+  const featuredReadTime = document.getElementById('blog-featured-read-time');
+  const featuredLink = document.getElementById('blog-featured-link');
+  const featuredImage = document.getElementById('blog-featured-image');
+  const featuredFallback = document.getElementById('blog-featured-image-fallback');
+  const sectionTitle = document.getElementById('blog-section-title');
+  const sectionCount = document.getElementById('blog-section-count');
+  const listEl = document.getElementById('blog-list');
+
+  function readTimeLabel(minutes) {
+    return `${minutes} ${labels.minRead}`;
+  }
+
+  function setFeatured(post) {
+    if (!featuredEl || !post) {
+      featuredEl?.classList.add('hidden');
+      return;
+    }
+    featuredEl.classList.remove('hidden');
+    if (featuredTitle) {
+      featuredTitle.textContent = post.title;
+      featuredTitle.href = post.href;
+    }
+    if (featuredDescription) featuredDescription.textContent = post.description;
+    if (featuredReadTime) featuredReadTime.textContent = readTimeLabel(post.readTimeMinutes);
+    if (featuredLink) featuredLink.href = post.href;
+    const badgeRow = featuredEl.querySelector('.badge-secondary');
+    if (badgeRow) badgeRow.textContent = post.category;
+    const dateEl = featuredEl.querySelector('time');
+    if (dateEl) {
+      dateEl.dateTime = post.dateIso;
+      dateEl.textContent = post.dateLong;
+    }
+    if (featuredImage && featuredFallback) {
+      if (post.heroImage) {
+        featuredImage.src = post.heroImage;
+        featuredImage.classList.remove('hidden');
+        featuredFallback.classList.add('hidden');
+      } else {
+        featuredImage.removeAttribute('src');
+        featuredImage.classList.add('hidden');
+        featuredFallback.classList.remove('hidden');
+      }
+    }
+  }
+
+  function renderList(items) {
+    if (!listEl) return;
+    listEl.innerHTML = '';
+    if (items.length === 0) {
+      const empty = document.createElement('p');
+      empty.id = 'blog-empty-message';
+      empty.className = 'py-8 text-sm text-base-content/60';
+      empty.textContent = labels.emptyCategory;
+      listEl.appendChild(empty);
+      return;
+    }
+    for (const post of items) {
+      const article = document.createElement('article');
+      article.className =
+        'group grid grid-cols-[4.5rem_minmax(0,1fr)_auto] items-start gap-2 py-5 sm:gap-5';
+      article.dataset.postId = post.id;
+      article.dataset.category = post.category;
+
+      const time = document.createElement('time');
+      time.className = 'pt-1 text-xs tabular-nums text-base-content/60';
+      time.textContent = post.dateShort;
+
+      const body = document.createElement('div');
+      body.className = 'min-w-0';
+      const h3 = document.createElement('h3');
+      h3.className =
+        'text-balance font-display text-base font-medium leading-snug transition-colors group-hover:text-primary';
+      const link = document.createElement('a');
+      link.className = 'hover:opacity-90';
+      link.href = post.href;
+      link.textContent = post.title;
+      if (labels.showDraft && post.draft) {
+        const badge = document.createElement('span');
+        badge.className = 'badge badge-outline badge-sm ml-2 align-middle';
+        badge.textContent = labels.draft;
+        link.appendChild(document.createTextNode(' '));
+        link.appendChild(badge);
+      }
+      h3.appendChild(link);
+      const meta = document.createElement('p');
+      meta.className = 'mt-1 text-xs text-base-content/60';
+      let metaText = `${post.category} · ${readTimeLabel(post.readTimeMinutes)}`;
+      if (labels.showReads && post.reads != null) {
+        metaText += ` · ${post.reads} ${labels.reads}`;
+      }
+      meta.textContent = metaText;
+      body.append(h3, meta);
+
+      article.append(time, body);
+      listEl.appendChild(article);
+    }
+  }
+
+  function applyCategory(category) {
+    const filtered =
+      category === labels.allLabel ? posts : posts.filter((post) => post.category === category);
+    setFeatured(filtered[0]);
+    renderList(filtered.slice(1));
+    if (sectionTitle) {
+      sectionTitle.textContent = category === labels.allLabel ? labels.recentNotes : category;
+    }
+    if (sectionCount) {
+      sectionCount.textContent = `${filtered.length} ${labels.notesCountSuffix}`;
+    }
+    nav?.querySelectorAll('button[data-category]').forEach((button) => {
+      const match = button.getAttribute('data-category') === category;
+      button.setAttribute('aria-pressed', match ? 'true' : 'false');
+      button.classList.toggle('btn-neutral', match);
+      button.classList.toggle('btn-ghost', !match);
+    });
+  }
+
+  nav?.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    const button = target.closest('button[data-category]');
+    if (!button) return;
+    const category = button.getAttribute('data-category');
+    if (category) applyCategory(category);
+  });
+</script>

@@ -1,0 +1,86 @@
+---
+import type { Lang } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/utils';
+
+export interface BlogListItem {
+  id: string;
+  href: string;
+  category: string;
+  title: string;
+  dateShort: string;
+  readTime: string;
+  reads?: number;
+  draft?: boolean;
+}
+
+interface Props {
+  lang: Lang;
+  posts: BlogListItem[];
+  sectionTitle: string;
+  notesCount: number;
+  emptyMessage: string;
+}
+
+const { lang, posts, sectionTitle, notesCount, emptyMessage } = Astro.props;
+const t = useTranslations(lang);
+const showReads = import.meta.env.DEV;
+---
+
+<div class="mt-8 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 border-b border-base-300 pb-3">
+  <h2 class="truncate font-display text-sm font-semibold" id="blog-section-title">
+    {sectionTitle}
+  </h2>
+  <span class="shrink-0 text-xs text-base-content/60" id="blog-section-count">
+    {notesCount} {t('blog.notesCount')}
+  </span>
+</div>
+
+<div class="divide-y divide-base-300" id="blog-list" aria-live="polite">
+  {
+    posts.length > 0 ? (
+      posts.map((post) => (
+        <article
+          class="group grid grid-cols-[4.5rem_minmax(0,1fr)_auto] items-start gap-2 py-5 sm:gap-5"
+          data-post-id={post.id}
+          data-category={post.category}
+        >
+          <time class="pt-1 text-xs tabular-nums text-base-content/60">{post.dateShort}</time>
+          <div class="min-w-0">
+            <h3 class="text-balance font-display text-base font-medium leading-snug transition-colors group-hover:text-primary">
+              <a class="hover:opacity-90" href={post.href}>
+                {post.title}
+                {post.draft && import.meta.env.DEV && (
+                  <span class="badge badge-outline badge-sm ml-2 align-middle">{t('blog.draft')}</span>
+                )}
+              </a>
+            </h3>
+            <p class="mt-1 text-xs text-base-content/60">
+              {post.category} · {post.readTime}
+              {showReads && post.reads != null && (
+                <>
+                  {' '}
+                  · {post.reads} {t('blog.reads')}
+                </>
+              )}
+            </p>
+          </div>
+          <svg
+            xmlns="https://www.w3.org/2000/svg"
+            class="mt-1 hidden size-4 shrink-0 text-base-content/60 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 sm:block"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M7 17L17 7M17 7H7M17 7V17" />
+          </svg>
+        </article>
+      ))
+    ) : (
+      <p class="py-8 text-sm text-base-content/60" id="blog-empty-message">
+        {emptyMessage}
+      </p>
+    )
+  }
+</div>

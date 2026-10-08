@@ -2,6 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import type { Lang } from '../i18n/ui';
 import { formatDate, pathFor, useTranslations } from '../i18n/utils';
+import { formatReadTime } from '../lib/blog';
 
 interface Props {
   lang: Lang;
@@ -10,27 +11,72 @@ interface Props {
   pubDate: Date;
   updatedDate?: Date;
   tags?: string[];
+  category?: string;
+  heroImage?: string;
+  readTimeMinutes?: number;
+  draft?: boolean;
 }
 
-const { lang, title, description, pubDate, updatedDate, tags = [] } = Astro.props;
+const {
+  lang,
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  tags = [],
+  category,
+  heroImage,
+  readTimeMinutes,
+  draft = false,
+} = Astro.props;
 const t = useTranslations(lang);
+const readTime =
+  readTimeMinutes != null ? formatReadTime(readTimeMinutes, t('blog.minRead')) : undefined;
 ---
 
-<BaseLayout lang={lang} title={title} description={description}>
+<BaseLayout lang={lang} title={title} description={description} mainClass="max-w-[82rem]">
   <article class="mx-auto max-w-3xl">
+    {
+      heroImage && (
+        <div class="mb-8 overflow-hidden rounded-box border border-base-300">
+          <img
+            src={heroImage}
+            alt=""
+            width={1080}
+            height={720}
+            class="aspect-[16/10] w-full object-cover"
+            loading="eager"
+          />
+        </div>
+      )
+    }
+
     <header class="mb-10 border-b border-base-300 pb-8">
-      <p class="mb-3 text-sm uppercase tracking-wide text-base-content/60">
-        <time datetime={pubDate.toISOString()}>{formatDate(pubDate, lang)}</time>
+      <div class="mb-3 flex flex-wrap items-center gap-2 text-xs">
         {
-          updatedDate && (
-            <>
-              {' '}
-              · {t('blog.updated')}{' '}
-              <time datetime={updatedDate.toISOString()}>{formatDate(updatedDate, lang)}</time>
-            </>
+          category && (
+            <span class="badge badge-secondary rounded-selector font-medium">{category}</span>
           )
         }
-      </p>
+        {
+          draft && import.meta.env.DEV && (
+            <span class="badge badge-outline rounded-selector">{t('blog.draft')}</span>
+          )
+        }
+        <p class="text-sm uppercase tracking-wide text-base-content/60">
+          <time datetime={pubDate.toISOString()}>{formatDate(pubDate, lang)}</time>
+          {
+            updatedDate && (
+              <>
+                {' '}
+                · {t('blog.updated')}{' '}
+                <time datetime={updatedDate.toISOString()}>{formatDate(updatedDate, lang)}</time>
+              </>
+            )
+          }
+          {readTime && <> · {readTime}</>}
+        </p>
+      </div>
       <h1 class="font-display text-4xl font-bold tracking-tight sm:text-5xl">{title}</h1>
       <p class="mt-4 text-lg text-base-content/70">{description}</p>
       {
