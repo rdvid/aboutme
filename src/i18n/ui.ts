@@ -60,10 +60,10 @@ export const ui = {
     'projects.docs': 'Docs',
     'projects.demo': 'Live demo',
 
-    'blog.title': 'Blog',
-    'blog.lead': 'Writing about backend work, teaching, and things I learn along the way.',
+    'blog.title': 'Lab Letters',
+    'blog.lead': 'Experiments, ideas, and things along the way.',
     'blog.description':
-      'Notes on software development, teaching, and building on the web.',
+      'A personal space to share things I build, ideas I explore, and thoughts I collect along the way. From software and side projects to business, philosophy, and everything in between.',
     'blog.read': 'Read post →',
     'blog.readNote': 'Read the note',
     'blog.back': '← Back to blog',
@@ -131,7 +131,7 @@ export const ui = {
     'projects.docs': 'Docs',
     'projects.demo': 'Demo ao vivo',
 
-    'blog.title': 'Blog',
+    'blog.title': 'Cartas do Laboratório',
     'blog.lead': 'Escrevo sobre backend, ensino e o que aprendo pelo caminho.',
     'blog.description':
       'Notas sobre desenvolvimento de software, ensino e construção na web.',
