@@ -1,0 +1,165 @@
+---
+import type { Lang } from '../../i18n/ui';
+import type { PortfolioProject } from '../../lib/projects.types';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  projects: PortfolioProject[];
+  coverPlaceholder: string;
+}
+
+const { lang, projects, coverPlaceholder } = Astro.props;
+const t = useTranslations(lang);
+
+const modalPayload = projects.map((p) => ({
+  slug: p.slug,
+  title: p.title,
+  description: p.description[lang],
+  coverUrl: p.coverUrl,
+  badges: p.badges,
+  repositoryUrl: p.repositoryUrl,
+  underDevelopment: p.underDevelopment,
+  docUrl: p.docUrl ?? null,
+  liveDemoUrl: p.liveDemoUrl ?? null,
+  stars: p.stars,
+  bodyHtml: p.bodyHtml,
+}));
+
+const labels = {
+  statusDev: t('projects.status.dev'),
+  statusReady: t('projects.status.ready'),
+  repo: t('projects.repo'),
+  docs: t('projects.docs'),
+  demo: t('projects.demo'),
+  close: t('projects.close'),
+  stars: t('projects.stars'),
+  coverPlaceholder,
+  noCover: t('projects.noCover'),
+};
+---
+
+<dialog id="project-detail-modal" class="modal">
+  <div class="modal-box max-h-[90vh] max-w-3xl overflow-y-auto p-0">
+    <figure class="relative aspect-[16/10] w-full overflow-hidden bg-base-200">
+      <img
+        id="project-modal-cover"
+        src=""
+        alt=""
+        width="960"
+        height="600"
+        class="h-full w-full object-cover"
+      />
+    </figure>
+    <div class="p-6">
+      <div class="mb-3 flex flex-wrap items-center gap-2">
+        <span id="project-modal-status" class="badge badge-outline"></span>
+        <span id="project-modal-stars" class="text-sm text-base-content/60"></span>
+      </div>
+      <h2 id="project-modal-title" class="font-display text-2xl font-semibold"></h2>
+      <p id="project-modal-description" class="mt-2 text-base-content/75"></p>
+      <ul id="project-modal-badges" class="mt-4 flex flex-wrap gap-2"></ul>
+      <div
+        id="project-modal-body"
+        class="prose mt-6 max-w-none empty:hidden"
+      ></div>
+      <div id="project-modal-links" class="mt-6 flex flex-wrap gap-2"></div>
+    </div>
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-3 top-3 bg-base-100/80" aria-label={t('projects.close')}>
+        ✕
+      </button>
+    </form>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button aria-label={t('projects.close')}>{t('projects.close')}</button>
+  </form>
+</dialog>
+
+<script define:vars={{ modalPayload, labels }}>
+  function initProjectModal() {
+    const dialog = document.getElementById('project-detail-modal');
+    if (!dialog) return;
+
+    const projects = modalPayload;
+    const bySlug = new Map(projects.map((p) => [p.slug, p]));
+
+    const cover = document.getElementById('project-modal-cover');
+    const status = document.getElementById('project-modal-status');
+    const stars = document.getElementById('project-modal-stars');
+    const title = document.getElementById('project-modal-title');
+    const description = document.getElementById('project-modal-description');
+    const badges = document.getElementById('project-modal-badges');
+    const body = document.getElementById('project-modal-body');
+    const links = document.getElementById('project-modal-links');
+
+    function openProject(slug) {
+      const project = bySlug.get(slug);
+      if (!project || !cover || !status || !stars || !title || !description || !badges || !body || !links) {
+        return;
+      }
+
+      cover.src = project.coverUrl;
+      cover.alt = project.title;
+      cover.onerror = () => {
+        cover.onerror = null;
+        cover.src = labels.coverPlaceholder;
+      };
+
+      status.textContent = project.underDevelopment ? labels.statusDev : labels.statusReady;
+      status.className = project.underDevelopment
+        ? 'badge badge-warning badge-outline'
+        : 'badge badge-success badge-outline';
+
+      stars.textContent =
+        project.stars > 0 ? `${project.stars} ${labels.stars}` : '';
+
+      title.textContent = project.title;
+      description.textContent = project.description;
+
+      badges.replaceChildren(
+        ...project.badges.map((badge) => {
+          const li = document.createElement('li');
+          li.className = 'badge badge-neutral badge-sm';
+          li.textContent = badge;
+          return li;
+        }),
+      );
+
+      body.innerHTML = project.bodyHtml || '';
+      body.classList.toggle('hidden', !project.bodyHtml);
+
+      links.replaceChildren();
+      const addLink = (href, text, className) => {
+        const a = document.createElement('a');
+        a.href = href;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.className = className;
+        a.textContent = text;
+        links.appendChild(a);
+      };
+
+      addLink(project.repositoryUrl, labels.repo, 'btn btn-sm btn-outline');
+      if (project.docUrl) addLink(project.docUrl, labels.docs, 'btn btn-sm btn-ghost');
+      if (project.liveDemoUrl) addLink(project.liveDemoUrl, labels.demo, 'btn btn-sm btn-primary');
+
+      dialog.showModal();
+    }
+
+    if (dialog.dataset.bound === 'true') return;
+    dialog.dataset.bound = 'true';
+
+    document.addEventListener('click', (e) => {
+      const trigger = e.target.closest('[data-project-open]');
+      if (!trigger) return;
+      const slug = trigger.getAttribute('data-project-open');
+      if (!slug) return;
+      e.preventDefault();
+      openProject(slug);
+    });
+  }
+
+  initProjectModal();
+  document.addEventListener('astro:page-load', initProjectModal);
+</script>

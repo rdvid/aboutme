@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import { projects } from '../data/projects';
+import ProjectDetailModal from '../components/projects/ProjectDetailModal.astro';
+import { loadPortfolioProjects } from '../lib/projects';
 import type { Lang } from '../i18n/ui';
-import { useTranslations } from '../i18n/utils';
+import { assetPath, useTranslations } from '../i18n/utils';
 
 interface Props {
   lang: Lang;
@@ -11,14 +12,28 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const projects = await loadPortfolioProjects();
+const coverPlaceholder = assetPath('project-cover-placeholder.svg');
 ---
 
 <BaseLayout lang={lang} title={t('projects.title')} description={t('projects.description')}>
   <section>
+    <p class="mb-2 text-sm font-medium uppercase tracking-wider text-primary">{t('projects.pinnedNote')}</p>
     <h1 class="font-display text-4xl font-bold tracking-tight sm:text-5xl">{t('projects.title')}</h1>
     <p class="mt-4 max-w-2xl text-lg text-base-content/70">{t('projects.lead')}</p>
-    <div class="mt-4">
-      {projects.map((project) => <ProjectCard project={project} lang={lang} />)}
-    </div>
+    {
+      projects.length === 0 ? (
+        <p class="mt-10 text-base-content/70">{t('projects.empty')}</p>
+      ) : (
+        <div class="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+          {projects.map((project) => (
+            <ProjectCard project={project} lang={lang} coverPlaceholder={coverPlaceholder} />
+          ))}
+        </div>
+      )
+    }
   </section>
+  {projects.length > 0 && (
+    <ProjectDetailModal lang={lang} projects={projects} coverPlaceholder={coverPlaceholder} />
+  )}
 </BaseLayout>

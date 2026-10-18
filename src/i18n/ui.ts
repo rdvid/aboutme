@@ -52,13 +52,19 @@ export const ui = {
 
     'projects.title': 'Projects',
     'projects.lead':
-      "A selection of APIs, frontends, and experiments I've built while learning and shipping.",
+      'Pinned on GitHub — APIs, frontends, and experiments I am actively showcasing.',
     'projects.description': 'Selected projects by Rafael David.',
     'projects.status.dev': 'In development',
     'projects.status.ready': 'Available',
     'projects.repo': 'Repository',
     'projects.docs': 'Docs',
     'projects.demo': 'Live demo',
+    'projects.details': 'Details',
+    'projects.close': 'Close',
+    'projects.stars': 'stars',
+    'projects.noCover': 'No cover image',
+    'projects.pinnedNote': 'Pinned on GitHub',
+    'projects.empty': 'No pinned projects loaded. Try again after the next deploy.',
 
     'blog.title': 'Lab Letters',
     'blog.lead': 'Experiments, ideas, and things along the way.',
@@ -123,13 +129,19 @@ export const ui = {
 
     'projects.title': 'Projetos',
     'projects.lead':
-      'Uma seleção de APIs, frontends e experimentos que construí enquanto aprendia e entregava.',
+      'Fixados no GitHub — APIs, frontends e experimentos que estou destacando agora.',
     'projects.description': 'Projetos selecionados de Rafael David.',
     'projects.status.dev': 'Em desenvolvimento',
     'projects.status.ready': 'Disponível',
     'projects.repo': 'Repositório',
     'projects.docs': 'Docs',
     'projects.demo': 'Demo ao vivo',
+    'projects.details': 'Detalhes',
+    'projects.close': 'Fechar',
+    'projects.stars': 'estrelas',
+    'projects.noCover': 'Sem imagem de capa',
+    'projects.pinnedNote': 'Fixado no GitHub',
+    'projects.empty': 'Nenhum projeto fixado carregado. Tente de novo após o próximo deploy.',
 
     'blog.title': 'Cartas do Laboratório',
     'blog.lead': 'Escrevo sobre backend, ensino e o que aprendo pelo caminho.',

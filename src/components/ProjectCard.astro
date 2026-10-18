@@ -1,65 +1,86 @@
 ---
-import type { Project } from '../data/projects';
+import type { PortfolioProject } from '../lib/projects.types';
 import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/utils';
 
 interface Props {
-  project: Project;
+  project: PortfolioProject;
   lang: Lang;
+  coverPlaceholder: string;
 }
 
-const { project, lang } = Astro.props;
+const { project, lang, coverPlaceholder } = Astro.props;
 const t = useTranslations(lang);
-const { title, description, imageUrl, badges, repositoryUrl, underDevelopment, docUrl, liveDemoUrl } =
-  project;
+const {
+  slug,
+  title,
+  description,
+  coverUrl,
+  badges,
+  repositoryUrl,
+  underDevelopment,
+  stars,
+} = project;
 ---
 
-<article class="flex flex-col gap-5 border-b border-base-300 py-8 last:border-b-0 sm:flex-row sm:gap-8">
-  <img
-    src={imageUrl}
-    alt={`${title} preview`}
-    width="240"
-    height="180"
-    loading="lazy"
-    class="h-40 w-full rounded-lg object-cover sm:h-36 sm:w-56 sm:shrink-0"
-  />
-  <div class="flex flex-1 flex-col">
-    <div class="mb-2 flex flex-wrap items-center gap-3">
-      <h2 class="font-display text-2xl font-semibold">{title}</h2>
+<article
+  class="card card-border bg-base-100 shadow-sm transition-shadow hover:shadow-md"
+>
+  <figure class="aspect-[16/10] overflow-hidden bg-base-200">
+    <img
+      src={coverUrl}
+      alt={title}
+      width="640"
+      height="400"
+      loading="lazy"
+      class="h-full w-full object-cover"
+      data-cover-placeholder={coverPlaceholder}
+      onerror={`this.onerror=null;this.src='${coverPlaceholder}'`}
+    />
+  </figure>
+  <div class="card-body gap-3 p-5">
+    <div class="flex flex-wrap items-center gap-2">
+      <h2 class="card-title font-display text-lg">{title}</h2>
       {
         underDevelopment ? (
-          <span class="badge badge-warning badge-outline">{t('projects.status.dev')}</span>
+          <span class="badge badge-warning badge-outline badge-sm">{t('projects.status.dev')}</span>
         ) : (
-          <span class="badge badge-success badge-outline">{t('projects.status.ready')}</span>
+          <span class="badge badge-success badge-outline badge-sm">{t('projects.status.ready')}</span>
         )
       }
     </div>
-    <p class="mb-4 text-base-content/75">{description[lang]}</p>
-    <ul class="mb-5 flex flex-wrap gap-2">
+    {
+      stars > 0 && (
+        <p class="text-xs text-base-content/60">
+          {stars} {t('projects.stars')}
+        </p>
+      )
+    }
+    <p class="line-clamp-2 text-sm text-base-content/75">{description[lang]}</p>
+    <ul class="flex flex-wrap gap-1.5">
       {
         badges.map((badge) => (
-          <li class="badge badge-neutral badge-sm">{badge}</li>
+          <li class="badge badge-neutral badge-xs">{badge}</li>
         ))
       }
     </ul>
-    <div class="mt-auto flex flex-wrap gap-2">
-      <a class="btn btn-sm btn-outline" href={repositoryUrl} target="_blank" rel="noopener">
+    <div class="card-actions mt-1 flex-wrap items-center justify-between gap-2">
+      <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        data-project-open={slug}
+      >
+        {t('projects.details')}
+      </button>
+      <a
+        class="btn btn-ghost btn-sm"
+        href={repositoryUrl}
+        target="_blank"
+        rel="noopener"
+        aria-label={t('projects.repo')}
+      >
         {t('projects.repo')}
       </a>
-      {
-        docUrl && (
-          <a class="btn btn-sm btn-ghost" href={docUrl} target="_blank" rel="noopener">
-            {t('projects.docs')}
-          </a>
-        )
-      }
-      {
-        liveDemoUrl && (
-          <a class="btn btn-sm btn-primary" href={liveDemoUrl} target="_blank" rel="noopener">
-            {t('projects.demo')}
-          </a>
-        )
-      }
     </div>
   </div>
 </article>

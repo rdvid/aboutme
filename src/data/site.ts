@@ -3,6 +3,7 @@ export const site = {
   title: '</rdvid>',
   author: 'Rafael David',
   url: 'https://rdvid.github.io/aboutme',
+  githubUsername: 'rdvid',
   email: 'mailto:rafael@rdvid.com.br',
   social: {
     github: 'https://github.com/rdvid',

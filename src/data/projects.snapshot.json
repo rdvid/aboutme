@@ -1,0 +1,133 @@
+[
+  {
+    "slug": "fullstack-scrapy",
+    "title": "Fullstack Scrapy",
+    "description": {
+      "en": "Fullstack application to datascrapping Amazon's search page and visualize in web",
+      "br": "Fullstack application to datascrapping Amazon's search page and visualize in web"
+    },
+    "coverUrl": "https://raw.githubusercontent.com/rdvid/fullstack-scrapy/main/public/cover.png",
+    "badges": [
+      "typescript",
+      "api-rest",
+      "docker-compose",
+      "expressjs",
+      "fullstack-development",
+      "jest",
+      "parcel"
+    ],
+    "repositoryUrl": "https://github.com/rdvid/fullstack-scrapy",
+    "underDevelopment": false,
+    "liveDemoUrl": "https://fullstack-scrapy.onrender.com/api-docs",
+    "stars": 0,
+    "bodyHtml": ""
+  },
+  {
+    "slug": "pdv-api-ifood",
+    "title": "Pdv Api Ifood",
+    "description": {
+      "en": "Api for logistical controller developed through a partnership program with IFood",
+      "br": "Api for logistical controller developed through a partnership program with IFood"
+    },
+    "coverUrl": "https://raw.githubusercontent.com/rdvid/pdv-api-ifood/main/public/cover.png",
+    "badges": [
+      "aws-s3",
+      "jest",
+      "nodejs",
+      "postgresql",
+      "typescript",
+      "bcrypt-nodejs"
+    ],
+    "repositoryUrl": "https://github.com/rdvid/pdv-api-ifood",
+    "underDevelopment": false,
+    "liveDemoUrl": "https://concerned-pink-kingfisher.cyclic.app/api-docs",
+    "stars": 4,
+    "bodyHtml": ""
+  },
+  {
+    "slug": "nest-ecommerce-api",
+    "title": "Nest Ecommerce Api",
+    "description": {
+      "en": "Rest-api of a e-store to perform orders, product management and user functionalities",
+      "br": "Rest-api of a e-store to perform orders, product management and user functionalities"
+    },
+    "coverUrl": "https://raw.githubusercontent.com/rdvid/nest-ecommerce-api/main/public/cover.png",
+    "badges": [
+      "typescript",
+      "nest",
+      "postgresql",
+      "docker-compose",
+      "redis"
+    ],
+    "repositoryUrl": "https://github.com/rdvid/nest-ecommerce-api",
+    "underDevelopment": false,
+    "liveDemoUrl": "",
+    "stars": 0,
+    "bodyHtml": ""
+  },
+  {
+    "slug": "react-book",
+    "title": "React Book",
+    "description": {
+      "en": "UI application for flaskbook api.",
+      "br": "UI application for flaskbook api."
+    },
+    "coverUrl": "https://raw.githubusercontent.com/rdvid/react-book/main/public/cover.png",
+    "badges": [
+      "daisyui",
+      "react",
+      "tailwindcss",
+      "typescript",
+      "responsive-design"
+    ],
+    "repositoryUrl": "https://github.com/rdvid/react-book",
+    "underDevelopment": false,
+    "liveDemoUrl": "",
+    "stars": 0,
+    "bodyHtml": ""
+  },
+  {
+    "slug": "django-social-webshare",
+    "title": "Django Social Webshare",
+    "description": {
+      "en": "a social application that will allow users to share images that they find on the internet.",
+      "br": "a social application that will allow users to share images that they find on the internet."
+    },
+    "coverUrl": "https://raw.githubusercontent.com/rdvid/django-social-webshare/main/public/cover.png",
+    "badges": [
+      "django",
+      "python",
+      "css",
+      "docker",
+      "dom-manipulation",
+      "html"
+    ],
+    "repositoryUrl": "https://github.com/rdvid/django-social-webshare",
+    "underDevelopment": false,
+    "liveDemoUrl": "",
+    "stars": 0,
+    "bodyHtml": ""
+  },
+  {
+    "slug": "flask-book",
+    "title": "Flask Book",
+    "description": {
+      "en": "api to send epub and pdf for kindle",
+      "br": "api to send epub and pdf for kindle"
+    },
+    "coverUrl": "https://raw.githubusercontent.com/rdvid/flask-book/main/public/cover.png",
+    "badges": [
+      "python",
+      "python3",
+      "api",
+      "flask",
+      "backend",
+      "microservices"
+    ],
+    "repositoryUrl": "https://github.com/rdvid/flask-book",
+    "underDevelopment": false,
+    "liveDemoUrl": "",
+    "stars": 0,
+    "bodyHtml": ""
+  }
+]
