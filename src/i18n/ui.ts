@@ -65,6 +65,8 @@ export const ui = {
     'projects.noCover': 'No cover image',
     'projects.pinnedNote': 'Pinned on GitHub',
     'projects.empty': 'No pinned projects loaded. Try again after the next deploy.',
+    'projects.ctaAll': 'Browse all repositories',
+    'projects.ctaAllHint': 'Pinned projects are a highlight reel — the full list lives on GitHub.',
 
     'blog.title': 'Lab Letters',
     'blog.lead': 'Experiments, ideas, and things along the way.',
@@ -142,6 +144,8 @@ export const ui = {
     'projects.noCover': 'Sem imagem de capa',
     'projects.pinnedNote': 'Fixado no GitHub',
     'projects.empty': 'Nenhum projeto fixado carregado. Tente de novo após o próximo deploy.',
+    'projects.ctaAll': 'Ver todos os repositórios',
+    'projects.ctaAllHint': 'Os fixados são um recorte — a lista completa está no GitHub.',
 
     'blog.title': 'Cartas do Laboratório',
     'blog.lead': 'Escrevo sobre backend, ensino e o que aprendo pelo caminho.',

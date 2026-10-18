@@ -7,6 +7,7 @@ export const site = {
   email: 'mailto:rafael@rdvid.com.br',
   social: {
     github: 'https://github.com/rdvid',
+    githubRepositories: 'https://github.com/rdvid?tab=repositories',
     linkedin: 'https://www.linkedin.com/in/rdvid/',
   },
   resume: {
