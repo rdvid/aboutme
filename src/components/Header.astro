@@ -1,7 +1,8 @@
 ---
+import LangToggle from './LangToggle.astro';
 import ThemeToggle from './ThemeToggle.astro';
-import { languages, type Lang } from '../i18n/ui';
-import { assetPath, pathFor, switchLangPath, useTranslations } from '../i18n/utils';
+import { type Lang } from '../i18n/ui';
+import { assetPath, pathFor, useTranslations } from '../i18n/utils';
 import { navKeys, site } from '../data/site';
 
 interface Props {
@@ -10,7 +11,6 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-const otherLang = lang === 'en' ? 'br' : 'en';
 const resumeHref = assetPath(site.resume[lang]);
 ---
 
@@ -33,14 +33,7 @@ const resumeHref = assetPath(site.resume[lang]);
     </ul>
 
     <div class="flex items-center gap-2">
-      <a
-        href={switchLangPath(Astro.url.pathname, otherLang)}
-        class="btn btn-ghost btn-sm hidden sm:inline-flex"
-        hreflang={otherLang === 'br' ? 'pt-BR' : 'en'}
-        aria-label={t('nav.lang')}
-      >
-        {otherLang === 'en' ? 'EN' : 'PT'}
-      </a>
+      <LangToggle lang={lang} pathname={Astro.url.pathname} />
       <ThemeToggle />
       <a
         href={resumeHref}
@@ -66,11 +59,6 @@ const resumeHref = assetPath(site.resume[lang]);
           }
           <li>
             <a href={resumeHref} target="_blank" rel="noopener">{t('nav.resume')}</a>
-          </li>
-          <li>
-            <a href={switchLangPath(Astro.url.pathname, otherLang)}>
-              {languages[otherLang]}
-            </a>
           </li>
         </ul>
       </details>

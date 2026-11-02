@@ -65,6 +65,8 @@ Production keeps serving the previous build until the new one is ready. No serve
 
 For projects, copy `.env.example` to `.env` and set **`GH_PAT`** (GitHub PAT with read access to public repos). That avoids unauthenticated API rate limits during `npm run build` / `npm run dev`. CI uses the automatic Actions `GITHUB_TOKEN`. If the API fails, the build falls back to `src/data/projects.snapshot.json` (updated on successful builds).
 
+**Pinned repos on the live site** refresh when `aboutme` deploys: push to **`v2`**, manual *Deploy to GitHub Pages* workflow, or **scheduled cron** (08:00 and 20:00 UTC daily in `.github/workflows/deploy.yml`).
+
 ### Tech nuances worth knowing
 
 - **SSG only** — no adapter, no SSR. Ideal for Pages; every route is HTML at build time.

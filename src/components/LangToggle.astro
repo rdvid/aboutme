@@ -1,0 +1,87 @@
+---
+import type { Lang } from '../i18n/ui';
+import { switchLangPath, useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  pathname: string;
+}
+
+const { lang, pathname } = Astro.props;
+const t = useTranslations(lang);
+const enHref = switchLangPath(pathname, 'en');
+const brHref = switchLangPath(pathname, 'br');
+---
+
+<div
+  class="join join-horizontal rounded-md border border-base-300/80 bg-base-200/40 p-0.5"
+  role="group"
+  aria-label={t('nav.lang')}
+>
+  <a
+    href={enHref}
+    hreflang="en"
+    class:list={[
+      'join-item btn btn-ghost btn-sm btn-square min-h-8 h-8 w-9 border-0 px-0',
+      lang === 'en' && 'btn-active pointer-events-none',
+    ]}
+    aria-current={lang === 'en' ? 'true' : undefined}
+    title="English"
+  >
+    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 16" class="h-3.5 w-5 rounded-sm" aria-hidden="true">
+      <rect width="24" height="16" fill="#b22234"></rect>
+      <path
+        fill="#fff"
+        d="M0 1.23h24v1.23H0zm0 2.46h24v1.23H0zm0 2.46h24v1.23H0zm0 2.46h24v1.23H0zm0 2.46h24v1.23H0zm0 2.46h24v1.23H0zm0 2.46h24v1.23H0z"
+      ></path>
+      <rect width="9.6" height="8.62" fill="#3c3b6e"></rect>
+      <g fill="#fff">
+        <circle cx="1.6" cy="1.4" r="0.45"></circle>
+        <circle cx="3.2" cy="1.4" r="0.45"></circle>
+        <circle cx="4.8" cy="1.4" r="0.45"></circle>
+        <circle cx="6.4" cy="1.4" r="0.45"></circle>
+        <circle cx="8" cy="1.4" r="0.45"></circle>
+        <circle cx="2.4" cy="2.6" r="0.45"></circle>
+        <circle cx="4" cy="2.6" r="0.45"></circle>
+        <circle cx="5.6" cy="2.6" r="0.45"></circle>
+        <circle cx="7.2" cy="2.6" r="0.45"></circle>
+        <circle cx="1.6" cy="3.8" r="0.45"></circle>
+        <circle cx="3.2" cy="3.8" r="0.45"></circle>
+        <circle cx="4.8" cy="3.8" r="0.45"></circle>
+        <circle cx="6.4" cy="3.8" r="0.45"></circle>
+        <circle cx="8" cy="3.8" r="0.45"></circle>
+        <circle cx="2.4" cy="5" r="0.45"></circle>
+        <circle cx="4" cy="5" r="0.45"></circle>
+        <circle cx="5.6" cy="5" r="0.45"></circle>
+        <circle cx="7.2" cy="5" r="0.45"></circle>
+        <circle cx="1.6" cy="6.2" r="0.45"></circle>
+        <circle cx="3.2" cy="6.2" r="0.45"></circle>
+        <circle cx="4.8" cy="6.2" r="0.45"></circle>
+        <circle cx="6.4" cy="6.2" r="0.45"></circle>
+        <circle cx="8" cy="6.2" r="0.45"></circle>
+      </g>
+    </svg>
+  </a>
+  <a
+    href={brHref}
+    hreflang="pt-BR"
+    class:list={[
+      'join-item btn btn-ghost btn-sm btn-square min-h-8 h-8 w-9 border-0 px-0',
+      lang === 'br' && 'btn-active pointer-events-none',
+    ]}
+    aria-current={lang === 'br' ? 'true' : undefined}
+    title="Português"
+  >
+    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 16" class="h-3.5 w-5 rounded-sm" aria-hidden="true">
+      <rect width="24" height="16" fill="#009739"></rect>
+      <polygon points="12,1.5 22.5,8 12,14.5 1.5,8" fill="#ffdf00"></polygon>
+      <circle cx="12" cy="8" r="3.4" fill="#002776"></circle>
+      <path
+        fill="none"
+        stroke="#fff"
+        stroke-width="0.65"
+        d="M9.2 8.3c1.8-0.5 3.6-0.5 5.6 0"
+      ></path>
+    </svg>
+  </a>
+</div>

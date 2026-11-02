@@ -4,6 +4,9 @@ on:
   push:
     branches: [v2]
   workflow_dispatch:
+  # Refresh pinned projects + manifests without a commit to aboutme (GitHub cron may run late).
+  schedule:
+    - cron: '0 9,21 * * *' # 06am and 18pm (UTC-03)
 
 permissions:
   contents: read
