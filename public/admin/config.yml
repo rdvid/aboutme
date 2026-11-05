@@ -13,6 +13,7 @@ media_folder: public/images/uploads
 public_folder: /images/uploads
 
 media_libraries:
+  default: false
   cloudflare_r2:
     access_key_id: "bd7293491cbbab67bb2480387396ce29"
     account_id: "957d61ee42c87670bb64e0b88a312852"
