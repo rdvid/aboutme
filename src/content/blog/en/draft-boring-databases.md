@@ -2,7 +2,7 @@
 title: A small, stubborn argument for boring databases
 description: Choosing known trade-offs over fashionable complexity.
 category: Systems
-heroImage: https://picsum.photos/id/1076/1920/1280.webp
+heroImage: https://cdn.rdvid.online/blog/20261105-3e47e007cb8a.webp
 pubDate: 2026-01-21
 draft: false
 tags:
