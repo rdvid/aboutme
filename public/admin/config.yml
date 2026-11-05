@@ -20,7 +20,7 @@ media_libraries:
     bucket: personal
     prefix: blog/
     force_path_style: true
-    public_url: https://media.rdvid.online
+    public_url: https://cdn.rdvid.online
   all:
     max_file_size: 5242880
     slugify_filename: true
