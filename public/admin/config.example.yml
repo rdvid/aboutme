@@ -1,0 +1,72 @@
+# Copy to config.yml and fill R2 values. Do not commit secrets.
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+backend:
+  name: github
+  repo: rdvid/aboutme
+  branch: v2
+
+site_url: https://me.rdvid.online
+display_url: https://me.rdvid.online
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+media_libraries:
+  aws_s3:
+    endpoint: https://ACCOUNT_ID.r2.cloudflarestorage.com
+    region: auto
+    access_key_id: R2_ACCESS_KEY_ID
+    bucket: rdvid-site-media
+    prefix: blog/
+    force_path_style: true
+    public_url: https://media.rdvid.online
+  all:
+    max_file_size: 5242880
+    slugify_filename: true
+    filename_template: '{{year}}{{month}}{{day}}-{{uuid_short}}'
+    transformations:
+      raster_image:
+        format: webp
+        quality: 85
+        width: 2048
+        height: 2048
+
+output:
+  omit_empty_optional_fields: true
+
+i18n:
+  structure: multiple_folders
+  locales: [en, br]
+  default_locale: en
+
+collections:
+  - name: blog
+    label: Blog
+    label_singular: Post
+    folder: src/content/blog
+    create: true
+    extension: md
+    format: frontmatter
+    slug: '{{slug}}'
+    i18n: true
+    fields:
+      - { name: title, label: Title, widget: string, i18n: true }
+      - { name: description, label: Description, widget: text, i18n: true }
+      - { name: category, label: Category, widget: string, required: false, i18n: true }
+      - name: heroImage
+        label: Cover image
+        widget: image
+        required: false
+        i18n: true
+        media_libraries:
+          aws_s3: {}
+          default: false
+      - { name: pubDate, label: Published, widget: datetime, type: date, i18n: true }
+      - { name: updatedDate, label: Updated, widget: datetime, type: date, required: false, i18n: true }
+      - { name: draft, label: Draft, widget: boolean, default: false, i18n: true }
+      - { name: tags, label: Tags, widget: list, default: [], i18n: true }
+      - { name: readTimeMinutes, label: Read time (minutes), widget: number, required: false, i18n: true }
+      - { name: reads, label: Reads, widget: number, required: false, i18n: true }
+      - { name: lang, label: Language, widget: hidden, default: '{{locale}}', i18n: true }
+      - { name: body, label: Content, widget: richtext, i18n: true }

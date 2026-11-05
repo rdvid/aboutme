@@ -1,4 +1,5 @@
 # yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+# R2 setup: docs/sveltia-cms-media.md — copy config.example.yml placeholders if needed.
 
 backend:
   name: github
@@ -10,6 +11,26 @@ display_url: https://me.rdvid.online
 
 media_folder: public/images/uploads
 public_folder: /images/uploads
+
+media_libraries:
+  aws_s3:
+    endpoint: https://957d61ee42c87670bb64e0b88a312852.r2.cloudflarestorage.com
+    region: auto
+    access_key_id: da7f762319cf00cbee05b89d43a6cd97
+    bucket: rdvid-site-media
+    prefix: blog/
+    force_path_style: true
+    public_url: https://media.rdvid.online
+  all:
+    max_file_size: 5242880
+    slugify_filename: true
+    filename_template: '{{year}}{{month}}{{day}}-{{uuid_short}}'
+    transformations:
+      raster_image:
+        format: webp
+        quality: 85
+        width: 2048
+        height: 2048
 
 output:
   omit_empty_optional_fields: true
@@ -32,9 +53,20 @@ collections:
     fields:
       - { name: title, label: Title, widget: string, i18n: true }
       - { name: description, label: Description, widget: text, i18n: true }
+      - { name: category, label: Category, widget: string, required: false, i18n: true }
+      - name: heroImage
+        label: Cover image
+        widget: image
+        required: false
+        i18n: true
+        media_libraries:
+          aws_s3: {}
+          default: false
       - { name: pubDate, label: Published, widget: datetime, type: date, i18n: true }
       - { name: updatedDate, label: Updated, widget: datetime, type: date, required: false, i18n: true }
       - { name: draft, label: Draft, widget: boolean, default: false, i18n: true }
       - { name: tags, label: Tags, widget: list, default: [], i18n: true }
+      - { name: readTimeMinutes, label: Read time (minutes), widget: number, required: false, i18n: true }
+      - { name: reads, label: Reads, widget: number, required: false, i18n: true }
       - { name: lang, label: Language, widget: hidden, default: '{{locale}}', i18n: true }
       - { name: body, label: Content, widget: richtext, i18n: true }

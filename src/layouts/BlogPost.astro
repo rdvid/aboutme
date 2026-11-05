@@ -3,6 +3,7 @@ import BaseLayout from './BaseLayout.astro';
 import type { Lang } from '../i18n/ui';
 import { formatDate, pathFor, useTranslations } from '../i18n/utils';
 import { formatReadTime } from '../lib/blog';
+import { resolveBlogMediaUrl } from '../lib/blog-media';
 
 interface Props {
   lang: Lang;
@@ -32,15 +33,16 @@ const {
 const t = useTranslations(lang);
 const readTime =
   readTimeMinutes != null ? formatReadTime(readTimeMinutes, t('blog.minRead')) : undefined;
+const heroSrc = resolveBlogMediaUrl(heroImage);
 ---
 
 <BaseLayout lang={lang} title={title} description={description} mainClass="max-w-[82rem]">
   <article class="mx-auto max-w-3xl">
     {
-      heroImage && (
+      heroSrc && (
         <div class="mb-8 overflow-hidden rounded-box border border-base-300">
           <img
-            src={heroImage}
+            src={heroSrc}
             alt=""
             width={1080}
             height={720}

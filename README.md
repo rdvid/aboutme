@@ -40,6 +40,7 @@ Live on GitHub Pages: [rdvid.github.io/aboutme](https://rdvid.github.io/aboutme)
 src/
   content/blog/en|br/   # Markdown posts (same slug across langs)
   content.config.ts     # Zod schema for posts
+  public/admin/         # Sveltia CMS config (blog editing)
   data/                 # site metadata + projects.snapshot.json cache
   lib/                  # GitHub pins + manifest merge for projects
   i18n/                 # UI strings + path helpers
@@ -50,7 +51,7 @@ src/
 
 - Routes are prefixed by locale (`/en/...`, `/br/...`). `/` redirects to the default language (`en`).
 - Page chrome (nav, CTAs, about copy) lives in `src/i18n/ui.ts`. **Projects** load at build time from GitHub pinned repos plus each repo’s `public/manifest.md` and `public/cover.png` (see [`templates/public/`](templates/public/)).
-- Blog posts are real content files with frontmatter (`title`, `description`, `pubDate`, `lang`, optional `draft` / `tags`). Matching filenames in `en/` and `br/` keep the language toggle on the same article.
+- Blog posts are Markdown with typed frontmatter (`heroImage`, `category`, `draft`, etc.). Edit via **[Sveltia CMS](https://me.rdvid.online/admin/)** or by hand; cover images upload to **Cloudflare R2** (see [`docs/sveltia-cms-media.md`](docs/sveltia-cms-media.md)). Matching filenames in `en/` and `br/` keep the language toggle on the same article.
 
 ### Publish flow (zero-downtime PR)
 
@@ -59,7 +60,7 @@ src/
 3. Merge to `main`.
 4. `.github/workflows/deploy.yml` installs, runs `astro build`, and deploys to Pages.
 
-Production keeps serving the previous build until the new one is ready. No server to babysit; no CMS; shipping a post is a merge.
+Production keeps serving the previous build until the new one is ready. Blog posts can ship via CMS (commit to `v2`) or PR; media lives on R2, not in git.
 
 **Local loop:** `npm install` → `npm run dev` → `npm run build` / `npm run preview`.
 
@@ -80,7 +81,7 @@ For projects, copy `.env.example` to `.env` and set **`GH_PAT`** (GitHub PAT wit
 Some features that I'm proud of in this version:
 
 - **Bilingual i18n** — English and Brazilian Portuguese (leaner than the old 4-locale setup)
-- **Markdown blog** — Astro content collections + typed frontmatter
+- **Markdown blog** — Astro content collections + Sveltia CMS + R2 cover uploads
 - **PR-based publishing** — merge to `main` → Actions → Pages, no downtime window to plan around
 - **Dynamic projects** — GitHub pins + per-repo `public/manifest.md`, card grid and detail modal
 - **Responsiveness** — mobile drawer nav, desktop header

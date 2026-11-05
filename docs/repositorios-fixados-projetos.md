@@ -4,6 +4,8 @@ A aba **Projetos** do site ([`/projects`](https://me.rdvid.online/projects), [`/
 
 Este guia descreve o que configurar em **cada repositório fixado** para cards, capa e modal de detalhes ficarem corretos.
 
+> **Blog:** capas de posts usam R2 + Sveltia CMS, não este contrato — ver [`sveltia-cms-media.md`](./sveltia-cms-media.md).
+
 ## Visão geral
 
 | Onde | O quê |

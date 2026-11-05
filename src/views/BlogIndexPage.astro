@@ -7,6 +7,7 @@ import BlogReadingNow from '../components/blog/BlogReadingNow.astro';
 import BlogFeaturedCard from '../components/blog/BlogFeaturedCard.astro';
 import BlogRecentList from '../components/blog/BlogRecentList.astro';
 import type { Lang } from '../i18n/ui';
+import { resolveBlogMediaUrl } from '../lib/blog-media';
 import { pathFor, postSlug, useTranslations } from '../i18n/utils';
 
 interface Props {
@@ -31,7 +32,7 @@ const viewPosts = posts.map((post) => ({
   readTimeMinutes: estimateReadTimeMinutes(post.body, post.data.readTimeMinutes),
   reads: post.data.reads,
   draft: post.data.draft,
-  heroImage: post.data.heroImage,
+  heroImage: resolveBlogMediaUrl(post.data.heroImage),
 }));
 
 const categories = collectCategories(posts, allLabel);
