@@ -13,14 +13,13 @@ media_folder: public/images/uploads
 public_folder: /images/uploads
 
 media_libraries:
-  aws_s3:
-    endpoint: https://ACCOUNT_ID.r2.cloudflarestorage.com
-    region: auto
+  default: false
+  cloudflare_r2:
     access_key_id: R2_ACCESS_KEY_ID
-    bucket: rdvid-site-media
+    account_id: ACCOUNT_ID
+    bucket: your-bucket-name
+    public_url: https://cdn.example.com
     prefix: blog/
-    force_path_style: true
-    public_url: https://media.rdvid.online
   all:
     max_file_size: 5242880
     slugify_filename: true
@@ -59,8 +58,8 @@ collections:
         widget: image
         required: false
         i18n: true
+        # Inherit global cloudflare_r2; only disable Git repo uploads here.
         media_libraries:
-          aws_s3: {}
           default: false
       - { name: pubDate, label: Published, widget: datetime, type: date, i18n: true }
       - { name: updatedDate, label: Updated, widget: datetime, type: date, required: false, i18n: true }

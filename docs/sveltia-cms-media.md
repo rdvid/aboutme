@@ -21,7 +21,7 @@ Capas do blog e outros uploads do CMS ficam no **Cloudflare R2**, não no reposi
 |--------|------|
 | Bucket | Criar ex.: `rdvid-site-media` |
 | Prefixo | Objetos sob `blog/` (configurado em `prefix` no CMS) |
-| Acesso público | URL pública R2 (`*.r2.dev`) **ou** domínio customizado (recomendado: `https://media.rdvid.online`) → valor de `public_url` no CMS |
+| Acesso público | URL pública R2 (`*.r2.dev`) **ou** domínio customizado (ex.: `https://cdn.rdvid.online`) → valor de `public_url` no CMS |
 | Credenciais | R2 → Manage R2 API Tokens → token **S3-compatible** (Access Key ID + Secret Access Key) |
 | CORS | Origem `https://me.rdvid.online`; métodos `GET`, `PUT`, `DELETE`, `HEAD`; `AllowedHeaders: *` |
 
@@ -39,9 +39,9 @@ Exemplo de CORS (ajuste a origem se usar preview local):
 ]
 ```
 
-Endpoint S3 da API (upload/listagem): `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`  
-Região no CMS: `auto`  
-`force_path_style: true` para R2.
+Integração nativa no CMS: bloco `media_libraries.cloudflare_r2` com `account_id`, `access_key_id`, `bucket`, `public_url` e opcional `prefix`. Endpoint S3: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com` (calculado pelo Sveltia). Bucket **EU** exige `jurisdiction: eu`.
+
+Use Sveltia **≥ 0.22** (recomendado: versão pinada em [`src/pages/admin/index.html`](../src/pages/admin/index.html)).
 
 **Não commite** o Secret Access Key. O Access Key ID pode ir no `config.yml` se você aceitar expô-lo no repo; alternativa: preencher só no `config.yml` local ou usar placeholders no exemplo.
 
@@ -60,7 +60,7 @@ Para uso solo, o token no login do CMS costuma ser suficiente.
 
 Alinhados ao schema Astro ([`src/content.config.ts`](../src/content.config.ts)):
 
-- **Cover image** (`heroImage`) → R2 apenas (`aws_s3`)
+- **Cover image** (`heroImage`) → R2 apenas (`media_libraries.default: false` no campo; credenciais globais em `cloudflare_r2`)
 - **Category**, tags, draft, datas, corpo richtext
 - Imagens inline no richtext podem usar o Asset Library → R2
 
@@ -72,15 +72,24 @@ O CMS converte raster para **WebP** (máx. 2048 px), limita tamanho (~5 MB) e re
 
 ## Build e URLs no site
 
-O frontmatter guarda URL absoluta (`https://media.rdvid.online/blog/...`). Caminhos relativos (`/images/blog/...`) são resolvidos com [`resolveBlogMediaUrl`](../src/lib/blog-media.ts) no build.
+O frontmatter guarda URL absoluta (`https://cdn.rdvid.online/blog/...`). Caminhos relativos (`/images/blog/...`) são resolvidos com [`resolveBlogMediaUrl`](../src/lib/blog-media.ts) no build.
 
 ## Checklist
 
 - [ ] Bucket R2 + CORS + domínio público
-- [ ] `public/admin/config.yml` com `access_key_id`, bucket, endpoint, `public_url`
+- [ ] `public/admin/config.yml` com `cloudflare_r2` (`account_id`, `access_key_id`, bucket, `public_url`)
 - [ ] PAT GitHub para login no `/admin/`
 - [ ] Secret R2 informado uma vez no navegador do CMS
 - [ ] Post de teste com capa → commit em `v2` → deploy
+
+## R2 não aparece no seletor de imagem
+
+Se em **Locais externos** só aparecem “Inserir URL” e bancos de stock (Unsplash, etc.):
+
+1. **Não use** `cloudflare_r2: {}` no campo — em versões antigas do Sveltia isso substitui a config global por um objeto vazio e o R2 some. Deixe só `default: false` no campo e configure R2 no topo do `config.yml`.
+2. Atualize o script do admin para Sveltia recente (ver `index.html`).
+3. Confirme CORS com **PUT** (ver acima) e informe o **Secret Access Key** R2 na primeira vez (Configurações / biblioteca R2).
+4. Hard refresh no `/admin/` (Ctrl+Shift+R) para carregar o JS novo.
 
 ## CSP (futuro)
 

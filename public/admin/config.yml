@@ -60,7 +60,6 @@ collections:
         required: false
         i18n: true
         media_libraries:
-          cloudflare_r2: {}
           default: false
       - { name: pubDate, label: Published, widget: datetime, type: date, i18n: true }
       - { name: updatedDate, label: Updated, widget: datetime, type: date, required: false, i18n: true }
