@@ -17,7 +17,7 @@ media_libraries:
     endpoint: https://957d61ee42c87670bb64e0b88a312852.r2.cloudflarestorage.com
     region: auto
     access_key_id: da7f762319cf00cbee05b89d43a6cd97
-    bucket: rdvid-site-media
+    bucket: personal
     prefix: blog/
     force_path_style: true
     public_url: https://media.rdvid.online
