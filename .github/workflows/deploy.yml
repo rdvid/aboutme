@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   # Refresh pinned projects + manifests without a commit to aboutme (GitHub cron may run late).
   schedule:
-    - cron: '0 9,21 * * *' # 06am and 18pm (UTC-03)
+    - cron: '0 */2 * * *' # every 2 hours
 
 permissions:
   contents: read
