@@ -88,9 +88,18 @@ async function buildFromPins(): Promise<PortfolioProject[]> {
   return projects;
 }
 
+/** Stable sort: projects with liveDemoUrl first, then GitHub pin order within each group. */
+function prioritizeProjectsWithLiveDemo(projects: PortfolioProject[]): PortfolioProject[] {
+  return [...projects].sort((a, b) => {
+    const aHas = a.liveDemoUrl ? 1 : 0;
+    const bHas = b.liveDemoUrl ? 1 : 0;
+    return bHas - aHas;
+  });
+}
+
 export async function loadPortfolioProjects(): Promise<PortfolioProject[]> {
   try {
-    const projects = await buildFromPins();
+    const projects = prioritizeProjectsWithLiveDemo(await buildFromPins());
     // Dev writes here would touch src/data and cause a Vite reload loop on /projects.
     if (projects.length > 0 && import.meta.env.PROD) {
       writeSnapshot(projects);
@@ -103,7 +112,7 @@ export async function loadPortfolioProjects(): Promise<PortfolioProject[]> {
         : '';
     console.warn(`[projects] GitHub fetch failed, using snapshot if available:${hint}`, err);
     const snapshot = readSnapshot();
-    if (snapshot) return snapshot;
+    if (snapshot) return prioritizeProjectsWithLiveDemo(snapshot);
     return [];
   }
 }

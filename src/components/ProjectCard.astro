@@ -12,12 +12,12 @@ interface Props {
 const { project, lang, coverPlaceholder } = Astro.props;
 const t = useTranslations(lang);
 const {
-  slug,
   title,
   description,
   coverUrl,
   badges,
   repositoryUrl,
+  liveDemoUrl,
   underDevelopment,
   stars,
 } = project;
@@ -64,19 +64,29 @@ const {
         ))
       }
     </ul>
-    <div class="card-actions mt-1 flex-wrap items-center justify-between gap-2">
-      <button
-        type="button"
-        class="btn btn-primary btn-sm"
-        data-project-open={slug}
-      >
-        {t('projects.details')}
-      </button>
+    <div class="card-actions mt-1 flex w-full items-center gap-2">
+      {
+        liveDemoUrl && (
+          <span class="live-demo-sparkle inline-flex shrink-0 rounded-btn">
+            <span class="live-demo-sparkle__inner relative overflow-hidden rounded-[calc(var(--radius-field,0.25rem)-2px)]">
+              <a
+                class="btn btn-primary btn-sm relative z-[1] border-0 shadow-none"
+                href={liveDemoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t('projects.demo')}
+              </a>
+              <span class="live-demo-sparkle__mask" aria-hidden="true"></span>
+            </span>
+          </span>
+        )
+      }
       <a
-        class="btn btn-ghost btn-sm"
+        class="btn btn-ghost btn-sm ml-auto shrink-0"
         href={repositoryUrl}
         target="_blank"
-        rel="noopener"
+        rel="noopener noreferrer"
         aria-label={t('projects.repo')}
       >
         {t('projects.repo')}

@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import ProjectDetailModal from '../components/projects/ProjectDetailModal.astro';
 import { site } from '../data/site';
 import { loadPortfolioProjects } from '../lib/projects';
 import type { Lang } from '../i18n/ui';
@@ -71,7 +70,4 @@ const coverPlaceholder = assetPath('project-cover-placeholder.svg');
       </div>
     </div>
   </section>
-  {projects.length > 0 && (
-    <ProjectDetailModal lang={lang} projects={projects} coverPlaceholder={coverPlaceholder} />
-  )}
 </BaseLayout>
