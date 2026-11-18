@@ -1,0 +1,89 @@
+---
+import { site } from '../../data/site';
+import type { Lang } from '../../i18n/ui';
+import type { ResumeIntro } from '../../lib/resume-profile.types';
+import { assetPath, useTranslations } from '../../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  intro: ResumeIntro;
+  currentRole?: string;
+}
+
+const { lang, intro, currentRole } = Astro.props;
+const t = useTranslations(lang);
+const resumeHref = assetPath(site.resume[lang]);
+
+/** Convert lightweight **bold** markers to <strong> and escape other HTML. */
+function formatInline(text: string): string {
+  const escaped = text
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;');
+  return escaped.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+}
+
+const leadHtml = formatInline(intro.lead[lang]);
+const paragraphsHtml = intro.paragraphs.map((p) => formatInline(p[lang]));
+const locationHtml = formatInline(intro.location[lang]);
+---
+
+<header class="max-w-2xl" data-reveal>
+  <p class="text-sm font-medium uppercase tracking-[0.18em] text-base-content/70">
+    {t('about.masthead.kicker')}
+  </p>
+  <h1 class="mt-2 font-display text-4xl font-bold tracking-tight sm:text-5xl">{t('about.title')}</h1>
+
+  <div class="mt-6 flex flex-wrap items-center gap-3 text-sm text-base-content/85">
+    <img
+      src="https://avatars.githubusercontent.com/u/60834135"
+      alt=""
+      width="56"
+      height="56"
+      loading="eager"
+      decoding="async"
+      class="size-12 shrink-0 rounded-full object-cover ring-1 ring-base-300"
+    />
+    <div class="min-w-0 flex-1">
+      {
+        currentRole && (
+          <p class="font-medium text-base-content">{currentRole}</p>
+        )
+      }
+      <p class="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-1">
+        <a
+          class="underline decoration-base-content/50 underline-offset-4 hover:decoration-primary hover:text-primary"
+          href={resumeHref}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {t('about.resumeCta')}
+        </a>
+        <span class="text-base-content/50" aria-hidden="true">·</span>
+        <a
+          class="underline decoration-base-content/50 underline-offset-4 hover:decoration-primary hover:text-primary"
+          href={site.social.github}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+        <span class="text-base-content/50" aria-hidden="true">·</span>
+        <a
+          class="underline decoration-base-content/50 underline-offset-4 hover:decoration-primary hover:text-primary"
+          href={site.social.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <div class="mt-8 space-y-4 text-base leading-relaxed text-base-content/90">
+    <p class="text-lg font-semibold text-base-content" set:html={leadHtml} />
+    {paragraphsHtml.map((html) => <p set:html={html} />)}
+    <p class="text-sm text-base-content/75" set:html={locationHtml} />
+  </div>
+</header>

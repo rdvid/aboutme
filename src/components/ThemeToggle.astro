@@ -18,12 +18,12 @@
 <script>
   const toggle = document.getElementById('theme-toggle') as HTMLInputElement | null;
   const root = document.documentElement;
-  const current = root.getAttribute('data-theme') || 'lofi';
+  const current = root.getAttribute('data-theme') || 'autumn';
 
   if (toggle) {
     toggle.checked = current === 'business';
     toggle.addEventListener('change', () => {
-      const next = toggle.checked ? 'business' : 'lofi';
+      const next = toggle.checked ? 'business' : 'autumn';
       root.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
     });

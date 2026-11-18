@@ -1,0 +1,76 @@
+---
+import type { Lang } from '../../i18n/ui';
+import type { SpotifyTopPayload } from '../../lib/spotify-top.types';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  payload: SpotifyTopPayload;
+}
+
+const { lang, payload } = Astro.props;
+const t = useTranslations(lang);
+const { tracks } = payload;
+
+const mid = Math.ceil(tracks.length / 2);
+const leftTracks = tracks.slice(0, mid);
+const rightTracks = tracks.slice(mid);
+const columns = [leftTracks, rightTracks];
+---
+
+<section id="about-music" class="scroll-mt-24" data-reveal>
+  <div>
+    <h3 class="font-display text-2xl font-semibold">{t('about.spotify.title')}</h3>
+    <p class="mt-1 text-sm text-base-content/75">{t('about.spotify.hint')}</p>
+  </div>
+
+  {
+    tracks.length === 0 ? (
+      <p class="mt-6 text-base-content/70">{t('about.spotify.empty')}</p>
+    ) : (
+      <div class="mt-6 grid gap-3 sm:grid-cols-2 sm:gap-4">
+        {columns.map((column) => (
+          <ol class="flex min-w-0 list-none flex-col gap-3 p-0">
+            {column.map((track) => (
+              <li class="min-w-0">
+                <a
+                  href={track.spotifyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group flex items-center gap-3 rounded-xl border border-base-300/70 bg-base-100 p-3 transition-colors hover:border-primary/40 hover:bg-base-200/40"
+                  aria-label={`${t('about.spotify.open')}: ${track.name}`}
+                >
+                  <span class="w-6 shrink-0 text-center text-sm font-semibold text-base-content/70">
+                    {track.rank}
+                  </span>
+                  {track.imageUrl ? (
+                    <img
+                      src={track.imageUrl}
+                      alt=""
+                      width="56"
+                      height="56"
+                      loading="lazy"
+                      decoding="async"
+                      class="size-14 shrink-0 rounded-lg object-cover"
+                    />
+                  ) : (
+                    <span class="flex size-14 shrink-0 items-center justify-center rounded-lg bg-base-200 text-xs text-base-content/70">
+                      ♪
+                    </span>
+                  )}
+                  <span class="min-w-0 flex-1">
+                    <span class="block truncate font-medium group-hover:text-primary">{track.name}</span>
+                    <span class="block truncate text-sm text-base-content/80">{track.artists}</span>
+                    {track.album && (
+                      <span class="block truncate text-xs text-base-content/65">{track.album}</span>
+                    )}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        ))}
+      </div>
+    )
+  }
+</section>

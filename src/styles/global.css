@@ -1,12 +1,40 @@
 @import "tailwindcss";
 
 @plugin "daisyui" {
-  themes: lofi --default, business;
+  themes: autumn --default, business;
 }
 
 @theme {
   --font-sans: "DM Sans", system-ui, sans-serif;
   --font-display: "Space Grotesk", system-ui, sans-serif;
+}
+
+/*
+  DaisyUI "business" ships a dark primary (~42% L) and nearly identical base
+  layers, so muted text (/50–/70) and borders disappear. Lift contrast for dark mode.
+*/
+[data-theme="business"] {
+  color-scheme: dark;
+  --color-base-100: oklch(18% 0.012 255);
+  --color-base-200: oklch(22% 0.014 255);
+  --color-base-300: oklch(34% 0.018 255);
+  --color-base-content: oklch(94% 0.01 255);
+  --color-primary: oklch(74% 0.12 250);
+  --color-primary-content: oklch(18% 0.04 250);
+  --color-secondary: oklch(78% 0.04 230);
+  --color-secondary-content: oklch(20% 0.02 230);
+  --color-accent: oklch(78% 0.14 45);
+  --color-accent-content: oklch(20% 0.04 45);
+  --color-neutral: oklch(28% 0.015 255);
+  --color-neutral-content: oklch(92% 0.01 255);
+  --color-info: oklch(75% 0.12 240);
+  --color-info-content: oklch(18% 0.04 240);
+  --color-success: oklch(76% 0.12 155);
+  --color-success-content: oklch(18% 0.04 155);
+  --color-warning: oklch(82% 0.12 85);
+  --color-warning-content: oklch(22% 0.04 85);
+  --color-error: oklch(68% 0.16 25);
+  --color-error-content: oklch(98% 0.01 25);
 }
 
 html {
@@ -133,5 +161,27 @@ body {
     animation: none;
     opacity: 0.35;
     background-position: 50% 0;
+  }
+}
+
+/* About page — scroll reveal */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(1rem);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+[data-reveal='visible'] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }

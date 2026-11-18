@@ -34,21 +34,26 @@ export const ui = {
     'home.portraitAlt': 'Portrait of Rafael David',
 
     'about.title': 'About',
+    'about.masthead.kicker': 'Profile',
     'about.lead':
-      'Brazil-based web developer focused on backend systems, teaching, and continuous learning.',
-    'about.who.title': 'Who I am',
-    'about.who.body':
-      "Hello! I'm Rafael David, a results-driven web developer with a knack for backend solutions. With an academic background in business management, I bring creativity, dedication, and a high level of commitment to the table. Whether it's tackling challenging projects or collaborating with multicultural teams, I thrive in environments that value innovation, responsibility, and excellence.",
-    'about.now.title': "What I'm doing",
-    'about.now.body':
-      "I'm currently working with Cubos Academy as a backend instructor, mentoring new developers through pair programming and teaching web development with JavaScript across the Node.js ecosystem — Express REST APIs and React on the frontend.",
-    'about.strengths.title': 'Key strengths',
-    'about.strengths.body':
-      'What sets me apart is dedication to continuous learning and adaptability. In a rapidly evolving software market, I stay close to emerging trends and technologies. Beyond technical skills, clear communication and collaboration help me build strong working relationships with colleagues, stakeholders, and clients.',
-    'about.hobbies.title': 'Outside of work',
-    'about.hobbies.body':
-      "Away from the keyboard, I'm an avid reader and classical piano student. Philosophy, old Russian writers, and piano practice keep creativity sharp and help me approach challenges with a fresh perspective.",
-    'about.description': 'About Rafael David — software developer and instructor.',
+      'Brazil-based Software Engineer focused on backend systems, APIs, data, and cloud infrastructure.',
+    'about.description':
+      'Brazil-based Software Engineer focused on backend systems, APIs, data, and cloud infrastructure.',
+    'about.resumeCta': 'Download resume',
+    'about.nav.skills': 'Skills',
+    'about.nav.timeline': 'Timeline',
+    'about.nav.hobbies': 'Hobbies',
+    'about.nav.music': 'Music',
+    'about.section.skills': 'Skills & tools',
+    'about.section.timeline': 'Timeline',
+    'about.section.experience': 'Experience',
+    'about.section.education': 'Education',
+    'about.section.hobbies': 'Outside of work',
+    'about.spotify.title': 'Most played on Spotify',
+    'about.spotify.hint': 'A peek at what I have been looping lately — no judgment.',
+    'about.spotify.empty': 'Paste a Spotify top-tracks response into src/data/spotify-top.json.',
+    'about.spotify.open': 'Open in Spotify',
+    'about.present': 'Present',
 
     'projects.title': 'Projects',
     'projects.lead':
@@ -113,21 +118,26 @@ export const ui = {
     'home.portraitAlt': 'Retrato de Rafael David',
 
     'about.title': 'Sobre',
+    'about.masthead.kicker': 'Perfil',
     'about.lead':
-      'Desenvolvedor web no Brasil, focado em backend, ensino e aprendizado contínuo.',
-    'about.who.title': 'Quem sou eu',
-    'about.who.body':
-      'Olá! Sou Rafael David, um desenvolvedor web orientado a resultados, com foco em soluções de backend. Com formação acadêmica em gestão de negócios, trago criatividade, dedicação e alto comprometimento. Seja em projetos desafiadores ou em times multiculturais, me saio bem em ambientes que valorizam inovação, responsabilidade e excelência.',
-    'about.now.title': 'O que estou fazendo',
-    'about.now.body':
-      'Atualmente trabalho na Cubos Academy como instrutor de backend, mentorando novos desenvolvedores com pair programming e ensinando desenvolvimento web com JavaScript no ecossistema Node.js — APIs REST com Express e React no frontend.',
-    'about.strengths.title': 'Pontos fortes',
-    'about.strengths.body':
-      'O que me diferencia é a dedicação ao aprendizado contínuo e à adaptação. Em um mercado que muda rápido, acompanho tendências e tecnologias emergentes. Além das habilidades técnicas, comunicação clara e colaboração me ajudam a construir boas relações com colegas, stakeholders e clientes.',
-    'about.hobbies.title': 'Fora do trabalho',
-    'about.hobbies.body':
-      'Longe do teclado, sou leitor ávido e estudante de piano clássico. Filosofia, escritores russos e prática de piano mantêm a criatividade afiada e me ajudam a encarar desafios com um olhar novo.',
-    'about.description': 'Sobre Rafael David — desenvolvedor de software e instrutor.',
+      'Engenheiro de Software baseado no Brasil, com foco em sistemas backend, APIs, dados e infraestrutura em cloud.',
+    'about.description':
+      'Engenheiro de Software baseado no Brasil, com foco em sistemas backend, APIs, dados e infraestrutura em cloud.',
+    'about.resumeCta': 'Baixar currículo',
+    'about.nav.skills': 'Skills',
+    'about.nav.timeline': 'Linha do tempo',
+    'about.nav.hobbies': 'Hobbies',
+    'about.nav.music': 'Música',
+    'about.section.skills': 'Skills e ferramentas',
+    'about.section.timeline': 'Linha do tempo',
+    'about.section.experience': 'Experiência',
+    'about.section.education': 'Formação',
+    'about.section.hobbies': 'Fora do trabalho',
+    'about.spotify.title': 'Mais tocadas no Spotify',
+    'about.spotify.hint': 'Um pedaço do que eu tenho escutado em loop — sem julgamentos.',
+    'about.spotify.empty': 'Cole a resposta de top tracks do Spotify em src/data/spotify-top.json.',
+    'about.spotify.open': 'Abrir no Spotify',
+    'about.present': 'Atual',
 
     'projects.title': 'Projetos',
     'projects.lead':

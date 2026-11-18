@@ -9,7 +9,7 @@ const { categories, counts, allLabel } = Astro.props;
 ---
 
 <div class="border-y border-base-300 bg-base-100/70 py-4 backdrop-blur-md lg:rounded-box lg:border lg:p-4 lg:shadow-sm">
-  <p class="mb-3 px-1 font-display text-[11px] font-semibold uppercase tracking-[0.18em] text-base-content/60">
+  <p class="mb-3 px-1 font-display text-[11px] font-semibold uppercase tracking-[0.18em] text-base-content/75">
     <slot name="label" />
   </p>
   <nav
@@ -35,7 +35,7 @@ const { categories, counts, allLabel } = Astro.props;
             <span
               class:list={[
                 'ml-3 text-xs',
-                isActive ? 'text-neutral-content/70' : 'text-base-content/60',
+                isActive ? 'text-neutral-content/80' : 'text-base-content/75',
               ]}
             >
               {count}

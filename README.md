@@ -58,13 +58,14 @@ This repository **is** the portfolio surface: a personal website and Markdown bl
 | Area | Status | How it works |
 |------|--------|----------------|
 | Home, About, Projects, Blog | Implemented | Locale-prefixed routes `/en/...` and `/br/...`; `/` redirects to default locale (`en`). |
+| About (timeline, skills, hobbies, Spotify) | Implemented | YAML resume profile + committed `spotify-top.json`; scroll reveal — see [docs/about-page.md](docs/about-page.md). |
 | Bilingual UI | Implemented | Copy in `src/i18n/ui.ts`; language toggle preserves path when possible. |
 | Blog posts | Implemented | Markdown under `src/content/blog/{en,br}/`; Zod schema in `src/content.config.ts`. |
 | Draft posts | Implemented | `draft: true` in frontmatter excludes posts from public listings. |
 | Sveltia CMS | Implemented | `/admin/` loads Sveltia; commits content to branch **`v2`** via GitHub backend. |
 | Blog cover images (R2) | Implemented | Uploads to Cloudflare R2; see [docs/sveltia-cms-media.md](docs/sveltia-cms-media.md). |
 | Dynamic projects grid | Implemented | Build fetches GitHub **pinned** repos (max 6) + each repo’s `public/manifest.md` and `public/cover.png`. |
-| Dark / light theme | Implemented | DaisyUI themes (`lofi` / `business`) + `localStorage`. |
+| Dark / light theme | Implemented | DaisyUI themes (`autumn` / `business`) + `localStorage`. |
 | RSS / sitemap | Planned | Listed in [Roadmap](#roadmap). |
 
 **Primary journeys**
@@ -151,12 +152,13 @@ aboutme/
 ├── src/
 │   ├── content/blog/en|br/        # Markdown posts
 │   ├── content.config.ts          # Blog collection schema
-│   ├── components/                # Header, Footer, ProjectCard, blog UI
-│   ├── data/                      # site.ts, projects.snapshot.json
+│   ├── components/                # Header, Footer, ProjectCard, about/*, blog UI
+│   ├── data/                      # site.ts, resume.timeline.yaml, snapshots
 │   ├── i18n/                      # UI strings and path helpers
 │   ├── layouts/                   # BaseLayout, BlogPost
-│   ├── lib/                       # GitHub pins, manifests, blog helpers
+│   ├── lib/                       # GitHub pins, resume profile, Spotify, blog
 │   ├── pages/                     # Routes (incl. [lang]/, admin, redirects)
+│   ├── scripts/                   # Client helpers (scroll reveal)
 │   └── views/                     # Page-level compositions
 ├── templates/public/              # manifest.md template for pinned repos
 ├── docs/                          # Deep dives (R2, pinned repos, examples)
@@ -302,6 +304,7 @@ For bugs and ideas, use [GitHub Issues](https://github.com/rdvid/aboutme/issues)
 |----------|----------|
 | [docs/sveltia-cms-media.md](docs/sveltia-cms-media.md) | R2, CORS, CMS, blog covers |
 | [docs/repositorios-fixados-projetos.md](docs/repositorios-fixados-projetos.md) | Pinned repos, manifest, cover, deploy |
+| [docs/about-page.md](docs/about-page.md) | About timeline YAML, manual Spotify top-tracks JSON |
 | [docs/description-example.md](docs/description-example.md) | Sample manifest |
 | [templates/public/README.md](templates/public/README.md) | Template for pinned repositories |
 
@@ -339,6 +342,7 @@ Este repositório **é** a vitrine do portfólio: site pessoal e blog em Markdow
 | Área | Status | Como funciona |
 |------|--------|----------------|
 | Home, Sobre, Projetos, Blog | Implementado | Rotas `/en/...` e `/br/...`; `/` redireciona para `en`. |
+| About (timeline, skills, hobbies, Spotify) | Implementado | YAML do currículo + `spotify-top.json` commitado; scroll reveal — [docs/about-page.md](docs/about-page.md). |
 | UI bilíngue | Implementado | Textos em `src/i18n/ui.ts`; toggle de idioma mantém o caminho quando possível. |
 | Posts | Implementado | Markdown em `src/content/blog/{en,br}/`; schema Zod em `src/content.config.ts`. |
 | Rascunhos | Implementado | `draft: true` remove o post das listagens públicas. |
@@ -463,6 +467,7 @@ Fork → branch a partir de **`v2`** → PR para **`v2`**. Issues no GitHub. Sem
 |-----------|----------|
 | [docs/sveltia-cms-media.md](docs/sveltia-cms-media.md) | R2, CORS, CMS, capas do blog |
 | [docs/repositorios-fixados-projetos.md](docs/repositorios-fixados-projetos.md) | Pins, manifest, capa, deploy |
+| [docs/about-page.md](docs/about-page.md) | Timeline YAML do About, JSON manual de top tracks Spotify |
 | [docs/description-example.md](docs/description-example.md) | Exemplo de manifest |
 | [templates/public/README.md](templates/public/README.md) | Template para repos fixados |
 

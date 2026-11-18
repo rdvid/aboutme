@@ -1,0 +1,203 @@
+# Source of truth for the About page timeline, skills, and hobbies.
+# Synced from LinkedIn (linkedin.com/in/rdvid) — keep in sync with site.resume PDFs.
+
+intro:
+  lead:
+    en: "Brazil-based Software Engineer focused on backend systems, APIs, data, and cloud infrastructure."
+    br: "Engenheiro de Software baseado no Brasil, com foco em sistemas backend, APIs, dados e infraestrutura em cloud."
+  paragraphs:
+    - en: "I build reliable, data-driven software with **Python**, working across backend architecture, REST APIs, databases, distributed workflows, and automation. My experience includes **Django, Django REST Framework, FastAPI, PostgreSQL, Airflow, AWS, and modern CI/CD and observability practices**."
+      br: "Desenvolvo software confiável e orientado a dados utilizando **Python**, atuando em arquitetura backend, APIs REST, bancos de dados, workflows distribuídos e automação. Minha experiência inclui **Django, Django REST Framework, FastAPI, PostgreSQL, Airflow, AWS e práticas modernas de CI/CD e observabilidade**."
+    - en: "Currently working on software for the **renewable energy and water resources** domain, developing systems involving hydrological forecasting, telemetry, and power-generation operations."
+      br: "Atualmente trabalho no desenvolvimento de software para o setor de **energia renovável e recursos hídricos**, atuando em sistemas relacionados a previsão hidrológica, telemetria e operações de geração de energia."
+    - en: "I also build independent software projects, with a strong interest in **software architecture, infrastructure, open source, and continuous learning**."
+      br: "Também desenvolvo projetos de software de forma independente, com interesse especial em **arquitetura de software, infraestrutura, open source e aprendizado contínuo**."
+  location:
+    en: "Based in São José dos Campos, Brazil."
+    br: "Baseado em São José dos Campos, Brasil."
+
+experience:
+  - id: fractal-eng
+    start: "2024-05"
+    end: null
+    organization:
+      en: Fractal Engineering and Systems
+      br: Fractal Engenharia e Sistemas
+    title:
+      en: Software Engineer
+      br: Engenheiro de Software
+    summary:
+      en: "Design and maintain scalable backend services and APIs with Python, Django REST Framework, and FastAPI. Align technical decisions with stakeholders in SCRUM, model PostgreSQL for product and business contexts, and apply SRE practices (Sentry, CI pipelines). Build and orchestrate multi-tenant data acquisition with Apache Airflow, and support interns, new developers, and customer success."
+      br: "Projeto e mantenho serviços e APIs backend escaláveis com Python, Django REST Framework e FastAPI. Alinho decisões técnicas com stakeholders no SCRUM, modelo PostgreSQL para contextos de produto e negócio e aplico práticas de SRE (Sentry, pipelines de CI). Construo e orquestro aquisição de dados multi-tenant com Apache Airflow, e apoio estagiários, novos desenvolvedores e sucesso do cliente."
+    highlights:
+      - en: Python · Django REST · FastAPI
+        br: Python · Django REST · FastAPI
+      - en: PostgreSQL modeling
+        br: Modelagem PostgreSQL
+      - en: Apache Airflow DAGs
+        br: DAGs Apache Airflow
+      - en: Observability (Sentry, CI)
+        br: Observabilidade (Sentry, CI)
+
+  - id: cubos-academy
+    start: "2023-09"
+    end: "2024-09"
+    organization:
+      en: Cubos Academy
+      br: Cubos Academy
+    title:
+      en: Backend Instructor
+      br: Instrutor de Backend
+    summary:
+      en: "Guided students through web development foundations with Node.js and React. Pair-programmed and debugged React UIs and Express APIs, revised learning paths from student progress, and tailored effective learning experiences for beginners."
+      br: "Orientei alunos nos fundamentos de desenvolvimento web com Node.js e React. Fiz pair programming e debug de UIs React e APIs Express, revisei trilhas conforme o progresso dos alunos e personalizei a experiência de aprendizado para iniciantes."
+    highlights:
+      - en: Node.js and React ecosystems
+        br: Ecossistemas Node.js e React
+      - en: Pair programming and mentoring
+        br: Pair programming e mentoria
+      - en: Learning-path revision
+        br: Revisão de trilhas de aprendizado
+
+  - id: botdoc-junior
+    start: "2023-07"
+    end: "2023-10"
+    organization:
+      en: Botdoc
+      br: Botdoc
+    title:
+      en: Junior Software Developer
+      br: Desenvolvedor de Software Júnior
+    summary:
+      en: "Continued product work on a data-transfer platform after the internship — backend and frontend contributions in a US-based product team."
+      br: "Continuei o trabalho no produto de transferência de dados após o estágio — contribuições de backend e frontend em um time de produto nos EUA."
+    highlights:
+      - en: Product delivery in a distributed team
+        br: Entrega de produto em time distribuído
+
+  - id: botdoc-intern
+    start: "2023-01"
+    end: "2023-10"
+    organization:
+      en: Botdoc
+      br: Botdoc
+    title:
+      en: Software Engineer Intern
+      br: Estagiário de Engenharia de Software
+    summary:
+      en: "Helped port a legacy CakePHP data-transfer product to Python with Django REST Framework. Worked on TypeScript / Angular and Ionic for responsive web UI, unit tests with Pytest, and E2E with Playwright."
+      br: "Ajudei a portar um produto legado de transferência de dados em CakePHP para Python com Django REST Framework. Trabalhei com TypeScript / Angular e Ionic na UI web responsiva, testes unitários com Pytest e E2E com Playwright."
+    highlights:
+      - en: CakePHP → Django REST port
+        br: Port CakePHP → Django REST
+      - en: Angular / Ionic frontend
+        br: Frontend Angular / Ionic
+      - en: Pytest and Playwright
+        br: Pytest e Playwright
+
+education:
+  - id: univesp-ti
+    start: "2022-01"
+    end: "2025-12"
+    organization:
+      en: UNIVESP
+      br: UNIVESP
+    title:
+      en: Bachelor's in Information Technology
+      br: Bacharelado em Tecnologia da Informação
+    summary:
+      en: "Undergraduate program in Information Technology at Universidade Virtual do Estado de São Paulo."
+      br: "Graduação em Tecnologia da Informação na Universidade Virtual do Estado de São Paulo."
+    highlights: []
+
+  - id: cubos-ti
+    start: "2022-01"
+    end: "2023-12"
+    organization:
+      en: Cubos Academy
+      br: Cubos Academy
+    title:
+      en: Information Technology program
+      br: Programa de Tecnologia da Informação
+    summary:
+      en: "Intensive web development training focused on backend with the Node.js ecosystem and related frontend fundamentals."
+      br: "Formação intensiva em desenvolvimento web com foco em backend no ecossistema Node.js e fundamentos de frontend."
+    highlights: []
+
+  - id: unip-admin
+    start: "2018-01"
+    end: "2021-12"
+    organization:
+      en: Universidade Paulista (UNIP)
+      br: Universidade Paulista (UNIP)
+    title:
+      en: Bachelor's in Business Administration
+      br: Bacharelado em Administração
+    summary:
+      en: "Undergraduate degree in Administration and Business that shapes how I approach product trade-offs, stakeholders, and delivery."
+      br: "Graduação em Administração e Negócios que molda como enfrento trade-offs de produto, stakeholders e entrega."
+    highlights: []
+
+skills:
+  - id: backend
+    label:
+      en: Backend
+      br: Backend
+    items:
+      - Python
+      - Django REST Framework
+      - FastAPI
+      - Node.js
+      - Express
+      - REST APIs
+      - PostgreSQL
+      - Apache Airflow
+
+  - id: frontend
+    label:
+      en: Frontend
+      br: Frontend
+    items:
+      - React
+      - TypeScript
+      - Angular
+      - Astro
+      - Tailwind CSS
+
+  - id: tools
+    label:
+      en: Tools & workflow
+      br: Ferramentas e fluxo
+    items:
+      - Git / GitHub
+      - Docker
+      - CI pipelines
+      - Sentry
+      - Pytest
+      - Playwright
+      - SCRUM
+
+  - id: soft
+    label:
+      en: Strengths
+      br: Pontos fortes
+    items:
+      - en: Mentoring
+        br: Mentoria
+      - Pair programming
+      - en: Stakeholder alignment
+        br: Alinhamento com stakeholders
+      - en: Continuous learning
+        br: Aprendizado contínuo
+      - en: Knowledge sharing
+        br: Compartilhamento de conhecimento
+
+hobbies:
+  - en: Classical piano practice
+    br: Prática de piano clássico
+  - en: Philosophy and old Russian writers
+    br: Filosofia e escritores russos clássicos
+  - en: Reading away from the keyboard
+    br: Leitura longe do teclado
+  - en: Listening to music (Spotify top tracks below)
+    br: Ouvir música (top tracks do Spotify abaixo)

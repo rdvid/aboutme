@@ -1,0 +1,33 @@
+---
+import type { Lang } from '../../i18n/ui';
+import type { ResumeSkillGroup } from '../../lib/resume-profile.types';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  skills: ResumeSkillGroup[];
+}
+
+const { lang, skills } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="about-skills" class="scroll-mt-24" data-reveal>
+  <h2 class="font-display text-3xl font-semibold tracking-tight">{t('about.section.skills')}</h2>
+  <div class="mt-8 grid gap-5 sm:grid-cols-2">
+    {
+      skills.map((group) => (
+        <article class="rounded-2xl border border-base-300/80 bg-base-200/20 p-5 shadow-sm">
+          <h3 class="font-display text-lg font-semibold">{group.label[lang]}</h3>
+          <ul class="mt-4 flex flex-wrap gap-2">
+            {group.items.map((item) => (
+              <li class="inline-flex items-center rounded-lg border border-base-300 bg-base-200 px-3 py-1.5 text-sm font-medium text-base-content shadow-sm">
+                {typeof item === 'string' ? item : item[lang]}
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))
+    }
+  </div>
+</section>

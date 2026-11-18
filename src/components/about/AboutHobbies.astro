@@ -1,0 +1,33 @@
+---
+import type { Lang } from '../../i18n/ui';
+import type { ResumeHobby } from '../../lib/resume-profile.types';
+import type { SpotifyTopPayload } from '../../lib/spotify-top.types';
+import { useTranslations } from '../../i18n/utils';
+import SpotifyTopTracks from './SpotifyTopTracks.astro';
+
+interface Props {
+  lang: Lang;
+  hobbies: ResumeHobby[];
+  spotify: SpotifyTopPayload;
+}
+
+const { lang, hobbies, spotify } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="about-hobbies" class="scroll-mt-24" data-reveal>
+  <h2 class="font-display text-3xl font-semibold tracking-tight">{t('about.section.hobbies')}</h2>
+  <ul class="mt-6 grid gap-3 sm:grid-cols-2">
+    {
+      hobbies.map((hobby) => (
+        <li class="rounded-xl border border-base-300/70 bg-base-200/20 px-4 py-3 text-base-content/80">
+          {hobby[lang]}
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="mt-12">
+    <SpotifyTopTracks lang={lang} payload={spotify} />
+  </div>
+</section>

@@ -1,0 +1,118 @@
+---
+import type { Lang } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  showMusic?: boolean;
+}
+
+const { lang, showMusic = true } = Astro.props;
+const t = useTranslations(lang);
+
+const links = [
+  { href: '#about-skills', id: 'about-skills', label: t('about.nav.skills') },
+  { href: '#about-timeline', id: 'about-timeline', label: t('about.nav.timeline') },
+  { href: '#about-hobbies', id: 'about-hobbies', label: t('about.nav.hobbies') },
+  ...(showMusic
+    ? [{ href: '#about-music', id: 'about-music', label: t('about.nav.music') }]
+    : []),
+];
+---
+
+<aside class="about-sidebar">
+  {/* Mobile: horizontal sticky strip */}
+  <nav
+    class="sticky top-0 z-20 -mx-4 mb-8 border-b border-base-300/70 bg-base-100/90 px-4 py-3 backdrop-blur lg:hidden"
+    aria-label={t('about.title')}
+  >
+    <ul class="flex flex-wrap gap-2 text-sm">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              class="about-nav-link btn btn-ghost btn-sm"
+              href={link.href}
+              data-section={link.id}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
+  {/* Desktop: sticky left sidebar */}
+  <nav
+    class="hidden lg:sticky lg:top-24 lg:block lg:self-start"
+    aria-label={t('about.title')}
+  >
+    <p class="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-base-content/60">
+      {t('about.masthead.kicker')}
+    </p>
+    <ul class="space-y-1 border-l border-base-300">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              class="about-nav-link block border-l-2 border-transparent py-1.5 pl-4 text-sm text-base-content/75 transition-colors hover:text-base-content"
+              href={link.href}
+              data-section={link.id}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</aside>
+
+<style>
+  .about-nav-link[aria-current='true'] {
+    color: var(--color-base-content);
+    font-weight: 600;
+  }
+
+  @media (min-width: 1024px) {
+    .about-nav-link[aria-current='true'] {
+      border-left-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+  }
+</style>
+
+<script>
+  function initAboutNav() {
+    const sectionIds = ['about-skills', 'about-timeline', 'about-hobbies', 'about-music'];
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el));
+    const links = document.querySelectorAll<HTMLAnchorElement>('.about-nav-link[data-section]');
+    if (!sections.length || !links.length) return;
+
+    const setActive = (id: string | null) => {
+      links.forEach((link) => {
+        const active = id != null && link.dataset.section === id;
+        if (active) link.setAttribute('aria-current', 'true');
+        else link.removeAttribute('aria-current');
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]?.target?.id) setActive(visible[0].target.id);
+      },
+      { rootMargin: '-20% 0px -55% 0px', threshold: [0.1, 0.35, 0.6] },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+  }
+
+  initAboutNav();
+  document.addEventListener('astro:page-load', initAboutNav);
+</script>

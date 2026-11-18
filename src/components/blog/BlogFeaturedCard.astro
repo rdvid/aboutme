@@ -50,7 +50,7 @@ const t = useTranslations(lang);
               <span class="badge badge-outline rounded-selector">{t('blog.draft')}</span>
             )
           }
-          <span class="text-base-content/60">
+          <span class="text-base-content/75">
             {t('blog.featured')} · <time datetime={dateIso}>{dateLong}</time>
           </span>
         </div>
@@ -59,12 +59,12 @@ const t = useTranslations(lang);
             {title}
           </a>
         </h2>
-        <p class="mt-3 max-w-[48ch] text-pretty text-sm leading-relaxed text-base-content/70" id="blog-featured-description">
+        <p class="mt-3 max-w-[48ch] text-pretty text-sm leading-relaxed text-base-content/80" id="blog-featured-description">
           {description}
         </p>
       </div>
       <div class="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
-        <span class="truncate text-xs text-base-content/60" id="blog-featured-read-time">{readTime}</span>
+        <span class="truncate text-xs text-base-content/75" id="blog-featured-read-time">{readTime}</span>
         <a class="btn btn-outline rounded-selector btn-sm sm:btn-md" href={href} id="blog-featured-link">
           {t('blog.readNote')}
           <svg xmlns="https://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">

@@ -42,21 +42,19 @@ const {
     <div class="flex flex-wrap items-center gap-2">
       <h2 class="card-title font-display text-lg">{title}</h2>
       {
-        underDevelopment ? (
+        underDevelopment && (
           <span class="badge badge-warning badge-outline badge-sm">{t('projects.status.dev')}</span>
-        ) : (
-          <span class="badge badge-success badge-outline badge-sm">{t('projects.status.ready')}</span>
         )
       }
     </div>
     {
       stars > 0 && (
-        <p class="text-xs text-base-content/60">
+        <p class="text-xs text-base-content/75">
           {stars} {t('projects.stars')}
         </p>
       )
     }
-    <p class="line-clamp-2 text-sm text-base-content/75">{description[lang]}</p>
+    <p class="line-clamp-2 text-sm text-base-content/85">{description[lang]}</p>
     <ul class="flex flex-wrap gap-1.5">
       {
         badges.map((badge) => (

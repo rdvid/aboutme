@@ -65,7 +65,7 @@ const heroSrc = resolveBlogMediaUrl(heroImage);
             <span class="badge badge-outline rounded-selector">{t('blog.draft')}</span>
           )
         }
-        <p class="text-sm uppercase tracking-wide text-base-content/60">
+        <p class="text-sm uppercase tracking-wide text-base-content/75">
           <time datetime={pubDate.toISOString()}>{formatDate(pubDate, lang)}</time>
           {
             updatedDate && (
@@ -80,7 +80,7 @@ const heroSrc = resolveBlogMediaUrl(heroImage);
         </p>
       </div>
       <h1 class="font-display text-4xl font-bold tracking-tight sm:text-5xl">{title}</h1>
-      <p class="mt-4 text-lg text-base-content/70">{description}</p>
+      <p class="mt-4 text-lg text-base-content/80">{description}</p>
       {
         tags.length > 0 && (
           <ul class="mt-6 flex flex-wrap gap-2">

@@ -20,7 +20,7 @@ const pageTitle = title ? `${title} · ${site.title}` : site.title;
 ---
 
 <!doctype html>
-<html lang={htmlLang[lang]} data-theme="lofi">
+<html lang={htmlLang[lang]} data-theme="autumn">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
@@ -45,6 +45,8 @@ const pageTitle = title ? `${title} · ${site.title}` : site.title;
 </html>
 
 <script is:inline>
-  const theme = localStorage.getItem('theme') || 'lofi';
+  const stored = localStorage.getItem('theme');
+  const theme = stored === 'business' ? 'business' : 'autumn';
+  if (stored === 'lofi') localStorage.setItem('theme', 'autumn');
   document.documentElement.setAttribute('data-theme', theme);
 </script>
